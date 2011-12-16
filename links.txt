@@ -1,2 +1,7 @@
-Explicació del joc de la botifarra.
-http://ca.wikipedia.org/wiki/Joc_de_la_botifarra
+#Explicació del joc de la botifarra.
+http://ca.wikipedia.org/wiki/Joc_de_la_botifarra [01/12/2011]
+#Explicació Test Driven Development
+en.wikipedia.org/wiki/Test-driven_development [16/12/2011]
+es.wikipedia.org/wiki/Test-driven_development [16/12/2011]
+#GIT
+http://es.wikipedia.org/wiki/Control_de_versiones [15/12/2011]
