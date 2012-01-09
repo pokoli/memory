@@ -5,3 +5,19 @@ en.wikipedia.org/wiki/Test-driven_development [16/12/2011]
 es.wikipedia.org/wiki/Test-driven_development [16/12/2011]
 #GIT
 http://es.wikipedia.org/wiki/Control_de_versiones [15/12/2011]
+#Javascript
+http://ca.wikipedia.org/wiki/JavaScript [09/01/2012]
+#Node.js
+http://en.wikipedia.org/wiki/Node.js [09/01/2012]
+#V8 (Javascript Engine)
+http://en.wikipedia.org/wiki/V8_%28JavaScript_engine%29 [09/01/2012]
+#JQuery
+http://es.wikipedia.org/wiki/JQuery
+#HTML5
+http://en.wikipedia.org/wiki/HTML
+http://en.wikipedia.org/wiki/HTML5
+http://en.wikipedia.org/wiki/Canvas_element
+#CSS
+http://ca.wikipedia.org/wiki/Cascading_Style_Sheets
+#Websockets
+http://ca.wikipedia.org/wiki/WebSockets
