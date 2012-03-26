@@ -1,11 +1,20 @@
-\documentclass[11pt,a4paper]{report}
+\documentclass[catalan,11pt,a4paper]{report}
+%Per a que els titols surtin en català.
+\usepackage[catalan]{babel}
 %Per a poder escriure accents
 \usepackage[utf8]{inputenc}
 %Per a poder incloure grafics
 \usepackage{graphicx}
 \usepackage{url}
 
+\author{Sergi Almacellas Abellana}
+\title{Implementació de la Botifarra utilitzant WebSockets, HTML5 i Javascript}
+
 \begin{document}
+\include{portada}
+\tableofcontents
+\newpage
+%\input{llicencia}
 \input{introduccio}
 \input{requeriments}
 \input{butifarra}
