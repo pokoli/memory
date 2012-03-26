@@ -99,8 +99,9 @@ fs.readFile(__dirname + '/someDir/someFile', 'utf8', function (err,data) {
 
 En aquest text es pot veure el codi necessari per a llegir un fitxer de disc. Així el que es fa es dir-li al sistema, llegeix el fitxer /someDir/someFile. Una vegada hagis acabat executa la funció que es passa a l'ultim paràmetre. Amb això aconseguim que mentre el proces estigui llegint el fitxer nosaltres puguem seguir fent càlculs, i que quan s'hagi acabat la lectura del fitxer puguem fer amb ell el que creguem convenient. 
 
-%TODO: Explicar més profundament que vol dir bastat en events i entrada/sortida asincrona
-
+El procesament asíncron és fa gracies als anomenats events, que s'encarreguen d'executar codi font quan s'ha produit alguna cosa. A més a més, node ens permet crear events personalitzats i fer que s'executi el nostre codi cada vegada que es produeix un event. Els events han estat utilitzats en gran part del desenvolupament del projecte. 
+%TODO: Fer un apartat per comparar el codi asincron amb el codi asincron.
+%TODO:
 %Tot i que node.js es un framwork bastant inusual, les primeres impresions ell van ser magnífiques. 
 %Primer de tot utilitza codi Javascript per a crear servidors, quan tots els meus coneixements eren per executar codi Javascript en l'entorn de client. La segona cosa que em va sorprendre molt de node.js va ser que aquest sigui un entorn d'execució de programés asíncrons. 
 
