@@ -1,13 +1,76 @@
 \chapter{Entorn de treball}
+%TODO: No m'agrade el nom de entorn de treball -> Buscar alguna cosa més interesant. 
+
+L'Únic requeriment que es necessita per a fer poder fer funcionar el servidor de la botifarra que s'ha implementat es que es disposi del framework node.js instal·lat i instal·lar el paquets dependents del desenvolupament que s'ha realitzat. En aquest apartat s'explicarà com a s'han dut a terme aquestes tasques. 
 
 \section{Instal·lació de node.js}
 
-%Compilació desde el codi font.
-%Comentar que a l'inici del projecte no hi havia versió disponible per windows. Però que aquest s'ha anat activant a 
+Actualment per realitzar a instal·lació del Node.js existeixen diferents opcions depenent del sistema operatiu que s'utilitzi: 
+
+\begin{enumerate}
+    \item{Autoinstalable per a Windows}
+    \item{Autoinstalable per a Mac}
+    \item{Repositoris de paquets per a Debian, Ubuntu, OpenSuse, Fedora i derivats i ArchLinux}
+    \item{Compilació del codi font}
+\end{enumerate}
+
+Quan es va començar a desenvolupar el projecte (Octubre de l'any 2011) no hi havia paquets autoinstalables ni per Mac ni per Windows i els repositoris de paquets de Debian i Ubuntu no estaven actualitzats amb les últimes versions estables de node. De fet Node solament estava suportat sobre sistemes operatius basats en Unix (Mac,Linux,etc.) i no estava suportat per a Sistemes Operatius de Microsoft. 
+
+Per tal de poder disposar de la última versió de node.js es va decidir instal·lar node mitjançant la compilació del codi font. Personalment no soc molt partidari de realitzar instal·lacions a través de compilació de codi font, ja que es bastant engorrós tenir que tornar a compilar tot el codi cada vegada que es publica una nova versió. De totes formes el fet que l'ultima versió estable (en aquells moments la 0.4.x) no estes disponible a través d'un paquet em va fer decidir per la instal·lació a traves de la compilació del codi font. 
+
+\subsection{Requeriments}
+
+La instal·lació de node.js a partir del seu codi font requereix les següent dependències:
+
+\begin{enumerate}
+    \item{Python, en la seva versió 2.6 o 2.7. Cal tenir en compte que no podrem instal·lar els paquets des de el codi font si ho intentem des de la versió 3 de Python}
+    \item{La llibreria libssl-dev, només en el cas de que es vulgui utilitzar encriptació SSL/TLS. }
+\end{enumerate}
+
+\subsection{Obtenció del codi font}
+
+L'obtenció del codi font de la node es pot realitzar de dos formes diferents: 
+
+\begin{enumerate}
+    \item{Descarregant un paquet a través de la pàgina oficial de node.js\footnote{\url{http://www.nodejs.org}}}
+    \item{Obtenint una copia complerta del respositori de codi font de GitHub\footnote{\url{https://github.com/joyent/node}}}
+\end{enumerate}
+
+Així vaig decidir que la millor opció era obtenir una copia del respositori de codi font de GitHub, ja que d'aquesta forma podríem facilitar les actualitzacions: simplement actualitzant el respositori a la última versió i tornant a compilar el codi s'obtindrà la última versió). Una altre motiu per la obtenció del repositori de codi font, es la possibilitat de provar les últimes versions de desenvolupament en el cas de que això fos necessari.  
+
+\subsection{Compilació}
+
+Una vegada s'ha obtingut el codi font aquest pot ser compilat amb les següents comandes:  
+\begin{verbatim}
+./configure
+make
+sudo make install
+\end{verbatim}
+
+Es pot comprovar que la instal·lació s'ha realitzat de forma correcta teclejant les següent comandes: 
+
+\begin{verbatim}
+node
+> process.version
+\end{verbatim}
+
+Així el programa ens ha de contestar amb la versió que tenim instal·lada, en el meu cas: 'v0.6.7'
 
 \section{Instal·lació de paquets addicionals}
 
-Una de les eines més potents que proporciona node es npm (Node Package Manager)%TODO: Afegir alguna nota/link.
-npm es una eina per a la gestió de packets de node, que ens permet reutilitzar packets (porcions de codi amb una funcionalitat específica) publicats per altres desenvolupadors. També s'encarrega de la gestió de les dependències del nostre projecte i que ens permet publicar els nostres propis paquets. 
+Una de les eines més potents que proporciona node es npm\footnote{Node Package Manager: \url{http://npmjs.org/}}.
+Npm s'encarrega de la gestió de mòduls\footnote{Porcions de codi amb una funcionalitat específica, dissenyats per poder ser re-utilitzats} i ens permet utilitzar mòduls publicats per altres desenvolupadors en desenvolupaments propis. També ens permet publicar els nostres propis paquets. 
+
+Inicial ment npm va néixer com una eina separada de node i requeria d'una instal·lació pròpia. A partir de la versió 0.6.0 de node, npm es va integrar a node i s'instal·la de forma automàtica quan es realitza la instal·lació de node. De totes formes npm es pot seguir instal·lant per separat, tal i com es feia a la versions anteriors. La seva instal·lació es pot realitzar amb la següent comanda:
+
+\begin{verbatim}
+curl http://npmjs.org/install.sh | sh
+\end{verbatim}
+
+Aquesta comanda s'encarrega de baixar d'Internet el codi necessari per a realitzar la instal·lació i d'executar-lo. 
+
+\section{Moduls dependents}
+
+%Explicar com funciona els fitxers packages.json i com nosaltres els fem servir per instal·lar les dependències. 
 
 

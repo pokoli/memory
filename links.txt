@@ -9,15 +9,18 @@ http://es.wikipedia.org/wiki/Control_de_versiones [15/12/2011]
 http://ca.wikipedia.org/wiki/JavaScript [09/01/2012]
 #Node.js
 http://en.wikipedia.org/wiki/Node.js [09/01/2012]
+#Instalació Node.js 
+https://github.com/joyent/node/wiki/Installation [27/03/2012]
 #V8 (Javascript Engine)
 http://en.wikipedia.org/wiki/V8_%28JavaScript_engine%29 [09/01/2012]
 #JQuery
-http://es.wikipedia.org/wiki/JQuery
+http://es.wikipedia.org/wiki/JQuery [09/01/2012]
 #HTML5
-http://en.wikipedia.org/wiki/HTML
-http://en.wikipedia.org/wiki/HTML5
-http://en.wikipedia.org/wiki/Canvas_element
+http://en.wikipedia.org/wiki/HTML [09/01/2012]
+http://en.wikipedia.org/wiki/HTML5 [09/01/2012]qq
+http://en.wikipedia.org/wiki/Canvas_element [09/01/2012]
 #CSS
-http://ca.wikipedia.org/wiki/Cascading_Style_Sheets
+http://ca.wikipedia.org/wiki/Cascading_Style_Sheets [09/01/2012]
 #Websockets
-http://ca.wikipedia.org/wiki/WebSockets
+http://ca.wikipedia.org/wiki/WebSockets [09/01/2012]
+
