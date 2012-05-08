@@ -14,7 +14,7 @@ Actualment per realitzar a instal·lació del Node.js existeixen diferents opcio
     \item{Compilació del codi font}
 \end{enumerate}
 
-Quan es va començar a desenvolupar el projecte (Octubre de l'any 2011) no hi havia paquets autoinstalables ni per Mac ni per Windows i els repositoris de paquets de Debian i Ubuntu no estaven actualitzats amb les últimes versions estables de node. De fet Node solament estava suportat sobre sistemes operatius basats en Unix (Mac,Linux,etc.) i no estava suportat per a Sistemes Operatius de Microsoft. 
+Quan es va començar a desenvolupar el projecte (Octubre de l'any 2011) no hi havia paquets auto-instal·lables ni per Mac ni per Windows i els repositoris de paquets de Debian i Ubuntu no estaven actualitzats amb les últimes versions estables de node. De fet Node solament estava suportat sobre sistemes operatius basats en Unix (Mac,Linux,etc.) i no estava suportat per a Sistemes Operatius de Microsoft. 
 
 Per tal de poder disposar de la última versió de node.js es va decidir instal·lar node mitjançant la compilació del codi font. Personalment no soc molt partidari de realitzar instal·lacions a través de compilació de codi font, ja que es bastant engorrós tenir que tornar a compilar tot el codi cada vegada que es publica una nova versió. De totes formes el fet que l'ultima versió estable (en aquells moments la 0.4.x) no estes disponible a través d'un paquet em va fer decidir per la instal·lació a traves de la compilació del codi font. 
 
@@ -57,9 +57,9 @@ node
 Així el programa ens ha de contestar amb la versió que tenim instal·lada, en el meu cas: 'v0.6.7'
 
 \section{Instal·lació de paquets addicionals}
-
+\label{sec:paquets-adicionals}
 Una de les eines més potents que proporciona node es npm\footnote{Node Package Manager: \url{http://npmjs.org/}}.
-Npm s'encarrega de la gestió de mòduls\footnote{Porcions de codi amb una funcionalitat específica, dissenyats per poder ser re-utilitzats} i ens permet utilitzar mòduls publicats per altres desenvolupadors en desenvolupaments propis. També ens permet publicar els nostres propis paquets. 
+Npm s'encarrega de la gestió de paquets\footnote{Porcions de codi amb una funcionalitat específica, dissenyats per poder ser re-utilitzats} i ens permet utilitzar paquets publicats per altres desenvolupadors en desenvolupaments propis. També ens permet publicar els nostres propis paquets. 
 
 Inicial ment npm va néixer com una eina separada de node i requeria d'una instal·lació pròpia. A partir de la versió 0.6.0 de node, npm es va integrar a node i s'instal·la de forma automàtica quan es realitza la instal·lació de node. De totes formes npm es pot seguir instal·lant per separat, tal i com es feia a la versions anteriors. La seva instal·lació es pot realitzar amb la següent comanda:
 
@@ -69,8 +69,89 @@ curl http://npmjs.org/install.sh | sh
 
 Aquesta comanda s'encarrega de baixar d'Internet el codi necessari per a realitzar la instal·lació i d'executar-lo. 
 
-\section{Moduls dependents}
+Una vegada s'ha instal·lat npm es pot instal·lar paquets publicats al seu registre amb la comanda:
 
-%Explicar com funciona els fitxers packages.json i com nosaltres els fem servir per instal·lar les dependències. 
+\begin{verbatim}
+npm install "nom_del_paquet"
+\end{verbatim}
+
+Cal tenir en compte que \emph{nom\_del\_paquet} també pot ser una ruta (una carpeta, una direcció d'Internet) que apunti a una carpeta que conté un fitxer package.json\footnote{Veure secció \ref{sec:que-es-un-paquet} i \ref{sec:fitxer-package.json}} . 
+
+Per a buscar paquets podem utilitzar la comanda: 
+
+\begin{verbatim}
+npm search "paraules_clau"
+\end{verbatim}
+
+\section{Gestió de dependències}
+
+Com s'ha comentat a l'apartat \ref{sec:paquets-adicionals} npm ens permet re-utilitzar codi publicat per altres desenvolupadors. Aquesta pràctica s'ha dut a terme en mesura del possible durant el desenvolupament del projecte.  
+
+\subsection{Que és un paquet?}
+\label{sec:que-es-un-paquet}
+
+Tècnicament un paquet és una part especifica de software que es pot instal·lar i des-instal·lar a través d'un sistema de gestió de paquets. En l'àmbit del projecte l'eina de gestió de paquets és npm, ja que ens permet instal·lar i des-instal·lar paquets publicats al seu propi registre. 
+
+Així el que ens interessa és saber que entén npm per un paquet. Segons la seva documentació oficial\footnote{\url{http://npmjs.org/doc/developers.html}} un paquet és: 
+
+\begin{enumerate}
+\item {Una carpeta que conté un programa descrit per un fitxer package.json}
+\item {Un fitxer comprimit que conte 1}
+\item {Una URL que apunta cap a 2}
+\item {Un "nom"@"versió" que esta publicada al registre de npm amb 3}
+\item {Un "nom"@"tag" que apunta a 4}
+\item {Un "nom" que té un tag anomenat "latest" que compleix amb 5}
+\item {Una URL de git que al clonar-se resulta amb 1}
+\end{enumerate}
+
+Així crear un paquet es tan fàcil com crear el fitxer package.json i especificar la informació que creiem convenient compartir amb la resta d'usuaris. 
+
+Una vegada creat un paquet podem publicar-lo al registre de npm per a compartir-lo amb la resta d'usuaris. 
+
+\subsection{El fitxer package.json}
+\label{sec:fitxer-package.json}
+
+Com hem vist en la secció \ref{sec:que-es-un-paquet} l'únic requeriment per a crear un paquet és la creació d'un fitxer package.json que en descrigui el contingut. Aquest fitxer s'escriu en format JSON\footnote{\url{http://www.json.org/}} per a que pugui ser llegit de per maquines. 
+
+En aquest contingut es pot especificar la següent informació: 
+\begin{description}
+\item[nom] {Nom del paquet.}
+\item[versió] {Versió actual de paquet.}
+\item[descripció] {Una cadena que descriu el que fa el paquet. Es mostra quan es busca paquets al registre.}
+\item[paraules clau] {Una llista de paraules clau. Es mostra quan es busca paquets al registre.}
+\item[pàgina web del projecte] {Direcció web de la pàgina web del projecte.}
+\item[errors] { URL i/o direcció de correu electrònic on es poden reportar els errors. }
+\item[autor] {Nom, correu electrònic i pàgina web de l'autor.}
+\item[contribuïdors] { Llista de persones que han contribuït al projecte}
+\item[repositori] { Indica la ruta on es pot trobar el codi font del programa. }
+\item[dependències] { Indica de quins paquets (i quines versions especifiques) depèn el paquet.}
+\item[dependències de desenvolupament] { Indica de quins paquets (i quines versions especifiques) es requereixen o poden ser útils per al desenvolupament en aquest paquet.}
+\item[motors] {Serveix per especifica sobre quines versions de node funciona el paquet.}
+
+\end{description}
+
+El únics camps obligatoris són el nom i la versió del paquet. 
+
+A la documentació de npm \footnote{\url{http://npmjs.org/doc/json.html}} es pot trobar una llista complerta de tots els camps disponibles juntament amb una explicació complerta de quina és la seva utilitat. 
+
+\subsection{Paquets locals i dependències}
+
+Com hem vist a la secció \ref{sec:paquets-adicionals} npm accepta una ruta local per instal·lar paquets i s'encarrega d'instal·lar les seves dependències en cas que el paquet en tingui. Aquest fet és molt útil per a la gestió de dependències, ja que podem utilitzar el fitxer package.json per especificar les dependències del nostre paquet i que npm s'encarregui d'instal·lar-les automàticament. 
+
+Per tal d'instal·lar un paquet local podem utilitzar la comanda (suposant que ens trobem a la mateixa ruta que el fitxer package.json): 
+
+\begin{verbatim}
+npm install . 
+\end{verbatim}
+
+La instal·lació de les dependències a través de npm també ens permet mantenir les nostres dependències actualitzades. Així si utilitzem la comanda: 
+
+\begin{verbatim}
+npm update
+\end{verbatim}
+
+Npm s'encarregarà de comprovar si hi ha noves versions de les nostres dependències i les actualitzarà de forma automàtica. 
+
+
 
 
