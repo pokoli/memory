@@ -1,0 +1,30 @@
+\chapter{Desplegament del programa}
+
+El desplegament del programa consistèix en posat a disposició del públic usuari el programa que s'ha desenvolupat. En el nostre cas, com es tracta d'una aplicació basada en web la tasca consisteix en posar un servidor web que s'encarregui de que la nostra aplicació sigui accessible a través d'una direcció web. 
+
+Ja que el framework node és bastant modern no existéixen molts proveïdors per a l'allotjament d'aplicacions desenvolupades amb aquest framework. De totes s'han trobat dos empreses que és dediquen a l'allotjament de aplicacions desenevolupades amb node i que a més a més ofereixen el desplegament gratuït en el cas de que no es necesitin molts requeriments. Aquestes empreses són NodeJitsu\footnote{\url{http://nodejitsu.com}} i Heroku\footnote{\url{http://www.heroku.com}}
+
+Una altra opció per al desplegament del programa es la útilització d'un Servidor Privat Virtual\footnote{\url{http://es.wikipedia.org/wiki/Servidor_virtual_privado}}. 
+
+Així les opcions disponibles per a la publicació del programa són les següents: 
+
+\begin{itemize}
+\item{NodeJitsu}
+\item{Heroku}
+\item{Servidor virtual propi}
+\end{itemize}
+
+%TODO: Explicar les diferents opcions de desplegament del programa.
+%Fer una taula comparativa amb les diferents opcions de cadascuna????
+
+\section{Publicament a Heroku}
+
+Adaptacions necesaries per poder treballar amb heroku. 
+
+\begin{itemize}
+\item{Modificar l'estructura de directoris eliminant el directori src/.}
+\item{Crear un fitxer (procfile per indicar la comanda que ha d'utilitzar heroku per executar el servidor.}
+\item{Utilizar el port del medi en cas de que aquest estigui definit. }
+\item{Fer que el programa sigui independent de la URL des d'on s'executa.}
+\end{itemize}
+
