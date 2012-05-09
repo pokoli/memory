@@ -2,11 +2,48 @@
 
 La implementació del joc s'ha realitzar amb dos grans blocs: el servidor i l'interficie client. El servidor es l'encarregat de gestionar la informació realtiva a les partides disponibles, els jugadors conectats i tota la lògica referent a les partides. La interifice client s'encarrega de interaccionar amb el servidor i mostrar la informació al usuari. 
 
-%TODO: Entrar amb una mica més de detall.
-%Explicar els events que es fan servir. 
+Per l'intercanvi de dades entre el servidor i el client s'utilitzen websockets\footnote{Veure Capítol \ref{sec:websockets}}, ja que ens proporcionen un canal de comunicació bi-direccional a través del protocol HTTP. Aquesta comunicació es totalment asincrona i està basada en events. Així cada vegada que el servidor envía un missatge al client (o a l'inversa) es produeix un event al destinatari i s'executa el codi asociat per al procesament d'aquest events (en cas que n'hi haigi). 
+
 \section{Servidor}
 
-\subsection{Botifarra}
+El servidor s'encarrega de les següents tasques: 
+
+\begin{itemize}
+\item{Proporcionar un servidor web encarregat de servir el programa client per a cada connexió.}
+\item{Emmagatzemar les partides en curs i jugadors connectats. Proporcionar events a través de Websockets per a que els usuaris puguin interaccionar a través del programa client. }
+\item{Applicar les regles de la botifarra a cada joc en curs i interactuar amb els diferents clients conectats a una partida}
+\end{itemize}
+
+En les properes seccions s'explica més profundament com s'ha realitzat la implementació de cadascuna de les tasques. 
+
+\subsection{Servidor Web}
+
+El servidor web és el proces més important de tot el projecte, ja que és l'encarregat de servir les altres parts de tot el porjecte. 
+
+Per la implementació del servidor web s'ha utiltizat el packet express\footnote{\url{http://expressjs.com/}}. Aquest paquet ens permet desenvolupar servidors web a amb poques línies de codi. Així també disposa de codi pre-programat per tal de realitzar tasques comunes a tots el servidors web. Alguns exemples en són:
+
+\begin{itemize}
+\item{Registre de peticions.}
+\item{Servir fitxers estàtics (imatges,css,js,etc.).}
+\item{Gestió d'errors}
+\item{Gestió de galetes (Cookies).}
+\end{itemize}
+
+A part de totes aquests funcionalitats, express també s'integra amb diferents llenguatges de plantilles per simplificar l'escriptura del codi HTML. Alguns exemples de motors de plantilles soportats per express són: 
+
+\begin{description}
+\item[Haml] {Implementació de Haml\footnote{\url{http://haml-lang.com/}} }
+\item[Jade] {Succesor de haml}
+\item[EJS] {JavaScript Incrustat}
+\item[CoffeeKup] {Plantilles basades amb CoffeeScript}
+\item[jQuery Templates for node]
+\end{description}
+
+Per la implementació del projecte s'han utilitzat les plantiless Jade, ja que ens permeten una gran simplificació del codi HTML i s'adaptava perfectament a les nostre necessesitats.
+
+\subsection{Interconnexió Jugadors}
+
+\subsection{Lògica Botifarra}
 
 \section{Client}
 
