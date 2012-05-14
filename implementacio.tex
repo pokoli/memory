@@ -44,7 +44,7 @@ Per la implementació del projecte s'ha utilitzat el motor de plantilles Jade, j
 La conjunció de tots els elements comentats anteriorment ens permeten disposar d'un servidor web sobre node.js. Això vol dir que les peticions es processen de forma asíncrona. 
 
 \subsection{Interconnexió Jugadors}
-
+\label{sec:interconnexio-jugadors}
 A part de funcionar com a servidor web el servidor també ha d'intercanviar dades amb els clients connectats amb ells. Per això el servidor crear un WebSocket i proporcionar els mecanismes suficients per a que el client s'hi connecti. Així, quan es carrega la primera pàgina de la partida també es carrega el programa client i aquest es connecta al servidor. 
 
 A través de la comunicació amb WebSockets el servidor es poden realitzar les següent accions: 
@@ -133,6 +133,33 @@ En els següents apartats s'explicam com s'han implementat aquestes dos funciona
 
 \subsection{Lògica del client}
 
+Per tal d'implementar la comunicació entre el client i el servidor s'ha utilitzat la llibreria socket.io. Aquesta llibreria proporciona els mètodes necessaris per la comunicació entre client servidor. També porta un fitxer JavaScript que es pot servir a través d'un servidor web. Aquest és el mètode emprat en la nostra implementació. A través d'aquest fitxer JavaScript obtenim els mètodes suficients per connectar-nos al servidor i poder enviar/rebre missatges. En el nostre cas el client proporciona els mètodes per poder interaccionar amb el servidor i obtenir tota la informació comentada en la secció \ref{sec:interconnexio-jugadors}. A més a més s'encarrega d'escoltar els següents següents missatges: 
+
+\begin{description}
+\item[welcome]{Missatge de benvinguda del servidor.}
+\item[message]{Rep els missatges enviats per altres jugadors.}
+\item[updated-game]{Informa sobre l'actualització d'informació d'una partida. }
+\item[start]{Una partida que l'usuari es jugador comença.}
+\item[select-thriumph]{Informa al jugador que ha de seleccionar el trumfo de la partida. }
+\item[notify-thriumph]{Informa al jugador el trumfo seleccionat pels altres jugadors.}
+\item[play-card]{El jugador ha de seleccionar una carta per jugar. }
+\item[played-card]{S'ha jugat una carta.}
+\item[new-move]{Comença una nova basada.}
+\item[end-move]{S'ha finalitzat la basada activa.}
+\item[contro]{El jugador té la possibilitat de contrar.}
+\item[contro-done]{Informa que un altre jugador ha contrat.}
+\item[round-ended]{S'ha finalitzat la ronda.}
+\item[game-ended]{S'ha finalitzat la partida.}
+\end{description}
+
+Cada vegada que es rep un missatge d'aquest tipus el programa client s'encarrega de processar la informació i de cridar al programa de visualització de la informació \footnote{Veure secció \ref{sec:visualitzacio-informacio}} per a que mostri la informació a l'usuari. El programa client també s'encarrega de refrescar la informació del servidor de forma periòdica. 
 
 
 \subsection{Visualització de la informació}
+\label{sec:visualitzacio-informacio}
+
+Com ja s'ha comentat anteriorment, el programa encarregat de mostrar la informació a l'usuari s'ha implementat de forma separada per tal de poder permetre múltiples tipus de client. El client per defecte s'ha escrit utilitzant una interfície web. Així, el programa de visualització de la informació es l'encarregat de mostrar en una pàgina web l'in formació que es rebi a través del programa client.
+
+Per tal de poder dibuixar l'àrea de joc de la partida i les cartes que juguen cada jugador s'ha utilitzat l'objecte canvas introduït en la última versió del llenguatge HTML. Aquest objecte proporciona un espai on poder realitzar dibuixos de forma dinàmica a través de JavaScript. Gràcies a que s'escriu a través de JavaScript ens permet dibuixar-hi sense tenir que tornar a carregar la pàgina. Aquest fet provoca que l'usuari pugui veure moviment a la pantalla. 
+
+En la implementació per defecte, l'objecte canvas forma tot un conjunt independentment del nombre d'objectes que tenim dibuixat al seu interior. Així només és pot associar esdeveniments a l'objecte en canvas i no als elements que estan continguts al seu interior. Un dels requisits del joc es que es puguin associar esdeveniments a objectes de dins del canvas, per exemple associar un esdeveniments que cada vegada que es faci clic sobre una carta s'enviï una petició al servidor sol·licitant que es vol jugar. Per tal de solucionar aquest problema s'ha utilitzat la llibreria kinetic.js\footnote{\url{http://www.kineticjs.com/}}. A més d'associar esdeveniments als objectes de dins aquesta llibreria ens permet estructurar el dibuix a nivell de capes, permetent-nos crear tantes capes com es cregui necessari. La llibreria s'encarrega de superposar totes les capes i mostrar-les a l'usuari. 
