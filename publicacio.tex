@@ -42,3 +42,25 @@ git push heroku
 
 A partir d'aquest moment la nostre aplicació serà accesible a través dels servidors de Heroku.
 
+\subsection{Problemes amb heroku}
+
+Desprès d'uns dies de funcionament amb heroku em vaig adonar que la comunicació de websockets es tallava. Desprès de parlar amb el suport de heroku ens van comentar que la seva infraesctructura no soportava websockets. Així es va decidir desplegar la aplicació en un servidor privat virtual per tal de que aquesta funcioni amb totes les seves funcionalitats. 
+
+\section{Publicant a un Servidor propi.}
+
+Per tal de que la nostra aplicació funcioni de forma correcta necessitem que els sistema disposi de les següents utilitats:
+
+\begin{itemize}
+\item{Node.js}
+\item{Git}
+\end{itemize}
+
+Per la instal·lació de node s'han seguit els pasos comentats a l'apartat \ref{sec:instalacio-node}. Així una vegada s'han instal·lat aquest requeriments podem instalar la nostra aplicació seguint els següents pasos: 
+
+\begin{enumerate}
+\item{Obtenir el codi font del projecte utilitzant git}
+\item{Obtenir les dependències del programa, utilitzant npm com s'ha comentat al capítol \ref{sec:gestio-dependencies}}
+\end{enumerate}
+
+Després de realitzar aquestsos pasos ja tenim disponible el projecte al nostre servidor. De totes formes, necesitem que asegurarnos que aquest funciona de forma continua. Per tal d'aconseguir això s'ha utilitzat la llibreria forever\footnote{\url{https://github.com/nodejitsu/forever/}} que esta disponible a través de node. Per tal de garantir que l'aplicació s'engega i s'apaga de forma automàtica també s'han creat scripts per a que es cridin de forma automática al sistema. 
+
