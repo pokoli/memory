@@ -110,12 +110,12 @@ Donat un conjunt de nombre de 1 a N, aquest algoritme s'aplica de la següent fo
 
 Aquest algorisme te un cost $O(n^2)$ per això s'ha utilitzat la variant de Knuth que permet optimitzar l'algorisme fins a obtenir un cost de $O(n)$. Aquesta variant el que fa es moure els elements pendents de tractar al final de lla llista. Així l'algorisme es queda expressat de la següent forma: 
 
-\begin{verbatim}
- Per ordenar un conjunt de n elements (índexs 0..n-1):
+\begin{lstlisting}
+ Per ordenar un conjunt de n elements (indexs 0..n-1):
    Per cada i de n - 1 fins a 1 fer:
         j <- nombre aleatori que compleix que  0 <= j <= i
         canviar a[j] i a[i]
-\end{verbatim}
+\end{lstlisting}
 
 A més a més per tal de garantir la complerta aleatorietat i evitar possibles resultats iguals aquest algorisme s'aplica 12 vegades. Amb això s'aconsegueix emular el comportament humà al barrejar la baralla de cartes. 
 

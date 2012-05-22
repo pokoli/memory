@@ -88,14 +88,14 @@ La qualitat que fa diferent a node.js el seu funcionament està basat en events,
 
 El fet de que el codi s'executi de forma asíncrona, implica que el programa pot realitzar diferents tasques mentre espera que el sistema realitzi alguna altra tasca. Això vol dir que el programa pot seguir realitzant tasques mentre espera que es realitzi una consulta a la base de dades, que es llegeixi un fitxer des de disc, o que es rebin les dades d'un servidor extern. Així el programa s'estructura amb el que es coneix com a callbacks. Un callback es el codi que s'executara després d'haver realitzat alguna tasca. 
 
-\begin{verbatim}
+\begin{lstlisting}
 fs.readFile(__dirname + '/someDir/someFile', 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
   console.log(data);
 });
-\end{verbatim}
+\end{lstlisting}
 
 En aquest text es pot veure el codi necessari per a llegir un fitxer de disc. Així el que es fa es dir-li al sistema, llegeix el fitxer /someDir/someFile. Una vegada hagis acabat executa la funció que es passa a l'ultim paràmetre. Amb això aconseguim que mentre el proces estigui llegint el fitxer nosaltres puguem seguir fent càlculs, i que quan s'hagi acabat la lectura del fitxer puguem fer amb ell el que creguem convenient. 
 

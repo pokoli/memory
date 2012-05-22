@@ -42,18 +42,18 @@ Així vaig decidir que la millor opció era obtenir una copia del respositori de
 \subsection{Compilació}
 
 Una vegada s'ha obtingut el codi font aquest pot ser compilat amb les següents comandes:  
-\begin{verbatim}
+\begin{lstlisting}[language=bash]
 ./configure
 make
 sudo make install
-\end{verbatim}
+\end{lstlisting}
 
 Es pot comprovar que la instal·lació s'ha realitzat de forma correcta teclejant les següent comandes: 
 
-\begin{verbatim}
+\begin{lstlisting}[language=bash]
 node
 > process.version
-\end{verbatim}
+\end{lstlisting}
 
 Així el programa ens ha de contestar amb la versió que tenim instal·lada, en el meu cas: 'v0.6.7'
 
@@ -64,25 +64,25 @@ Npm s'encarrega de la gestió de paquets\footnote{Porcions de codi amb una funci
 
 Inicial ment npm va néixer com una eina separada de node i requeria d'una instal·lació pròpia. A partir de la versió 0.6.0 de node, npm es va integrar a node i s'instal·la de forma automàtica quan es realitza la instal·lació de node. De totes formes npm es pot seguir instal·lant per separat, tal i com es feia a la versions anteriors. La seva instal·lació es pot realitzar amb la següent comanda:
 
-\begin{verbatim}
+\begin{lstlisting}[language=bash]
 curl http://npmjs.org/install.sh | sh
-\end{verbatim}
+\end{lstlisting}
 
 Aquesta comanda s'encarrega de baixar d'Internet el codi necessari per a realitzar la instal·lació i d'executar-lo. 
 
 Una vegada s'ha instal·lat npm es pot instal·lar paquets publicats al seu registre amb la comanda:
 
-\begin{verbatim}
-npm install "nom_del_paquet"
-\end{verbatim}
+\begin{lstlisting}[language=bash]
+npm install <nom_del_paquet>
+\end{lstlisting}
 
 Cal tenir en compte que \emph{nom\_del\_paquet} també pot ser una ruta (una carpeta, una direcció d'Internet) que apunti a una carpeta que conté un fitxer package.json\footnote{Veure secció \ref{sec:que-es-un-paquet} i \ref{sec:fitxer-package.json}} . 
 
 Per a buscar paquets podem utilitzar la comanda: 
 
-\begin{verbatim}
-npm search "paraules_clau"
-\end{verbatim}
+\begin{lstlisting}[language=bash]
+npm search <paraules_clau>
+\end{lstlisting}
 
 \section{Gestió de dependències}
 \label{sec:gestio-dependencies}
@@ -141,15 +141,15 @@ Com hem vist a la secció \ref{sec:paquets-adicionals} npm accepta una ruta loca
 
 Per tal d'instal·lar un paquet local podem utilitzar la comanda (suposant que ens trobem a la mateixa ruta que el fitxer package.json): 
 
-\begin{verbatim}
+\begin{lstlisting}[language=bash]
 npm install . 
-\end{verbatim}
+\end{lstlisting}
 
 La instal·lació de les dependències a través de npm també ens permet mantenir les nostres dependències actualitzades. Així si utilitzem la comanda: 
 
-\begin{verbatim}
+\begin{lstlisting}[language=bash]
 npm update
-\end{verbatim}
+\end{lstlisting}
 
 Npm s'encarregarà de comprovar si hi ha noves versions de les nostres dependències i les actualitzarà de forma automàtica. 
 

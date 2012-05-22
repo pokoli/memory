@@ -8,6 +8,28 @@
 \usepackage{url}
 %Incorpora enllaços a referencies (colorlinks=true canvia el text dels enllaços)
 \usepackage[colorlinks=false]{hyperref}  %incorpora enllaços a referències, seccions i url's. També genera índex pdf
+\usepackage{listings}
+%%%%%% Configuració del paquet listings per a que conegui Javascript %%%%%%%%
+\usepackage{color}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
 
 %%%%%% Estructura de la pagina %%%%
 \setlength{\parskip}{1.7ex plus 0.5ex minus 0.5ex}
@@ -17,6 +39,28 @@
 \title{Implementació de la Botifarra utilitzant WebSockets, HTML5 i Javascript}
 
 \begin{document}
+%Configuració del paquet de listings
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=true,
+   captionpos=b
+}
+%\lstset{
+%    basicstyle=\ttfamily,
+%    frame=single,
+%    columns=fullflexible
+%}
+
 \include{portada}
 \tableofcontents
 \listoffigures	
