@@ -1,0 +1,25 @@
+Comentaris JM (20/05/12): 
+
+- Explicar les funcionalitats comunes (a client i servidor) de la implmentació a realitzar. 
+- Millorar l'explicació del joc de la botifarra. Afegir exemples de partides.
+- Separar la metodologia de treball (TDD) de les tecnologies utilitzades.
+- Utilitzar el packet listings de java per introduir referències de codi font. 
+- Detallar més profundament que és node, la programació asíncrona, els websockets i com gràcies a tot això podem aconseguir aplicacions en temps real.
+- Afegir exemples de com realitzar dibuixos amb l'objecte canvas de HTML5.
+- A l'apartat d'implementació explicar les millores que s'han realitzat a cada versió. (Afegir un detall del log de git)
+- A l'apartat implementació afegir exemples dels testos que s'han realitzat.
+- Revisar les resolucions de les imatges adjuntes per tal de que aquestes quedin millor al incrustar-les a la memòria.
+- Afegir un diagrama de seqüencia amb els intercanvis de missatges que es realitzen per en els diversos procesos del transcurs d'una partida (a la secció implementació de la lògica del client). 
+- El apartat visualització de la informació inclourel a l'apartat d'interfície de client. 
+- Afegir captures de pantalla del resultat final de la interfície d'usuari.
+
+
+ALTRES: 
+
+- Detallar les tecnologies utiltizades per al TDD i el code coverage. 
+- Completar l'estructura del document
+- Ampliar les conclusions
+- Escriure de forma correcta els agraiments
+- Explicar els aventatges i els inconvenients del open source
+- Ampliar les opcions de publicació del projecte
+- Re-estructurar i revisar el capítol de tecnologies. 
