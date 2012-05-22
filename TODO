@@ -1,6 +1,5 @@
 Comentaris JM (20/05/12): 
 
-- Explicar les funcionalitats comunes (a client i servidor) de la implmentació a realitzar. 
 - Millorar l'explicació del joc de la botifarra. Afegir exemples de partides.
 - Separar la metodologia de treball (TDD) de les tecnologies utilitzades.
 - Detallar més profundament que és node, la programació asíncrona, els websockets i com gràcies a tot això podem aconseguir aplicacions en temps real.

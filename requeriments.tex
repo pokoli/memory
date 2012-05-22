@@ -3,9 +3,33 @@
 \chapter{Requeriments del sistema}
 \label{chap:requeriments}
 
-Es vol construir un sistema que sigui capàs de allotjar partides de la botifarra en línia a través d'un navegador. 
-Aquest sistema ha d'utilitzar la tecnologia client-servidor, es a dir hi ha d'haver un programa servidor que es l'encarregat d'allotjar les dades de totes les partides i un programa client que és l'encarregat de mostrar a l'usuari totes aquestes dades. 
- 
+Es vol construir un sistema que sigui capàs de allotjar partides de la botifarra en línia a través d'un navegador. Així, aquest sistema ha de proporcionar les següents funcionalitats: 
+
+\begin{itemize}
+\item{Permetre la comunicació entre els diferents jugadors conectats al servidor a través d'un xat.}
+\item{Allotjar múltiples partides a la vegada.}
+\item{Observar partides que están jugant altres jugadors.}
+\item{Crear noves partides.}
+\item{Afegir robots per permetre jugar partides sense la necessitat d'altres jugadors.}
+\item{
+    Notificar als jugadors dels diferents events que es van produïnt durant el transcurs de la partida:
+    \begin{itemize}
+        \item{S'ha iniciat una partida en que estan involucrats.}
+        \item{S'ha iniciat una nova ronda en que están involucrats.}
+        \item{Han d'elegir triomf.}
+        \item{Un altre jugador ha elegit triomf per la ronda.}
+        \item{Poden elegir si volen contrar la ronda.}
+        \item{Un altre jugador ha contrat la ronda.}
+        \item{Un altre jugador ha jugat una nova carta.}
+        \item{Han de jugar una nova carta.}
+        \item{S'ha finalitzat la jugada actual.}
+        \item{La ronda en curs s'ha finalitzat.}
+        \item{S'ha finalitzat una partida en que estant involucrats.}
+    \end{itemize}
+}
+\end{itemize}
+
+Aquest sistema ha d'utilitzar la tecnologia client-servidor, es a dir hi ha d'haver un programa servidor que es l'encarregat d'allotjar les dades de totes les partides i un programa client que és l'encarregat de mostrar a l'usuari totes aquestes dades. Per garantir que l'experiència del jugador sigui satisfactòria el traspàs d'informació entre el client i el servidor ha de ser en temps real. 
 
 \section{Funcions del servidor}
 
