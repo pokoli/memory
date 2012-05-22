@@ -156,6 +156,7 @@ Per tal d'implementar la comunicació entre el client i el servidor s'ha utilitz
 Cada vegada que es rep un missatge d'aquest tipus el programa client s'encarrega de processar la informació i de cridar al programa de visualització de la informació \footnote{Veure secció \ref{sec:visualitzacio-informacio}} per a que mostri la informació a l'usuari. El programa client també s'encarrega de refrescar la informació del servidor de forma periòdica. 
 
 
+
 \subsection{Visualització de la informació}
 \label{sec:visualitzacio-informacio}
 
@@ -164,3 +165,108 @@ Com ja s'ha comentat anteriorment, el programa encarregat de mostrar la informac
 Per tal de poder dibuixar l'àrea de joc de la partida i les cartes que juguen cada jugador s'ha utilitzat l'objecte canvas introduït en la última versió del llenguatge HTML. Aquest objecte proporciona un espai on poder realitzar dibuixos de forma dinàmica a través de JavaScript. Gràcies a que s'escriu a través de JavaScript ens permet dibuixar-hi sense tenir que tornar a carregar la pàgina. Aquest fet provoca que l'usuari pugui veure moviment a la pantalla. 
 
 En la implementació per defecte, l'objecte canvas forma tot un conjunt independentment del nombre d'objectes que tenim dibuixat al seu interior. Així només és pot associar esdeveniments a l'objecte en canvas i no als elements que estan continguts al seu interior. Un dels requisits del joc es que es puguin associar esdeveniments a objectes de dins del canvas, per exemple associar un esdeveniments que cada vegada que es faci clic sobre una carta s'enviï una petició al servidor sol·licitant que es vol jugar. Per tal de solucionar aquest problema s'ha utilitzat la llibreria kinetic.js\footnote{\url{http://www.kineticjs.com/}}. A més d'associar esdeveniments als objectes de dins aquesta llibreria ens permet estructurar el dibuix a nivell de capes, permetent-nos crear tantes capes com es cregui necessari. La llibreria s'encarrega de superposar totes les capes i mostrar-les a l'usuari. 
+
+\section{Exemples de comunicació}
+
+En aquest apartat es mostraran alguns exemples de la comunicació que es dur a terme entre el client i el servidor, detallant els missatges que s'intercanvien. 
+
+\begin{figure}[h!]
+\centering
+\begin{sequencediagram}
+\newthread[white]{c}{Client}
+\newinst[9]{s}{Servidor}
+ 
+\begin{call}{c}{Establir conexió}{s}{welcome}
+\end{call}
+
+\begin{call}{c}{login}{s}{Informació del usuari}
+\end{call}
+
+\begin{call}{c}{new-game}{s}{Informació de la partida creada}
+\end{call}
+
+\end{sequencediagram}
+\caption{Diagrama de flux de creació d'una nova partida.}
+\label{diag:creacio-nova-partida}
+\end{figure} 
+
+A la figura \ref{diag:creacio-nova-partida} es pot observar el diagrama de flux necesàri per a la creació d'una nova partida. En el primer pas el programa client estableix la connexió amb el programa servidor que li contesta donant-li la benvinguda al servidor i preguntant-li el seu nom d'usuari. Una vegada el programa client envia el nom d'usuari el programa servidor li contesta amb l'identificador usuari que te asignat. Una vegada s'ha identificat el programa 
+
+
+\begin{figure}[h!]
+\centering
+\begin{sequencediagram}
+\newthread[white]{c}{Client}
+\newinst[9]{s}{Servidor}
+ 
+\begin{call}{c}{Establir conexió}{s}{welcome}
+\end{call}
+
+\begin{call}{c}{login}{s}{Informació del usuari}
+\end{call}
+
+\begin{call}{c}{list-games}{s}{Llista de partides}
+\end{call}
+
+\begin{call}{c}{join-game(id)}{s}{Confirmació.}
+\end{call}
+
+\end{sequencediagram}
+\caption{Diagrama de flux per entrar a una partida existent.}
+\label{diag:entrar-partida}
+\end{figure} 
+
+A la figura \ref{diag:entrar-partida} es pot observar el diagrama de flux necesàri per a la creació d'una nova partida. En el primer pas el programa client estableix la connexió amb el programa servidor que li contesta donant-li la benvinguda al servidor i preguntant-li el seu nom d'usuari. Una vegada el programa client envia el nom d'usuari el programa servidor li contesta amb l'identificador usuari que te asignat. Una vegada s'ha identificat el programa 
+
+\begin{figure}[h!]
+\centering
+\begin{sequencediagram}
+\newthread[white]{s}{Servidor}
+\newinst[9]{c}{Client}
+ 
+\begin{messcall}{s}{start-game(game-data)}{c}
+\end{messcall}
+
+\begin{sdblock}{ Ronda } { Mentre no hi haigi equip guanyador.}
+
+   \begin{call}{s}{select-thriumph(choises)}{c}{made-thriumph(thriumph)}
+    \end{call}
+
+    \begin{messcall}{s}{chosen-thriumph(thriumph)}{c}
+    \end{messcall}
+
+    \begin{call}{s}{contro}{c}{do-contro(value)}
+    \end{call}
+
+    \begin{messcall}{s}{new-move)}{c}
+    \end{messcall}
+
+    \begin{sdblock}{ Jugada } { Fins que no quedin cartes per jugar }
+        
+        \begin{messcall}{s}{play-card}{c}
+        \end{messcall}
+        
+        \begin{messcall}{c}{play-card}{s}{missatge-error}
+        \end{messcall}
+        
+        \begin{messcall}{s}{played-card}{c}
+        \end{messcall}    
+        
+    \end{sdblock}
+
+    \begin{messcall}{s}{end-move)}{c}
+    \end{messcall}
+
+\end{sdblock}
+ 
+\begin{messcall}{s}{end-game(game-data)}{c}
+\end{messcall}
+
+\end{sequencediagram}
+\caption{Diagrama de flux del desenvolupament d'una partida.}
+\label{diag:desenvolupament-partida}
+\end{figure} 
+
+
+A la figura \ref{diag:desenvolupament-partida} es pot observar el diagrama de flux del desenvolupmaent d'una partida. En aquest cas s'han omès els pasos de creació d'una nova partida i que cada jugador entri dins de la partida. La partida comença quan el servidor notifica a tots els jugadors de la partida que aquesta ha comensat. Durant el transcurs de la partida es van jugant diferents rondes. En cada ronda el servidor notifica al client que ha de seleccionar thriumph les opcions que té diferent i espera la resposta del client. Una vegada el client ha seleccionat triomf, notifica a tots els jugadors de la partida quin ha estat el triomf seleccionat. Després d'això, notifica als jugadors que tenen la posibilitat de contrar i espera la seva resposta. Una vegada s'ha realitzat el proces de contro, el servidor indica el començament d'una nova jugada amb el missatge new-move. Cada jugada consisteix en un movimient (nova carta jugada) de cadascun dels jugadors de la partida. Així per cada moviment del jugador el servidor notifica al client que ha de realitzar un nou movimient i espera rebre el missatge de que s'ha jugat una nova carta. Quan el client envia el missatge de que vol jugar una nova carta el servidor valida que el moviment sigui correcte. En el cas de que aquest sigui incorrecte ho notifica al client i espera la jugada d'una nova carta. En el cas contrari, notifica a la resta de jugadors la carta que s'ha jugat i repeteix de nou la jugada. Així es van produïnt jugades fins que s'han acabat totes les cartes de tots els jugadors, concretament es tracta de 12 jugades. Una vegada s'han jugat totes les cartes la ronda es dona per finalitzada i el servidor computa les puntuacions de la partida. En el cas que no s'haigi finalitzat la partida es comença la ronda i es torna a repetir tot el procediment realitzat anteriorment. Si hi ha un equip guanyador la partida es dona per finalitzada i es notifica a tots els clients. 
+

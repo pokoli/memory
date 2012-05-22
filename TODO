@@ -7,7 +7,6 @@ Comentaris JM (20/05/12):
 - A l'apartat d'implementació explicar les millores que s'han realitzat a cada versió. (Afegir un detall del log de git)
 - A l'apartat implementació afegir exemples dels testos que s'han realitzat.
 - Revisar les resolucions de les imatges adjuntes per tal de que aquestes quedin millor al incrustar-les a la memòria.
-- Afegir un diagrama de seqüencia amb els intercanvis de missatges que es realitzen per en els diversos procesos del transcurs d'una partida (a la secció implementació de la lògica del client). 
 - El apartat visualització de la informació inclourel a l'apartat d'interfície de client. 
 - Afegir captures de pantalla del resultat final de la interfície d'usuari.
 
