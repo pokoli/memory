@@ -112,8 +112,8 @@ Aquest algorisme te un cost $O(n^2)$ per això s'ha utilitzat la variant de Knut
 
 \begin{lstlisting}
  Per ordenar un conjunt de n elements (indexs 0..n-1):
-   Per cada i de n - 1 fins a 1 fer:
-        j <- nombre aleatori que compleix que  0 <= j <= i
+   Per cada i de n \item{1 fins a 1 fer:
+        j <\item{nombre aleatori que compleix que  0 <= j <= i
         canviar a[j] i a[i]
 \end{lstlisting}
 
@@ -270,4 +270,78 @@ A la figura \ref{diag:entrar-partida} es pot observar el diagrama de flux neces�
 
 A la figura \ref{diag:desenvolupament-partida} es pot observar el diagrama de flux del desenvolupmaent d'una partida. En aquest cas s'han omès els pasos de creació d'una nova partida i que cada jugador entri dins de la partida. La partida comença quan el servidor notifica a tots els jugadors de la partida que aquesta ha comensat. Durant el transcurs de la partida es van jugant diferents rondes. En cada ronda el servidor notifica al client que ha de seleccionar thriumph les opcions que té diferent i espera la resposta del client. Una vegada el client ha seleccionat triomf, notifica a tots els jugadors de la partida quin ha estat el triomf seleccionat. Després d'això, notifica als jugadors que tenen la posibilitat de contrar i espera la seva resposta. Una vegada s'ha realitzat el proces de contro, el servidor indica el començament d'una nova jugada amb el missatge new-move. Cada jugada consisteix en un movimient (nova carta jugada) de cadascun dels jugadors de la partida. Així per cada moviment del jugador el servidor notifica al client que ha de realitzar un nou movimient i espera rebre el missatge de que s'ha jugat una nova carta. Quan el client envia el missatge de que vol jugar una nova carta el servidor valida que el moviment sigui correcte. En el cas de que aquest sigui incorrecte ho notifica al client i espera la jugada d'una nova carta. En el cas contrari, notifica a la resta de jugadors la carta que s'ha jugat i repeteix de nou la jugada. Així es van produïnt jugades fins que s'han acabat totes les cartes de tots els jugadors, concretament es tracta de 12 jugades. Una vegada s'han jugat totes les cartes la ronda es dona per finalitzada i el servidor computa les puntuacions de la partida. En el cas que no s'haigi finalitzat la partida es comença la ronda i es torna a repetir tot el procediment realitzat anteriorment. Si hi ha un equip guanyador la partida es dona per finalitzada i es notifica a tots els clients. 
 
+
+\section{Iteracions Realitzades}
+
+Com s'ha comentat al capítol \ref{chap:metodologia} per la implentació del projecte s'ha utilitzat la metodologia iterativa. En aquest apartat es detalla les iteracions que s'ha realitzat en el transcurs del projecte i les funcionalitats que s'han incorporat en cadascuna d'elles. 
+
+\begin{itemize}
+\item{Versió 0.0.1, publicada el 11/01/2012:
+    \begin{itemize}
+        \item{Creació d'un servidor web utilitzant express.}
+        \item{Afegir comunicació bàscia entre client i servidor.}
+        \item{Afegir interfície d'usuari bàsica.}
+    \end{itemize}
+}
+\item{Versió 0.0.2, publicada el 01/03/2012: 
+    \begin{itemize}
+        \item{Implemtentació de la logica de la botifarra.}
+        \item{Afegir suport per la cobertura del codi (code coverage)}
+        \item{Added a control to know the pending players to contro.}
+        \item{Eliminar el llançament d'errors. A partir d'ara els errors es gestiones a través de callbacks.}
+        \item{Millores de la documentació.}
+        \item{Implementació de l'intercanvi de missatges entre jugadors.}
+        \item{Mostrar els usuaris i les partides creades al servidor.}
+        \item{El servidor inicia automáticament la partida quan hi ha prous jugadors.}
+        \item{Permetre als jugadors entrar a una partida.}
+        \item{Afegir una pantalla per la creació de noves partides.} 
+        \item{Afegir una pantalla per a que l'usuari s'identifiqui.}
+    \end{itemize}
+}
+\item{Version 0.0.3, publicada el 19/03/2012: 
+    \begin{itemize}
+        \item{Mostrar als jugadors si el triumfo ha estat delegat o no.}
+        \item{Netejar les cartes jugades de forma automàtica al cap de tres segons.}
+        \item{Mostrar la puntuació total de la partida a l'interfície d'usuari.}
+        \item{Traducció dels joc a diferents idiomes (Català,Castellà,Anglès).}
+        \item{Nous testos per millorar la cobertura del codi.}
+    \end{itemize}
+}
+\item{Version 0.0.4, publicada el 12/04/2012: 
+    \begin{itemize}
+        \item{Millora de les traduccions.}
+        \item{Afegir jugadors automátics (robots).}
+        \item{Afegir estils a l'interfície d'usuari. }
+        \item{Quan el trumfo es butifarra multiplicar la puntuació per dos.}
+        \item{Afegir les puntuacions parcials del joc a l'interfície client.}
+        \item{Mostrar la puntuació de la ronda cada vegada que se'n finalitza una.}
+        \item{DDocument the round-ended and game-ended events of the client API.}
+        \item{Millorar els testos per cobrir més d'una ronda de joc.}
+    \end{itemize}
+}
+\item{Version 0.0.5, publicada el 20/04/2012:
+    \begin{itemize}
+        \item{Els robots juguen les cartes que el servidor els hi suggereix.}
+        \item{El servidor suggereix les cartes vàlides quan el jugador juga una carta incorrecta.}
+        \item{Millores en la lògica del jugadors automàtics.}
+    \end{itemize}
+}
+\item{Version 0.0.6, publicada el 02/05/2012:
+    \begin{itemize}
+        \item{Permetre que els jugadors automàtics puguin jugar sense l'us d'un WebSocket.}
+        \item{Preparar el desplegament a Heroku.}
+        \item{Eliminar el directori src}
+        \item{Correcció d'errors en la gestió de memòria a la part del servidor.}
+        \item{Es poden visualitzar partides d'altres jugadors.}
+    \end{itemize}
+}
+\item{Versió 0.0.7 (pendent de publicar):
+    \begin{itemize}
+        \item{Millorar el suggeriment de cartes per part del servidor.}
+        \item{Correcció d'errors javascript a la part del client.}
+        \item{Tornar a obrir el pantalla de trumfo si no se n'ha seleccioant cap. }
+        \item{Afegir una pàgina amb les estadistiques del servidor}
+    \end{itemize}
+}
+\end{itemize}
 
