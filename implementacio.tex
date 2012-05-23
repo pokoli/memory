@@ -345,3 +345,91 @@ Com s'ha comentat al capítol \ref{chap:metodologia} per la implentació del pro
 }
 \end{itemize}
 
+\section{Jocs de proves}
+%TODO: Posar un o dos de mostra.
+Com s'ha comentat a l'apartat \ref{sec:tdd} per la implementació d'aquest projecte s'han utilitzat jocs de proves. En aquest apartat es detalla els jocs de proves que s'han implementat. Els testos implementats s'estructuren en dos blocs: 
+
+\begin{description}
+    \item[Botifarra]{ Són els testos encarregats que la lògica de la botifarra es compleixi a la perfecció.}
+    \item[Comunicació client-servidor] {Jocs de proves encarregats de validar que al comunicació entre el client i el servidor es realitza de forma correcta.}
+\end{description}
+
+\subsection{Botifarra}
+
+Pel que fa a l'apartat de la botifarra podem trobar els següents jocs de proves:
+
+
+\begin{itemize}
+    \item{Un jugador esta composat per un nom i un correu electrònic.}
+    \item{Em de ser capasos de comparar els jugadors.}
+   \item{Una carta esta composada per un número i un pal.}
+    \item{Hem de ser capasos de determinar si una carta es superior a una altra.}
+    \item{Una baralla de cartes esta formada per 48 cartes.}
+    \item{Hem de ser capasos de barrejar la baralla de cartes.}
+    \item{Hem de poder obtenir una o més cartes de la baralla.}
+   \item{Hem de saber les cartes que queden a la baralla.}
+    \item{Els jugadors inicials d'una partida són 0.}
+    \item{Es poden afegir jugadors a una partida.}
+    \item{Es poden afegir observadors a una partida.}
+    \item{Es poden eliminar jugador d'una partida.}
+    \item{Les partides poden ser clonades.}
+    \item{Hem de poder saber l'estat d'una partida.}
+    \item{Després de comensar una partida el seu estat és En Curs.}
+    \item{El joc de la botifarra consisteix amb: jugadors, equips i puntuacions.}
+    \item{Una partida requreix 4 jugadors.}
+    \item{No poden jugar més de 4 jugadors en la mateixa partida.}
+    \item{Després de començar la partida es crea la primera ronda.}
+    \item{Després de començar la partida tots els jugadors pertanyen a un equip.}
+    \item{Després de jugar una ronda s'actualitzen les puntuacions.}
+    \item{Si el trumfo es botifarra les puntuacións es multipliquen per dos.}
+    \item{Si un jugador ha contrat les puntuacións es multipliquen per dos.}
+    \item{Quan un equip supera els 100 punts la partida s'ha acabat.}
+    \item{Una jugada de la botifarra consisteix amb 4 moviments.}
+    \item{Els jugadors poden afegir el seu movimient a la jugada actual.}
+    \item{El primer moviment d'una jugada pot ser qualsevol carta.}
+    \item{Una jugador no pot realitzar dos moviments a la mateixa jugada.}
+    \item{Una carta no es pot tirar dos vegades a la mateixa jugada.}
+    \item{S'ha de tirar una carta del pal inicial de la jugada o trumfo.}
+    \item{Si es possible, s'ha de superar la carta de l'equip rival.}
+    \item{Al finalitzar una jugada s'ha de calcular el guanyador i el valor de la mateixa.}
+    \item{Un jugador només pot jugar una carta que te a la seva pila.}
+    \item{Si un jugador no té cartes del pal actual ha de jugar trumfo.}
+    \item{S'han de suggerir les cartes correctes en cas de que el moviment sigui invalid.}
+    \item{Si un jugador no té triumfo ni cap carta del pal actual pot jugar qualsevol carta.}
+    \item{Si el guanyador de la jugada és el nostre company i no tenim cap carta del pal inicial, podem jugar qualsevol carta.}
+    \item{Una ronda esta formada per 12 moviments i un trumfo.}
+    \item{Hem de poder saber si el trumfo s'ha delegat o no.}
+   \item{Hem de poder saber les cartes que ha guanyat cada equip.}
+    \item{Quan es comença la ronda, cada jugador té 12 cartes.}
+    \item{Només es pot seleccionar trumfo una vegada per ronda.}
+    \item{Quan és delega el company pot fer trumfo.}
+    \item{Deprés de fer trumfo, es permet la posibilitat de contrar.}
+    \item{Si algún jugador contra, la puntuació es multiplicarà per 2.}
+    \item{Es guarda els jugadors que han contrat la ronda.}
+    \item{Quan s'acaba la jugada, les cartes s'assignen a l'equip guanyador.}
+    \item{S'ha de poder calcular la puntuació de la ronda.}
+    \item{Una ronda consisteix en 12 jugades.}
+\end{itemize}  
+
+\subsection{Comunicació client-servidor.}
+
+Pel que fa a l'apartat de comunicació entre el  podem trobar els següents jocs de proves:
+
+\begin{itemize}   
+    \item{Hem de ser capasos de conectar al servidor.}
+    \item{Es poden realitzar més d'una connexió simultànea al servidor.}
+    \item{Ens hem de poder indentificar amb el servidor.}
+    \item{Hem de poder llistar els jugadors conectats al servidor.}
+    \item{Hem de poder llistar les partides que existeixen al servidor.} 
+    \item{Hem de ser capasos de crear noves partides al servidor.}
+    \item{Ens hem de poder comunicar amb els altres jugadors connectats.}
+    \item{Hem de poder entrar a una partida existent.}
+    \item{Hem de poder veure una partida existent.}
+    \item{Només es pot jugar una partida una sola vegada.}
+    \item{No es pot veure una partida que s'esta jugant.}
+    \item{No es pot entrar a un joc que no existeix.}
+    \item{El servidor ha de respondre dels events de la ronda.}
+    \item{Hem de poder afegir robots a la partida.}
+    \item{El servidor ha de ser capas de traduïr els textes del joc.}
+\end{itemize}
+
