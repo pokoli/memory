@@ -1,6 +1,5 @@
 Comentaris JM (20/05/12): 
 
-- Millorar l'explicació del joc de la botifarra. Afegir exemples de partides.
 - Detallar més profundament que és node, la programació asíncrona, els websockets i com gràcies a tot això podem aconseguir aplicacions en temps real.
 - Revisar les resolucions de les imatges adjuntes per tal de que aquestes quedin millor al incrustar-les a la memòria.
 - El apartat visualització de la informació inclourel a l'apartat d'interfície de client. 
