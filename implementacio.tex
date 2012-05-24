@@ -346,13 +346,64 @@ Com s'ha comentat al capítol \ref{chap:metodologia} per la implentació del pro
 \end{itemize}
 
 \section{Jocs de proves}
-%TODO: Posar un o dos de mostra.
+
 Com s'ha comentat a l'apartat \ref{sec:tdd} per la implementació d'aquest projecte s'han utilitzat jocs de proves. En aquest apartat es detalla els jocs de proves que s'han implementat. Els testos implementats s'estructuren en dos blocs: 
 
 \begin{description}
     \item[Botifarra]{ Són els testos encarregats que la lògica de la botifarra es compleixi a la perfecció.}
     \item[Comunicació client-servidor] {Jocs de proves encarregats de validar que al comunicació entre el client i el servidor es realitza de forma correcta.}
 \end{description}
+
+L'objectiu d'un joc de proves es testejar el correcte funcionament d'una funcionalitat de l'aplicació. Executant els jocs de proves cada vegada que es realitzi una modificació a l'aplicació podem garantir que les millores implementades anteriorment no han deixat de funcionar. 
+
+A les següents línies de codi podem observar el joc de proba que s'utilitza per asegurar-nos de que una partida de butifarra no es pot jugar amb menys de 4 jugadors. 
+
+\begin{lstlisting}
+"A butifarraGame needs 4 players to start" : function() {
+    var game = Game.create();
+    var player1 = Player.create('John');
+    var player2 = Player.create('Mark');
+    var player3 = Player.create('Steve');
+    var player4 = Player.create('Bill');
+    game.min_players.should.eql(4);
+    should.throws(function(){
+        game.start();
+    },Error,"Not enough playerss");
+    player1.join(game);
+    player2.join(game);
+    player3.join(game);
+    player4.join(game);
+    should.doesNotThrow(function(){
+        game.start();
+    },Error,"Not enough players");      
+}
+\end{lstlisting}
+
+El joc de proves s'estructura de la següent forma:
+
+\begin{description}
+    \item[línies 2-6]{Inicialitzem les variables necesàries per realitzar la prova.}
+    \item[línies 7-10]{Comprovem que el programa ens dona error en cas de que no hi haigi suficients jugadors.}
+    \item[línies 11-17]{Comprovem que el programa no es dona error quan hi ha els suficients jugadors.}
+\end{description}
+
+A les següents línies de codi podem observar el codi necesàri per validar que la primera carta d'una jugada pot ser qualsevol carta.
+
+\begin{lstlisting}
+"The first Roll of a move could be any card" : function(done){
+    var CavallEspases = Card.create(11,'Espases');
+    player1.cards=[CavallEspases];
+    move.addRoll(player1,CavallEspases,function(err){
+        should.ifError(err);
+        move.rolls.length.should.eql(1);
+        move.rolls[0].card.should.eql(CavallEspases);
+        move.rolls[0].player.should.eql(player1);
+        done();
+    });
+}
+\end{lstlisting}
+
+Com podeu observar aquest test es molt més simple que l'anterior, ja que l'únic que fa es jugar una carta a l'atzar, comprobar que no es produeix cap error i validar que la carta s'ha afegit correctament a la jugada.
 
 \subsection{Botifarra}
 
