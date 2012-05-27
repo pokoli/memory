@@ -59,3 +59,12 @@ A la figura \ref{fig:real-partida} es pot veure l'aspecte que té l'aplicació e
 \label{fig:real-partida}
 \end{figure} 
 
+
+\section{Visualització de la informació}
+\label{sec:visualitzacio-informacio}
+
+Com ja s'ha comentat anteriorment, el programa encarregat de mostrar la informació a l'usuari s'ha implementat de forma separada per tal de poder permetre múltiples tipus de client. El client per defecte s'ha escrit utilitzant una interfície web. Així, el programa de visualització de la informació es l'encarregat de mostrar en una pàgina web l'in formació que es rebi a través del programa client.
+
+Per tal de poder dibuixar l'àrea de joc de la partida i les cartes que juguen cada jugador s'ha utilitzat l'objecte canvas introduït en la última versió del llenguatge HTML. Aquest objecte proporciona un espai on poder realitzar dibuixos de forma dinàmica a través de JavaScript. Gràcies a que s'escriu a través de JavaScript ens permet dibuixar-hi sense tenir que tornar a carregar la pàgina. Aquest fet provoca que l'usuari pugui veure moviment a la pantalla. 
+
+En la implementació per defecte, l'objecte canvas forma tot un conjunt independentment del nombre d'objectes que tenim dibuixat al seu interior. Així només és pot associar esdeveniments a l'objecte en canvas i no als elements que estan continguts al seu interior. Un dels requisits del joc es que es puguin associar esdeveniments a objectes de dins del canvas, per exemple associar un esdeveniments que cada vegada que es faci clic sobre una carta s'enviï una petició al servidor sol·licitant que es vol jugar. Per tal de solucionar aquest problema s'ha utilitzat la llibreria kinetic.js\footnote{\url{http://www.kineticjs.com/}}. A més d'associar esdeveniments als objectes de dins aquesta llibreria ens permet estructurar el dibuix a nivell de capes, permetent-nos crear tantes capes com es cregui necessari. La llibreria s'encarrega de superposar totes les capes i mostrar-les a l'usuari. 
