@@ -1,0 +1,78 @@
+\chapter{Perque Node.js i WebSockets}
+
+L'objectiu del projecte es desenvolupar un joc en temps real, en que l'usuari pogues interaccionar amb usuaris de l'altra resta del món a través d'una conexió a Internet amb el mínim temps de resposta possible. També es necesita que el procès servidor sigui capàs d'aguantar el màxim nombre de clients conectats de forma concurrent. En aquest apartat es descriurà quines són les característiques d'aquestes dos tecnologies que ens ajuden aconseguir aquest objectius.
+
+\section{Node.js}
+\label{sec:node.js-full}
+
+En aquest apartat es descriura com està estructurat internament node, per tal de poder aprofitar al màxim el seu funcionament. 
+
+\subsection{Codi Síncron vs. Codi Asíncron}
+
+Com s'ha comentat a la secció \ref{sec:node.js-min}, node permet executar codi de forma asíncrona, encara que només fa ús d'un sol fil d'execucció\footnote{\url{https://ca.wikipedia.org/wiki/Fil_d'execució}}. Així en aquesta secció el que farem es explicar les diferències entre el codi sincron i asíncron.
+
+Un dels primers programes que apren qualsevol programador és el següent:
+
+\begin{lstlisting}
+//Output the string
+puts("Please Enter Your Green Name");
+//wait for and take input
+var green_name=gets();
+//output the string
+puts("Your Green Name is: "+green_name);
+\end{lstlisting}
+
+Aquest programa preguntar a l'usuari quin és el seu nom i l'escriu per pantalla. Així mentrès l'usuari no introdueix cap text el programa es queda a l'espera i no pot executar cap més tipus de codi. Aquest el procediment generar de qualsevol procès síncron: no realitzar res mentres s'espera alguna informació externa.
+
+En les següents línies de codi podeu observar el mateix codi implementat de forma asincrona:
+	
+\begin{lstlisting}
+//Output the string
+puts("Please Enter Your Green Name");
+//declare a call back function
+gets( function (green_name) {
+   puts("Your Green Name is: "+green_name);
+});
+//do not wait, do something else
+\end{lstlisting}
+
+La gran diferència entre aquest codi i l'anterior es troba en la línia 4. En aquesta cas el que fem es especificar el codi que volem que s'executi després d'obtenir la resposta de l'usuari, i continuar amb l'execució del procès, sense esperar la resposta de l'usuari per poder realitzar altres tipus d'accions. 
+
+El fet de que el codi s'executi de forma asíncrona, implica que el programa pot realitzar diferents tasques mentre espera que el sistema realitzi alguna altra tasca. Això vol dir que el programa pot seguir realitzant tasques mentre espera que es realitzi una consulta a la base de dades, que es llegeixi un fitxer des de disc, o que es rebin les dades d'un servidor extern. Així el programa s'estructura amb el que es coneix com a callbacks. Un callback es el codi que s'executara després d'haver realitzat alguna tasca. 
+
+\begin{lstlisting}
+fs.readFile(__dirname + '/someDir/someFile', 'utf8', function (err,data) {
+  if (err) {
+    return console.log(err);
+  }
+  console.log(data);
+});
+\end{lstlisting}
+
+En aquest text es pot veure el codi necessari per a llegir un fitxer de disc. Així el que es fa es dir-li al sistema, llegeix el fitxer /someDir/someFile. Una vegada hagis acabat executa la funció que es passa a l'ultim paràmetre. Amb això aconseguim que mentre el proces estigui llegint el fitxer nosaltres puguem seguir fent càlculs, i que quan s'hagi acabat la lectura del fitxer puguem fer amb ell el que creguem convenient. 
+
+El procesament asíncron és fa gracies als anomenats events, que s'encarreguen d'executar codi font quan s'ha produit alguna cosa. A més a més, node ens permet crear events personalitzats i fer que s'executi el nostre codi cada vegada que es produeix un event. Els events han estat utilitzats en gran part del desenvolupament del projecte. 
+
+\subsection{El bucle d'events}
+
+Actualment s'utilitzen les següents tecniques de programació: 
+
+\begin{enumerate}
+    \item{Codi síncron en un sol fil d'execució.}
+    \item{Codi síncron en un més d'un fil d'execució.}
+    \item{Codi asíncron en un sol fil d'execució.}
+\end{enumerate}
+
+En el primer cas la CPU només es capas d'executar el codi d'un programa a la vegada i aquesta roman inactiva mentre el programa realitza altres tasques (llegir un fitxer, esperar l'entrada d'informació per part de l'usuari,etc.). La programació d'aquest tipus de programes es molt simple ja que no et cal preocupar de si pot haver altres fils d'execució llegint les mateixes variables que el fil actual, encara que el seu rendiment es baix en entorns d'alta concurrència. 
+
+En el segon cas la CPU es utiltizada per diversos fils d'execució a la vegada, així mentre un fil d'execució està ocupat llegint un fitxer la CPU pot ser aprofitada per una altre fil d'execucuió. De totes formes aquesta forma de programació pot arribar a ser molt confusa en el cas que més d'un fil d'execcució haigin de modificar la mateixa informació i que el desenvolupador haigi de tenir en compte aquestos factors a l'hora de desenvolupar el programa. 
+
+En el tercer cas és el que s'utilitza a Node.js i el que es fa és posar diverses porcions de codi en una cua d'execució, així cada vegada que la CPU quedi lliure s'executa una nova porció de codi, evitant que més d'una porció de codi s'executi de forma simultània i evitant que la CPU quedi a l'espera de que es produeixi un event.  
+
+\subsection{La funció process.nextTick()}
+%TODO:
+
+
+%TODO: Acabar aquesta part.
+
+

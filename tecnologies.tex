@@ -36,31 +36,13 @@ En un principi, s'usava a pàgines web HTML, per realitzar feines i operacions a
 %TODO: (veure si cal) Explicar que es el DOM
 
 \section{Node.js}
-
+\label{sec:node.js-min}
 Node.js es un framework dissenyat per escriure aplicacions web altament escalables. Els programes s'escriuen amb Javascript. La seva estructura està basada en events i una entrada/sortida asíncrona. Aquest framework utilitza el motor de Javascript V8\footnote{\url{http://en.wikipedia.org/wiki/V8_JavaScript_engine}}. El motor V8 és de codi obert i està desenvolupat per Google, ja que aquest l'utilitza al seu navegador Google Chrome. Aquest motor millora el rendiment compilant el codi Javascript a codi natiu abans d'executar-lo.
 
 La qualitat que fa diferent a node.js el seu funcionament està basat en events, i el codi s'executa en un sol thread/process. Això, provoca que els projectes que utilitzin aquest framework requereixin d'una programació diferent a la tradicional, asíncrona en comptes de seqüencial. 
 
-\subsection{Codi Asíncron}
+A la secció \ref{sec:node.js-full} podeu trobar una explicació més detallada del funcionament de Node.js.
 
-El fet de que el codi s'executi de forma asíncrona, implica que el programa pot realitzar diferents tasques mentre espera que el sistema realitzi alguna altra tasca. Això vol dir que el programa pot seguir realitzant tasques mentre espera que es realitzi una consulta a la base de dades, que es llegeixi un fitxer des de disc, o que es rebin les dades d'un servidor extern. Així el programa s'estructura amb el que es coneix com a callbacks. Un callback es el codi que s'executara després d'haver realitzat alguna tasca. 
-
-\begin{lstlisting}
-fs.readFile(__dirname + '/someDir/someFile', 'utf8', function (err,data) {
-  if (err) {
-    return console.log(err);
-  }
-  console.log(data);
-});
-\end{lstlisting}
-
-En aquest text es pot veure el codi necessari per a llegir un fitxer de disc. Així el que es fa es dir-li al sistema, llegeix el fitxer /someDir/someFile. Una vegada hagis acabat executa la funció que es passa a l'ultim paràmetre. Amb això aconseguim que mentre el proces estigui llegint el fitxer nosaltres puguem seguir fent càlculs, i que quan s'hagi acabat la lectura del fitxer puguem fer amb ell el que creguem convenient. 
-
-El procesament asíncron és fa gracies als anomenats events, que s'encarreguen d'executar codi font quan s'ha produit alguna cosa. A més a més, node ens permet crear events personalitzats i fer que s'executi el nostre codi cada vegada que es produeix un event. Els events han estat utilitzats en gran part del desenvolupament del projecte. 
-%TODO: Fer un apartat per comparar el codi asincron amb el codi asincron.
-%TODO:
-%Tot i que node.js es un framwork bastant inusual, les primeres impresions ell van ser magnífiques. 
-%Primer de tot utilitza codi Javascript per a crear servidors, quan tots els meus coneixements eren per executar codi Javascript en l'entorn de client. La segona cosa que em va sorprendre molt de node.js va ser que aquest sigui un entorn d'execució de programés asíncrons. 
 
 \section{Websockets}
 \label{sec:websockets}
