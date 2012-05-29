@@ -1,11 +1,11 @@
 \chapter{Desplegament del programa}
 \label{chap:desplegament}
 
-El desplegament del programa consistèix en posat a disposició del públic usuari el programa que s'ha desenvolupat. En el nostre cas, com es tracta d'una aplicació basada en web la tasca consisteix en posar un servidor web que s'encarregui de que la nostra aplicació sigui accessible a través d'una direcció web. 
+El desplegament del programa consisteix en posat a disposició del públic usuari el programa que s'ha desenvolupat. En el nostre cas, com es tracta d'una aplicació basada en web la tasca consisteix en posar un servidor web que s'encarregui de que la nostra aplicació sigui accessible a través d'una direcció web. 
 
-Ja que el framework node és bastant modern no existéixen molts proveïdors per a l'allotjament d'aplicacions desenvolupades amb aquest framework. De totes s'han trobat dos empreses que és dediquen a l'allotjament de aplicacions desenevolupades amb node i que a més a més ofereixen el desplegament gratuït en el cas de que no es necesitin molts requeriments. Aquestes empreses són NodeJitsu\footnote{\url{http://nodejitsu.com}} i Heroku\footnote{\url{http://www.heroku.com}}
+Ja que el framework node és bastant modern no existeixen molts proveïdors per a l'allotjament d'aplicacions desenvolupades amb aquest framework. De totes s'han trobat dos empreses que és dediquen a l'allotjament de aplicacions desenvolupades amb node i que a més a més ofereixen el desplegament gratuït en el cas de que no es necessitin molts requeriments. Aquestes empreses són NodeJitsu\footnote{\url{http://nodejitsu.com}} i Heroku\footnote{\url{http://www.heroku.com}}
 
-Una altra opció per al desplegament del programa es la útilització d'un Servidor Privat Virtual\footnote{\url{http://es.wikipedia.org/wiki/Servidor_virtual_privado}}. 
+Una altra opció per al desplegament del programa es la utilització d'un Servidor Privat Virtual\footnote{\url{http://es.wikipedia.org/wiki/Servidor_virtual_privado}}. 
 
 Així les opcions disponibles per a la publicació del programa són les següents: 
 
@@ -18,34 +18,34 @@ Així les opcions disponibles per a la publicació del programa són les següen
 %TODO: Explicar les diferents opcions de desplegament del programa.
 %Fer una taula comparativa amb les diferents opcions de cadascuna????
 
-De les tres opcions disponibles s'ha elegit heroku, ja permeten l'allotjament d'una aplicació de forma gratuïta i permeten fer el desplegament a través de git \footnote{Podeu trobar més informació a \url{http://www.koolpi.com/heroku-publicant-aplicacions-web-al-nuvol/} }. Gràcies a que el desplegament es fa a través de git sempre es té constancia de quina és la versió actual que hi publicada a Heroku i es pot realitzar una còpia idèntica del codi que es té desplegat, ja que aquest està controlat per un sistema de control de versions.
+De les tres opcions disponibles s'ha elegit Heroku, ja permeten l'allotjament d'una aplicació de forma gratuïta i permeten fer el desplegament a través de git \footnote{Podeu trobar més informació a \url{http://www.koolpi.com/heroku-publicant-aplicacions-web-al-nuvol/} }. Gràcies a que el desplegament es fa a través de git sempre es té constància de quina és la versió actual que hi publicada a Heroku i es pot realitzar una còpia idèntica del codi que es té desplegat, ja que aquest està controlat per un sistema de control de versions.
 
 \section{Publicant a Heroku}
 
-La publicació de la nostra aplicació s'ha dut a terme seguïnt la documentació de la pàgina oficial de heroku\footnote{\url{https://devcenter.heroku.com/articles/nodejs}} i el conjunt d'aplicación toolbelt\footnote{\url{https://toolbelt.herokuapp.com/}}. 
+La publicació de la nostra aplicació s'ha dut a terme seguint la documentació de la pàgina oficial de Heroku\footnote{\url{https://devcenter.heroku.com/articles/nodejs}} i el conjunt d'aplicacions toolbelt\footnote{\url{https://toolbelt.herokuapp.com/}}. 
 
-Heroku s'encarrega de gestionar les dependències a través de npm i els fitxers package.json \footnote{Veure la secció \ref{sec:gestio-dependencies}}. Així s'encarrega d'instal·lar de forma automática totes les dependències que nosaltres especifiquem en aquest fitxer. Cada vegada que publiquem una nova versió de l'aplicació també s'encarregarà de comprobar si les dependències han canviat i ens instal·larà les noves llibreries en cas de que sigui necesari. 
+Heroku s'encarrega de gestionar les dependències a través de npm i els fitxers package.json \footnote{Veure la secció \ref{sec:gestio-dependencies}}. Així s'encarrega d'instal·lar de forma automàtica totes les dependències que nosaltres especifiquem en aquest fitxer. Cada vegada que publiquem una nova versió de l'aplicació també s'encarregarà de comprovar si les dependències han canviat i ens instal·larà les noves llibreries en cas de que sigui necessari. 
 
-Les següents adaptacions han es necesaries per poder treballar amb heroku: 
+Les següents adaptacions han es necessàries per poder treballar amb Heroku: 
 
 \begin{itemize}
 \item{Modificar l'estructura de directoris eliminant el directori src/.}
-\item{Crear un fitxer (procfile per indicar la comanda que ha d'utilitzar heroku per executar el servidor.}
-\item{Utilizar el port del medi en cas de que aquest estigui definit. }
+\item{Crear un fitxer (Procfile per indicar la comanda que ha d'utilitzar Heroku per executar el servidor.}
+\item{Utilitzar el port del medi en cas de que aquest estigui definit. }
 \item{Fer que el programa sigui independent de la URL des d'on s'executa.}
 \end{itemize}
 
-Una vegada s'ha realitzat aquestes adaptacions i s'ha lligat el nostre repositori local amb el de heroku es poden pujar els canvis a heroku mitjançant la comanda: 
+Una vegada s'ha realitzat aquestes adaptacions i s'ha lligat el nostre repositori local amb el de Heroku es poden pujar els canvis a Heroku mitjançant la comanda: 
 
 \begin{lstlisting}[language=bash]
 git push heroku
 \end{lstlisting}
 
-A partir d'aquest moment la nostre aplicació serà accesible a través dels servidors de Heroku.
+A partir d'aquest moment la nostre aplicació serà accessible a través dels servidors de Heroku.
 
 \subsection{Problemes amb heroku}
 
-Desprès d'uns dies de funcionament amb heroku em vaig adonar que la comunicació de websockets es tallava. Desprès de parlar amb el suport de heroku ens van comentar que la seva infraesctructura no soportava websockets. Així es va decidir desplegar la aplicació en un servidor privat virtual per tal de que aquesta funcioni amb totes les seves funcionalitats. 
+Desprès d'uns dies de funcionament amb heroku em vaig adonar que la comunicació de websockets es tallava. Desprès de parlar amb el suport de heroku ens van comentar que la seva infraestructura no suportava websockets. Així es va decidir desplegar la aplicació en un servidor privat virtual per tal de que aquesta funcioni amb totes les seves funcionalitats. 
 
 \section{Publicant a un Servidor propi.}
 
@@ -56,12 +56,12 @@ Per tal de que la nostra aplicació funcioni de forma correcta necessitem que el
 \item{Git}
 \end{itemize}
 
-Per la instal·lació de node s'han seguit els pasos comentats a l'apartat \ref{sec:instalacio-node}. Així una vegada s'han instal·lat aquest requeriments podem instalar la nostra aplicació seguint els següents pasos: 
+Per la instal·lació de node s'han seguit els passos comentats a l'apartat \ref{sec:instalacio-node}. Així una vegada s'han instal·lat aquest requeriments podem instal·lar la nostra aplicació seguint els següents passos: 
 
 \begin{enumerate}
 \item{Obtenir el codi font del projecte utilitzant git}
 \item{Obtenir les dependències del programa, utilitzant npm com s'ha comentat al capítol \ref{sec:gestio-dependencies}}
 \end{enumerate}
 
-Després de realitzar aquestsos pasos ja tenim disponible el projecte al nostre servidor. De totes formes, necesitem que asegurarnos que aquest funciona de forma continua. Per tal d'aconseguir això s'ha utilitzat la llibreria forever\footnote{\url{https://github.com/nodejitsu/forever/}} que esta disponible a través de node. Per tal de garantir que l'aplicació s'engega i s'apaga de forma automàtica també s'han creat scripts per a que es cridin de forma automática al sistema. 
+Després de realitzar aquests passos ja tenim disponible el projecte al nostre servidor. De totes formes, necessitem que assegurar-nos que aquest funciona de forma continua. Per tal d'aconseguir això s'ha utilitzat la llibreria forever\footnote{\url{https://github.com/nodejitsu/forever/}} que esta disponible a través de node. Per tal de garantir que l'aplicació s'engega i s'apaga de forma automàtica també s'han creat scripts per a que es cridin de forma automàtica al sistema. 
 

@@ -37,9 +37,9 @@ En un principi, s'usava a pàgines web HTML, per realitzar feines i operacions a
 
 \section{Node.js}
 \label{sec:node.js-min}
-Node.js es un framework dissenyat per escriure aplicacions web altament escalables. Els programes s'escriuen amb Javascript. La seva estructura està basada en events i una entrada/sortida asíncrona. Aquest framework utilitza el motor de Javascript V8\footnote{\url{http://en.wikipedia.org/wiki/V8_JavaScript_engine}}. El motor V8 és de codi obert i està desenvolupat per Google, ja que aquest l'utilitza al seu navegador Google Chrome. Aquest motor millora el rendiment compilant el codi Javascript a codi natiu abans d'executar-lo.
+Node.js es un framework dissenyat per escriure aplicacions web altament escalables. Els programes s'escriuen amb Javascript. La seva estructura està basada en esdeveniments i una entrada/sortida asíncrona. Aquest framework utilitza el motor de Javascript V8\footnote{\url{http://en.wikipedia.org/wiki/V8_JavaScript_engine}}. El motor V8 és de codi obert i està desenvolupat per Google, ja que aquest l'utilitza al seu navegador Google Chrome. Aquest motor millora el rendiment compilant el codi Javascript a codi natiu abans d'executar-lo.
 
-La qualitat que fa diferent a node.js el seu funcionament està basat en events, i el codi s'executa en un sol thread/process. Això, provoca que els projectes que utilitzin aquest framework requereixin d'una programació diferent a la tradicional, asíncrona en comptes de seqüencial. 
+La qualitat que fa diferent a node.js el seu funcionament està basat en esdeveniments, i el codi s'executa en un sol fil d'execució/proces. Això, provoca que els projectes que utilitzin aquest framework requereixin d'una programació diferent a la tradicional, asíncrona en comptes de seqüencial. 
 
 A la secció \ref{sec:node.js-full} podeu trobar una explicació més detallada del funcionament de Node.js.
 
@@ -47,7 +47,7 @@ A la secció \ref{sec:node.js-full} podeu trobar una explicació més detallada 
 \section{Websockets}
 \label{sec:websockets}
 
-WebSocket és una tecnologia que proporciona un canal de comunicació bidireccional i full-duplex sobre un únic socket TCP. Està dissenyada per ser utilitzada en navegadors i servidors web, però pot utilitzar-se per qualsevol aplicació client/servidor. La API de WebSocket s'està normalitzant pel W3C\footnote{World Wide Web Consortium}, i el protocol WebSocket, a la vegada, s'està normalitzant per l'IETF\footnote{Internet Engineering Task Force}. Normalment, per temes de seguretat, els administradors de xarxes bloquegen les connexions als ports diferents del port 80, així els WebSockets pretenen solucionar aquest problema, aportant una tecnologia que proporcioni una funcionalitat similar a la que s'obté obrint diferents connexions en diferents ports però multiplexant els diferents serveis de a través d'un únic port TCP.
+WebSocket és una tecnologia que proporciona un canal de comunicació bidireccional i full-dúplex sobre un únic socket TCP. Està dissenyada per ser utilitzada en navegadors i servidors web, però pot utilitzar-se per qualsevol aplicació client/servidor. La API de WebSocket s'està normalitzant pel W3C\footnote{World Wide Web Consortium}, i el protocol WebSocket, a la vegada, s'està normalitzant per l'IETF\footnote{Internet Engineering Task Force}. Normalment, per temes de seguretat, els administradors de xarxes bloquegen les connexions als ports diferents del port 80, així els WebSockets pretenen solucionar aquest problema, aportant una tecnologia que proporcioni una funcionalitat similar a la que s'obté obrint diferents connexions en diferents ports però multiplexant els diferents serveis de a través d'un únic port TCP.
 
 \section{HTML5}
 
@@ -57,9 +57,9 @@ HTML5 és la última versió de HTML. Aquesta última versió proporciona noves 
 
 \subsection{L'objecte canvas}
 
-El fet de que l'objecte canvas utilitzi el llenguatge permet realitzar dibuixos amb interacció de l'usuari. Això ens permet deixar que l'usuari dibuixi amb el click del seu ratolí, o que es crein un dibuix después de que l'usuari seleccioni alguna opció. Així, l'objecte canvas ens permet realtizar animacions de qualitat igualable a la que es poden obtenir amb el software d'animació Flash\footnote{\url{http://www.adobe.com/es/products/flash.html}}, evitant la necesitat de que l'usuari hagi d'instal·lar un connector per a reproduïr-los. 
+El fet de que l'objecte canvas utilitzi el llenguatge permet realitzar dibuixos amb interacció de l'usuari. Això ens permet deixar que l'usuari dibuixi amb el click del seu ratolí, o que es creïn un dibuix desprès de que l'usuari seleccioni alguna opció. Així, l'objecte canvas ens permet realitzar animacions de qualitat igualable a la que es poden obtenir amb el software d'animació Flash\footnote{\url{http://www.adobe.com/es/products/flash.html}}, evitant la necessitat de que l'usuari hagi d'instal·lar un connector per a reproduir-los. 
 
-L'objecte canvas és un estándar per la web, se'n poden trobar les especificacions\footnote{\url{http://www.w3.org/TR/html5/the-canvas-element.html}} a la pàgina del W3C\footnote{World Wide Web Consorcium: \url{http://www.w3.org/}}
+L'objecte canvas és un estàndard per la web, se'n poden trobar les especificacions\footnote{\url{http://www.w3.org/TR/html5/the-canvas-element.html}} a la pàgina del W3C\footnote{World Wide Web Consorcium: \url{http://www.w3.org/}}
 
 Així dins d'un objecte canvas podem realitzar les següents animacions: 
 
@@ -68,21 +68,21 @@ Així dins d'un objecte canvas podem realitzar les següents animacions:
 \item{Girar el dibuix.}
 \item{Dibuixar una imatge.}
 \item{Escriure textos.}
-\item{Dibuixar lines rectes.}
+\item{Dibuixar línies rectes.}
 \item{Dibuixar rectangles.}
 \item{Dibuixar arcs.}
 \item{Composar objectes.}
-\item{Afegir sombres als objectes.}
+\item{Afegir ombres als objectes.}
 \item{Crear degradats.}
 \end{itemize}
 
-Totes aquests metodes ens permeten crear tot tipus de dibuixos i animacions.
+Totes aquests mètodes ens permeten crear tot tipus de dibuixos i animacions.
 
 \newpage
 
 \subsubsection{Alguns exemples de l'objecte canvas}
 
-En l'exemple a continuació podem veure el codi necesari per a pintar dos rectangles de dos colors un damunt de l'altre. Com podeu veure es tracta de codi HTML i Javascript.  
+En l'exemple a continuació podem veure el codi necessari per a pintar dos rectangles de dos colors un damunt de l'altre. Com podeu veure es tracta de codi HTML i Javascript.  
 
 \begin{lstlisting}[language=html]
 <html>
@@ -106,15 +106,15 @@ function draw() {
 </html>
 \end{lstlisting}
 
-Com podeu veure a la línea 17 el que fem es declarar un objecte canvas de 150px d'ample per 150 pixels de l'alt. Aquest es l'espai on dibuixarem el nostre dibuix. El text que està contingut dins de l'etiqueta canvas serà el que es mostrarà pels navegadors que no tinguin suport per l'etiqueta canvas. 
+Com podeu veure a la línia 17 el que fem es declarar un objecte canvas de 150píxels d'ample per 150 píxels de l'alt. Aquest es l'espai on dibuixarem el nostre dibuix. El text que està contingut dins de l'etiqueta canvas serà el que es mostrarà pels navegadors que no tinguin suport per l'etiqueta canvas. 
 
 Una vegada carregada la pàgina el que fem es cridar la funció draw(), que és l'encarregada de realitzar el dibuix. D'aquesta funció en podem destacar la següent informació:
 
 \begin{description}
-\item[línies 6,7 i 8]{Encarregades d'obtenir el contexte en per realitzar els dibuixos, només en el cas de que això sigui suportat pel navegador de l'usuari.}
+\item[línies 6,7 i 8]{Encarregades d'obtenir el context en per realitzar els dibuixos, només en el cas de que això sigui suportat pel navegador de l'usuari.}
 \item[línia 9]{Canvia el color de farciment per als pròxims dibuix.}
 \item[línia 10]{Dibuixa un rectangle prenen com a inici les coordenades (20,20) del canvas, i d'una mida de 65x65.}
-\item[línia 11]{Canvia el color de parciment. A més a més asigna una transparència del 50\% (quart paràmetre.}
+\item[línia 11]{Canvia el color de farciment. A més a més assigna una transparència del 50\% (quart paràmetre.}
 \item[línia 12]{Dibuixa un rectangle prenen com a inici les coordenades (40,40) del canvas, i d'una mida de 65x65.}
 \end{description}
 
@@ -126,7 +126,7 @@ A la figura \ref{fig:canvas-exemple-1} podeu veure el resultat del codi comentat
 \label{fig:canvas-exemple-1}
 \end{figure} 
 
-L'exemple a continuació s'ha extret\footnote{El codi ha estat simplificat per simplificar la seva comprensió.} de la pàgina html5canvastutorials.com\footnote{\url{http://www.html5canvastutorials.com/advanced/html5-canvas-linear-motion-animation/}}. En aquest exemple es descriurà com animar un objecte que s'ha creat dins del canvas, en concret es farà moure un rectangle desde la part esquerra del canvas fins a la seva part dreta. A la mateixa pàgina podeu trobar una demostració de com funciona el codi que es detalla a continuació.  
+L'exemple a continuació s'ha extret\footnote{El codi ha estat simplificat per simplificar la seva comprensió.} de la pàgina html5canvastutorials.com\footnote{\url{http://www.html5canvastutorials.com/advanced/html5-canvas-linear-motion-animation/}}. En aquest exemple es descriurà com animar un objecte que s'ha creat dins del canvas, en concret es farà moure un rectangle des de la part esquerra del canvas fins a la seva part dreta. A la mateixa pàgina podeu trobar una demostració de com funciona el codi que es detalla a continuació.  
 
 \begin{lstlisting}
 window.requestAnimFrame = (function(callback){
@@ -188,18 +188,18 @@ window.onload = function(){
 En aquestes exemple es creen tres funcions que són les encarregades de realitzar la animació. L'objectiu de cada funció és el següent:
 
 \begin{description}
-    \item[requestAnimFrame]{ S'encarregar de programar l'execcució del pròxim pas de l'animació}
-    \item[animate]{ Es l'encarregada de realitzara cada un dels pasos de l'animació.}
-    \item[window.onload] { Es la funció encarregada d'iniciar l'animació. Com es pot observar l'unic que fa es inicialitzar les variables i cridar a la funció animate per a que dibuixi el primer frame de l'animació.}
+    \item[requestAnimFrame]{ Encarregat de programar l'execució del pròxim pas de l'animació}
+    \item[animate]{ Es l'encarregada de realitzara cada un dels passos de l'animació.}
+    \item[window.onload] { Es la funció encarregada d'iniciar l'animació. Com es pot observar l'únic que fa es inicialitzar les variables i cridar a la funció animate per a que dibuixi el primer frame de l'animació.}
 \end{description}
 
 De la funció animate (la que s'encarrega de pintar cada un dels frames de l'animació) cal destacar les següents línies:
 
 \begin{description}
-    \item[línies 12-22] {Encarregades de calcular el temps que ha pasat desde l'ultima execució del codi, per poder saber el nombre de pixels que s'ha de moure l'objecte, tenint en compte que s'utilitza la variable linearSpeed per determinar el nombre de pixels per segons que ha d'abansar l'objecte.}
+    \item[línies 12-22] {Encarregades de calcular el temps que ha passat des de l'ultima execució del codi, per poder saber el nombre de pixels que s'ha de moure l'objecte, tenint en compte que s'utilitza la variable linearSpeed per determinar el nombre de pixels per segons que ha d'abançar l'objecte.}
     \item[línies 25-26] {Netejar tot el conjunt de l'objecte canvas per tal d'esborrar els possibles frames anteriors.}
     \item[línies 28-36] {Encarregades de dibuixar el rectangle a la posició que li toca per al frame actual.}
-    \item[línies 38-41] {Crida a la funció requestAnimFrame per programar l'execució del proxim frame.}
+    \item[línies 38-41] {Crida a la funció requestAnimFrame per programar l'execució del pròxim frame.}
 \end{description} 
 
 
@@ -213,7 +213,7 @@ CSS defineix regles d'estil per a cada element, on s'especifica com es mostrarà
 
 \section{JQuery}
 
-JQuery és una llibreria de Javascript, creada inicial ment per John Resig, que permet simplificar la forma d'interactuar amb els documents HTML, manipular l'arbre DOM, interactuar amb els events, desenvolupar animacions y afegir interacció dinàmica a pàgines web. 
+JQuery és una llibreria de Javascript, creada inicial ment per John Resig, que permet simplificar la forma d'interactuar amb els documents HTML, manipular l'arbre DOM, interactuar amb els esdeveniments, desenvolupar animacions y afegir interacció dinàmica a pàgines web. 
 
 JQuery es software de codi obert, llicenciat sota les llicències MIT y LGPLv2, permeten ser usada tan a projectes lliures com a projectes privatius. 
 
@@ -229,19 +229,19 @@ Git es un sistema de control de versions \footnote{\url{http://es.wikipedia.org/
     \item[Portable] Funciona tan en sistemes Linux,Unix,MAC i Windows.
 \end{description}
 
-Github un servei de d'allotjament de codi per a repositoris Git. A part d'allotjar el teu propi repositori ofereix altres serveis com poden ser Gist\footnote{\url{https://gist.github.com/}} (per a compartir petits trossos de codi), una wiki per projecte, allotjament de pàgines web i un petit gestió d'incidències molt flexible. A data 16/12/2011 compta amb 1,184,001 persones i allotja 3,448,813 repositoris.
+Github un servei de d'allotjament de codi per a repositoris Git. A part d'allotjar el teu propi repositori ofereix altres serveis com poden ser Gist\footnote{\url{https://gist.github.com/}} (per a compartir petits trossos de codi), una pàgina Wiki per projecte, allotjament de pàgines web i un petit gestió d'incidències molt flexible. A data 16/12/2011 compta amb 1,184,001 persones i allotja 3,448,813 repositoris.
 
 Github ofereix il·limitats repositoris de forma gratuïta sempre que el seu codi sigui públic. A més a més ofereix repositoris privats per un petit preu mensual. 
 
 \section{Mocha i jscoverage}
 
-Mocha\footnote{\url{http://visionmedia.github.com/mocha/}} és una llibreria que s'encarrega d'executar jocs de prova i que funciona sobre el framework node. Aquesta llibrería s'encarrega de detectar quins dels nostres testos están fallant i reportar-nos els errors a través de diferents formats. Una de les aplicacions més interessant de Mocha és la generació de informes de coverage. Un informe de coverage ens permet visualitzar quines són línies de codi de l'aplicació són executades per un joc de proves i quines no. Per a la genereació d'aquest informes es requereix tenir instal·lada la llibreria jscoverage\footnote{\url{http://siliconforks.com/jscoverage/}}. 
+Mocha\footnote{\url{http://visionmedia.github.com/mocha/}} és una llibreria que s'encarrega d'executar jocs de prova i que funciona sobre el framework node. Aquesta llibreria s'encarrega de detectar quins dels nostres testos estan fallant i reportar-nos els errors a través de diferents formats. Una de les aplicacions més interessant de Mocha és la generació de informes de coverage. Un informe de coverage ens permet visualitzar quines són línies de codi de l'aplicació són executades per un joc de proves i quines no. Per a la generació d'aquest informes es requereix tenir instal·lada la llibreria jscoverage\footnote{\url{http://siliconforks.com/jscoverage/}}. 
 
 \section{JSON}
 
 JSON (acrònim de JavaScript Object Notation) és un estàndard obert basat en text dissenyat per a intercanvi de dades llegible per humans. Deriva del llenguatge script JavaScript, per a representar estructures de dades simples i llistes associatives, anomenades objectes. Malgrat la seva relació amb el JavaScript, té implementacions per a gran part dels llenguatges de programació, alguns exemples són: ActionScript, C, C++, C\#, ColdFusion, Common Lisp, Delphi, E, Eiffel, Java, JavaScript, ML, Objective CAML, Perl, PHP, Python, Rebol, Ruby, Lua y Visual FoxPro. 
 
-El format JSON s'utilitza habitualment per serialitzar i transmtre dades estructurades en una connexió de marxa. S'utilitza principalment per intercanviar dades entre un servidor i una aplicació web, sent una alternativa a l'XML\footnote{\url{https://ca.wikipedia.org/wiki/XML}}. 
+El format JSON s'utilitza habitualment per serialitzar i transmetre dades estructurades en una connexió de marxa. S'utilitza principalment per intercanviar dades entre un servidor i una aplicació web, sent una alternativa a l'XML\footnote{\url{https://ca.wikipedia.org/wiki/XML}}. 
 
 En les següents línies podeu veure una mostra de com s'estructura la informació en format JSON. 
 
