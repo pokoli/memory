@@ -237,5 +237,25 @@ Github ofereix il·limitats repositoris de forma gratuïta sempre que el seu cod
 
 Mocha\footnote{\url{http://visionmedia.github.com/mocha/}} és una llibreria que s'encarrega d'executar jocs de prova i que funciona sobre el framework node. Aquesta llibrería s'encarrega de detectar quins dels nostres testos están fallant i reportar-nos els errors a través de diferents formats. Una de les aplicacions més interessant de Mocha és la generació de informes de coverage. Un informe de coverage ens permet visualitzar quines són línies de codi de l'aplicació són executades per un joc de proves i quines no. Per a la genereació d'aquest informes es requereix tenir instal·lada la llibreria jscoverage\footnote{\url{http://siliconforks.com/jscoverage/}}. 
 
+\section{JSON}
 
+JSON (acrònim de JavaScript Object Notation) és un estàndard obert basat en text dissenyat per a intercanvi de dades llegible per humans. Deriva del llenguatge script JavaScript, per a representar estructures de dades simples i llistes associatives, anomenades objectes. Malgrat la seva relació amb el JavaScript, té implementacions per a gran part dels llenguatges de programació, alguns exemples són: ActionScript, C, C++, C\#, ColdFusion, Common Lisp, Delphi, E, Eiffel, Java, JavaScript, ML, Objective CAML, Perl, PHP, Python, Rebol, Ruby, Lua y Visual FoxPro. 
+
+El format JSON s'utilitza habitualment per serialitzar i transmtre dades estructurades en una connexió de marxa. S'utilitza principalment per intercanviar dades entre un servidor i una aplicació web, sent una alternativa a l'XML\footnote{\url{https://ca.wikipedia.org/wiki/XML}}. 
+
+En les següents línies podeu veure una mostra de com s'estructura la informació en format JSON. 
+
+\begin{lstlisting}
+ {"menu": {
+   "id": "file",
+   "value": "File",
+   "popup": {
+     "menuitem": [
+       {"value": "New", "onclick": "CreateNewDoc()"},
+       {"value": "Open", "onclick": "OpenDoc()"},
+       {"value": "Close", "onclick": "CloseDoc()"}
+     ]
+   }
+ }}
+\end{lstlisting}
 
