@@ -18,7 +18,6 @@ Comentaris JM (02/06/12):
 - Explicar els aventatges de JSON respecte XML.
 - Abans de node ja hi havia altres entorns d'execució de js fora del navegador. -> Buscar quins són i posar-los com a antecedents.
 - Beneficis de Node.js: No exactament: podries fer el mateix amb un servidor multifil però potser seria més complex de programar-ho.
-- Afegir un exemple d'un fitxer package.json (el que s'utilitza al projecte està molt bé).
 - Afegir un exemple de les plantilles en Jade.
 - Perque hem de repetir l'algorsime d'aleatorietat 12 vegades????
 - Afegir un flux de comunicació entre varis jugadors.

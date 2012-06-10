@@ -112,7 +112,7 @@ Una vegada creat un paquet podem publicar-lo al registre de npm per a compartir-
 \subsection{El fitxer package.json}
 \label{sec:fitxer-package.json}
 
-Com hem vist en la secció \ref{sec:que-es-un-paquet} l'únic requeriment per a crear un paquet és la creació d'un fitxer package.json que en descrigui el contingut. Aquest fitxer s'escriu en format JSON\footnote{\url{http://www.json.org/}} per a que pugui ser interpretat per un programa.
+Com hem vist en la secció \ref{sec:que-es-un-paquet} l'únic requeriment per a crear un paquet és la creació d'un fitxer package.json que en descrigui el contingut. Aquest fitxer s'escriu en format JSON\footnote{Veure secció \ref{sec:json}} per a que pugui ser interpretat per un programa.
 
 En aquest contingut es pot especificar la següent informació: 
 \begin{description}
@@ -128,10 +128,52 @@ En aquest contingut es pot especificar la següent informació:
 \item[dependències] { Indica de quins paquets (i quines versions especifiques) depèn el paquet.}
 \item[dependències de desenvolupament] { Indica de quins paquets (i quines versions especifiques) es requereixen o poden ser útils per al desenvolupament en aquest paquet.}
 \item[motors] {Serveix per especifica sobre quines versions de Node.js funciona el paquet.}
-
 \end{description}
 
-El únics camps obligatoris són el nom i la versió del paquet. 
+\begin{figure}[htbp]
+\begin{lstlisting}
+{
+  "name": "ButiJS",
+  "description": "Butifarra's game server on the top of node.js",
+  "version": "0.0.7",
+  "license" : "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pokoli/ButiJS.git"
+  },
+  "bugs" :
+    { 
+      "url" : "http://github.com/pokoli/ButiJS/issues"
+      , "email" : "pokoli@gmail.com"
+    },
+  "author":
+    { "name" : "Sergi Almacellas Abellana"
+               , "email" : "pokoli@gmail.com"
+               , "url" : "http://www.koolpi.com/"
+    },
+  "engines": {
+    "node": ">=0.6.0"
+  },
+  "dependencies": {
+    "i18n" : ">= 0.3.0",
+    "socket.io": ">= 0.8.6",
+    "validator" : ">= 0.3.5",
+    "express" : ">= 2.5.4",
+    "jade" : ">= 0.20.0",
+    "socket.io-client": ">= 0.8.6"
+  },
+  "devDependencies": {
+    "mocha": ">= 0.13.0",
+    "should": "== 0.3.2",
+    "node-inspector" : ">= 0.1.10"
+  }
+}
+\end{lstlisting}
+\caption{Fitxer package.json utilitzat en el projecte.}
+\label{fig:package.json}
+\end{figure} 
+
+El únics camps obligatoris són el nom i la versió del paquet. A la figura \ref{fig:package.json} podeu observar el fitxer package.json que s'utiltiza en el projecte. En aquest fitxer s'han especificat el següent contingut: nom, descripció, versió, llicència, respositori, autor, dependències, dependències del desenvolupador, motors que requereix i el sistema de seguiments d'error utilitzat. 
 
 A la documentació de npm \footnote{\url{http://npmjs.org/doc/json.html}} es pot trobar una llista complerta de tots els camps disponibles juntament amb una explicació complerta de quina és la seva utilitat. 
 
@@ -144,6 +186,17 @@ Per tal d'instal·lar un paquet local podem utilitzar la comanda (suposant que e
 \begin{lstlisting}[language=bash]
 npm install . 
 \end{lstlisting}
+
+En el cas d'executar aquesta comanda sobre el fitxer de la figura \ref{fig:package.json} se'ns instal·larien els següents paquets: 
+
+\begin{itemize}
+  \item{El paquet \emph{i18n} en la versió 0.3.0 o superior.}
+  \item{El paquet \emph{socket.io} en la versió 0.8.6 o superior.}
+  \item{El paquet \emph{validator} en la versió 0.3.5  o superior.}
+  \item{El paquet \emph{express} en la versió 2.5.4 o superior.}
+  \item{El paquet \emph{jade} en la versió 0.20.0 o superior.}
+  \item{El paquet \emph{socket.io-client} en la versió 0.8.6 o superior.}
+\end{itemize}
 
 La instal·lació de les dependències a través de npm també ens permet mantenir les nostres dependències actualitzades. Així si utilitzem la comanda: 
 
