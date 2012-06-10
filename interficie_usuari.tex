@@ -1,7 +1,7 @@
 \chapter{Interfície d'usuari}
 \label{chap:interficie_usuari}
 
-La interfície d'usuari és la part que està més exposada al públic de tot el projecte, ja que serà a través d'on els jugadors de la botifarra viuran les seves experiències i interactuaran amb altres jugadors. Per tal de tenir clar des d'un principi com es volia estructurar es va dissenyar una maqueta de la mateixa abans de començar a treballar. 
+La interfície d'usuari és la part que està més exposada al públic de tot el projecte, ja que és on els jugadors de la botifarra viuran les seves experiències i interactuaran amb altres jugadors. Per tal de tenir clar des d'un principi com es volia estructurar es va dissenyar una maqueta de la mateixa abans de començar a treballar. 
 
 \section{Maquetes prèvies}
 
@@ -63,7 +63,7 @@ A la figura \ref{fig:real-partida} es pot veure l'aspecte que té l'aplicació e
 \section{Visualització de la informació}
 \label{sec:visualitzacio-informacio}
 
-Com ja s'ha comentat anteriorment, el programa encarregat de mostrar la informació a l'usuari s'ha implementat de forma separada per tal de poder permetre múltiples tipus de client. El client per defecte s'ha escrit utilitzant una interfície web. Així, el programa de visualització de la informació es l'encarregat de mostrar en una pàgina web l'in formació que es rebi a través del programa client.
+Com ja s'ha comentat anteriorment, el programa encarregat de mostrar la informació a l'usuari s'ha implementat de forma separada per tal de poder permetre múltiples tipus de client. El client per defecte s'ha escrit utilitzant una interfície web. Així, aquest programa s'encarrega de mostrar en una pàgina web la formació que es rebi a través del programa client.
 
 Per tal de poder dibuixar l'àrea de joc de la partida i les cartes que juguen cada jugador s'ha utilitzat l'objecte canvas introduït en la última versió del llenguatge HTML. Aquest objecte proporciona un espai on poder realitzar dibuixos de forma dinàmica a través de JavaScript. Gràcies a que s'escriu a través de JavaScript ens permet dibuixar-hi sense tenir que tornar a carregar la pàgina. Aquest fet provoca que l'usuari pugui veure moviment a la pantalla. 
 

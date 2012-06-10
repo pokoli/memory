@@ -1,9 +1,9 @@
 \chapter{Implementació}
 \label{chap:implementacio}
 
-La implementació del joc s'ha realitzar amb dos grans blocs: el servidor i la interfície client. El servidor es l'encarregat de gestionar la informació relativa a les partides disponibles, els jugadors connectats i tota la lògica referent a les partides. La interfície client s'encarrega de interaccionar amb el servidor i mostrar la informació al usuari. 
+La implementació del joc s'ha estructurat en dos grans blocs: el servidor i la interfície client. El servidor es l'encarregat de gestionar la informació relativa a les partides disponibles, els jugadors connectats i tota la lògica referent a les partides. La interfície client s'encarrega de interaccionar amb el servidor i mostrar la informació al usuari. 
 
-Per l'intercanvi de dades entre el servidor i el client s'utilitzen WebSockets\footnote{Veure Capítol \ref{sec:websockets}}, ja que ens proporcionen un canal de comunicació bi-direccional a través del protocol HTTP. Aquesta comunicació es totalment asíncrona i està basada en esdeveniments. Així cada vegada que el servidor envia un missatge al client (o a l'invers) es produeix un esdeveniments al destinatari i s'executa el codi associat per al processament d'aquest esdeveniments (en cas que n'hi hagi). 
+Per l'intercanvi de dades entre el servidor i el client s'utilitzen WebSockets\footnote{Veure Capítol \ref{sec:websockets}},  ja que ens proporcionen un canal de comunicació bi-direccional a través del protocol HTTP. Aquesta comunicació es totalment asíncrona i està basada en esdeveniments. Així cada vegada que el servidor envia un missatge al client (o a l'invers) es produeix un esdeveniments al destinatari i s'executa el codi associat per al processament d'aquest esdeveniments (en cas que n'hi hagi). 
 
 \section{Servidor}
 
@@ -19,13 +19,13 @@ En les properes seccions s'explica més profundament com s'ha realitzat la imple
 
 \subsection{Servidor Web}
 
-El servidor web és el proces més important de tot el projecte, ja que és l'encarregat de servir les altres parts de tot el projecte. 
+El servidor web és el procés més important de tot el projecte, ja que és l'encarregat de servir les altres parts de tot el projecte. 
 
 Per la implementació del servidor web s'ha utilitzat el paquet express\footnote{\url{http://expressjs.com/}}. Aquest paquet ens permet desenvolupar servidors web a amb poques línies de codi. Així també disposa de codi pre-programat per tal de realitzar tasques comunes a tots el servidors web. Alguns exemples en són:
 
 \begin{itemize}
 \item{Registre de peticions.}
-\item{Servir fitxers estàtics (imatges,css,JavaScript,etc.).}
+\item{Servir fitxers estàtics (imatges, CSS, JavaScript,etc.).}
 \item{Gestió d'errors}
 \item{Gestió de galetes (Cookies).}
 \end{itemize}
@@ -46,7 +46,7 @@ La conjunció de tots els elements comentats anteriorment ens permeten disposar 
 
 \subsection{Interconnexió Jugadors}
 \label{sec:interconnexio-jugadors}
-A part de funcionar com a servidor web el servidor també ha d'intercanviar dades amb els clients connectats amb ells. Per això el servidor crear un WebSocket i proporcionar els mecanismes suficients per a que el client s'hi connecti. Així, quan es carrega la primera pàgina de la partida també es carrega el programa client i aquest es connecta al servidor. 
+A part de funcionar com a servidor web el servidor també ha d'intercanviar dades amb els clients connectats amb ells. Per tal de d'aconseguir això el servidor s'encarrega de crear un canal de comunicació utilitzant el protocol WebSocket i de proporcionar els mecanismes suficients per a que el client s'hi connecti. Així, quan es carrega la primera pàgina de la partida també es carrega el programa client i aquest es connecta al servidor. 
 
 A través de la comunicació amb WebSockets el servidor es poden realitzar les següent accions: 
 
@@ -65,7 +65,7 @@ Cada programa client que es vulgui implementar ha d'utilitzar la comunicació am
 
 \subsection{Lògica Botifarra}
 
-El servidor també és l'encarregat de controlar tot el flux de treball de la botifarra. A la figura \ref{fig:buti-workflow} es pot veure una representació del flux de treball d'una partida de la botifarra, des de que es crea la partida, fins que aquesta es finalitzada. En aquesta figura s'indica amb color blau les funcions que realitzar el programa servidor i amb color verd les que ha de realitzar el propi jugador que està connectat a la partida. 
+El servidor també és l'encarregat de controlar tot el flux de treball de la botifarra. A la figura \ref{fig:buti-workflow} es pot veure una representació del flux de treball d'una partida de la botifarra, des que es crea la partida, fins que aquesta es finalitzada. En aquesta figura es mostren de color blau les funcions que realitzar el programa servidor i de color verd les que ha de realitzar el propi jugador que està connectat a la partida. 
 
 \begin{figure}[htbp]
 \hspace*{-1.5in}
@@ -80,24 +80,24 @@ Com es pot observar a la figura \ref{fig:buti-workflow} el servidor s'encarrega 
 
 \begin{itemize}
 \item{Començar la partida quan ja hi ha quatre jugadors. }
-\item{Repartir de forma aleatòria els jugadors amb dos equips. }
-\item{Tirar de forma aleatòria el primer jugador en elegir triomf.}
+\item{Repartir de forma aleatòria els jugadors en dos equips. }
+\item{Escollir de forma aleatòria el primer jugador en elegir triomf.}
 \item{Repartir les cartes de forma aleatòria entre els diferents jugadors}
 \item{Comunicar el triomf elegit a tots els jugadors.}
 \item{Comunicar als jugadors si hi ha algun jugador que contrar.}
-\item{Determinar el jugador a moure i notificar-lo de que es el seu torn.}
-\item{Validar que la carta jugada es la correcta}
+\item{Determinar el jugador a moure i notificar-l'hi de que és el seu torn.}
+\item{Validar que la carta jugada és correcta.}
 \item{Mostrar les cartes de cada jugada.}
 \item{Al final de cada ronda mostrar el resultat parcial de la ronda. }
 \item{Al final de cada ronda calcular la puntuació de cada equip. En el cas que hi hagi un equip guanyador finalitzar la partida. En el cas que no hi hagi cap jugador guanyador inicial una nova ronda.}
 \end{itemize}
 
-Tota la lògica de la botifarra s'ha realitzat a base d'esdeveniments, es a dir, cada vegada que es produeix un acció que requereix la intervenció del servidor aquest llança un esdeveniment que té associada una funció. Aquesta funció es l'encarregada de realitzar tot el processament i llençar el pròxim esdeveniment en cas de que sigui necessari.  
+Tota la lògica de la botifarra s'ha realitzat en funció d'esdeveniments, és a dir, cada vegada que es produeix un acció que requereix la intervenció del servidor aquest llança un esdeveniment que té associada una funció. Aquesta funció es l'encarregada de realitzar tot el processament i llençar el pròxim esdeveniment en cas de que sigui necessari.  
 
 
 \subsubsection{Aleatorietat}
 
-Un punt molt important per a que els jugadors disfrutin de la seva partida de la botifarra és l'aleatorietat del repartiment de les cartes. Per garantir aquesta aleatorietat s'ha implementar l'algorisme de Knuth Fisher Yates\footnote{\url{http://en.wikipedia.org/wiki/Fisher-Yates_shuffle}} que permet la generació d'una permutació aleatòria sobre un conjunt finit. En el nostre cas el nostre conjunt finit es correspon amb les 48 cartes de la baralla espanyola utilitzades per jugar a la botifarra. 
+Un punt molt important per a què els jugadors disfrutin de la seva partida de la botifarra és l'aleatorietat del repartiment de les cartes. Per garantir aquesta aleatorietat s'ha implementar l'algorisme de Knuth Fisher Yates\footnote{\url{http://en.wikipedia.org/wiki/Fisher-Yates_shuffle}} que permet la generació d'una permutació aleatòria sobre un conjunt finit. En el nostre cas el nostre conjunt finit es correspon amb les 48 cartes de la baralla espanyola utilitzades per jugar a la botifarra. 
 
 Donat un conjunt de nombre de 1 a N, aquest algoritme s'aplica de la següent forma: 
 \begin{enumerate}
@@ -130,11 +130,11 @@ El client s'encarrega de realitzar les següents tasques:
 
 Aquestes funcionalitats s'han implementat de forma separada per poder garantir que els canvis a la interfície d'usuari no afectin al la interacció amb el servidor. Aquesta separació ens permet canviar la forma en que es mostren les dades sense tenir que realitzar cap modificació a la lògica del client. Això també ens permet disposar de dos interfícies d'usuari (una per equips d'escriptori i l'altra per a mòbils, per exemple) que utilitzen els mateixos mecanismes per tal d'interactuar amb el servidor. 
 
-En els següents apartats s'explicam com s'han implementat aquestes dos funcionalitats. 
+En els següents apartats s'explica com s'han implementat aquestes dues funcionalitats. 
 
 \subsection{Lògica del client}
 
-Per tal d'implementar la comunicació entre el client i el servidor s'ha utilitzat la llibreria socket.io. Aquesta llibreria proporciona els mètodes necessaris per la comunicació entre client servidor. També porta un fitxer JavaScript que es pot servir a través d'un servidor web. Aquest és el mètode emprat en la nostra implementació. A través d'aquest fitxer JavaScript obtenim els mètodes suficients per connectar-nos al servidor i poder enviar/rebre missatges. En el nostre cas el client proporciona els mètodes per poder interaccionar amb el servidor i obtenir tota la informació comentada en la secció \ref{sec:interconnexio-jugadors}. A més a més s'encarrega d'escoltar els següents següents missatges: 
+Per tal d'implementar la comunicació entre el client i el servidor s'ha utilitzat la llibreria socket.io. Aquesta llibreria proporciona els mètodes necessaris per la comunicació entre client servidor. Aquest és el mètode emprat en la nostra implementació. A través d'aquest fitxer JavaScript obtenim els mètodes suficients per connectar-nos al servidor i poder enviar/rebre missatges. En el nostre cas el client proporciona els mètodes per poder interaccionar amb el servidor i obtenir tota la informació comentada en la secció \ref{sec:interconnexio-jugadors}. A més a més s'encarrega d'escoltar els següents següents missatges: 
 
 \begin{description}
 \item[welcome]{Missatge de benvinguda del servidor.}
@@ -153,7 +153,7 @@ Per tal d'implementar la comunicació entre el client i el servidor s'ha utilitz
 \item[game-ended]{S'ha finalitzat la partida.}
 \end{description}
 
-Cada vegada que es rep un missatge d'aquest tipus el programa client s'encarrega de processar la informació i de cridar al programa de visualització de la informació \footnote{Veure secció \ref{sec:visualitzacio-informacio}} per a que mostri la informació a l'usuari. El programa client també s'encarrega de refrescar la informació del servidor de forma periòdica. 
+Cada vegada que es rep un missatge d'aquest tipus el programa client s'encarrega de processar la informació i de cridar al programa de visualització de la informació\footnote{Veure secció \ref{sec:visualitzacio-informacio}} per a que mostri la informació a l'usuari. El programa client també s'encarrega de refrescar la informació del servidor de forma periòdica. 
 
 
 

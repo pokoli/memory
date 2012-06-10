@@ -1,14 +1,14 @@
 \chapter{Perquè Node.js}
 \label{sec:node.js-full}
 
-Node.js és una entorn d'execució per a codi Javascript, és a dir es capaç d'entendre codi escrit amb Javascript i executar-lo. Tradicionalment Javascript s'ha utilitzat per executar codi dins del navegador, el que s'anomena la banda del client. Node ha modificat totalment aquest concepte i ens permet executar codi Javascript en un servidor. Així Node ens proporciona els mètodes suficients per poder interactuar amb el sistema que l'esta executant.
+Node.js és una entorn d'execució per a codi Javascript, és a dir es capaç d'interpretar codi escrit amb Javascript. Tradicionalment Javascript s'ha utilitzat per executar codi dins del navegador, el que s'anomena la banda del client. Node.js ha modificat totalment aquest concepte i ens permet executar codi Javascript en un servidor. Així Node.js ens proporciona els mètodes suficients per poder interactuar amb el sistema que l'esta executant.
 
 Node es va dissenyar amb els següents objectius: 
 
 \begin{itemize}
-    \item{Evitar les operacions d'Entrada/Sortida de forma directa,realitzar-les de forma asíncrona.}
+    \item{Evitar les operacions d'Entrada/Sortida bloquejants.}
     \item{No emmagatzemar res amb buffers, enviar-ho directament al destinatari.}
-    \item{Tenir suport integrat pels protocols més utilitzats: TCP,DNS,HTTP.}
+    \item{Tenir suport integrat pels protocols més utilitzats: TCP, DNS, HTTP.}
     \item{Poder executar-se en múltiples plataformes, per no crear una dependència.}
 \end{itemize}
 
@@ -24,12 +24,11 @@ Javascript té les següents característiques:
     \item{Està dissenyat per suportar esdeveniments.}
 \end{enumerate}
 
-Aquestes característiques el fan el candidat ideal per a proporcionar una infraestructura sense bloquejos, que funciona a base de esdeveniments. A més a més, és un llenguatge que està molt estes en el món de la informàtica, cosa que provoca que hi hagi una gran quantitat de desenvolupadors que en tinguin coneixements. Un del principal ús de Javascript és el processament d'esdeveniments a la web, i la gestió de peticions AJAX\footnote{\url{https://es.wikipedia.org/wiki/AJAX}}. Aquests dos fets tenen una gran semblança amb el processament d'esdeveniments en Node, fet que provoca que la lògica tingui molta semblança.
-
+Aquestes característiques el fan el candidat ideal per a proporcionar una infraestructura sense bloquejos, basada en esdeveniments. A més a més, és un llenguatge que està molt extes en el món de la informàtica, cosa que provoca que hi hagi una gran quantitat de desenvolupadors que en tinguin coneixements. El principal ús de Javascript és el processament d'esdeveniments a la web. Així la semàntica de Node.js s'ha dissenyat de forma que sigui semblant al processament d'esdeveniments a la web, per tal facilitat la corba d'aprenentatge dels programadors amb coneixements de desenvolupament web.
 
 \section{Codi Síncron vs. Codi Asíncron}
 
-Com s'ha comentat a la secció \ref{sec:node.js-min}, node permet executar codi de forma asíncrona, encara que només fa ús d'un sol fil d'execució. Així en aquesta secció el que farem es explicar les diferències entre el codi síncron i asíncron.
+Com s'ha comentat a la secció \ref{sec:node.js-min}, Node.js permet executar codi de forma asíncrona, proporcionant en un entorn d'execució d'un sol fil d'execució al desenvolupador, encara que internament n'utilitzi més d'un. Així en aquesta secció el que farem es explicar les diferències entre el codi síncron i asíncron.
 
 Un dels primers programes que aprèn qualsevol programador és el següent:
 
@@ -42,7 +41,7 @@ var green_name=gets();
 puts("Your Green Name is: "+green_name);
 \end{lstlisting}
 
-Aquest programa preguntar a l'usuari quin és el seu nom i l'escriu per pantalla. Així mentre l'usuari no introdueix cap text el programa es queda a l'espera i no pot executar cap més tipus de codi. Aquest el procediment generar de qualsevol proces síncron: no realitzar res mentre s'espera alguna informació externa.
+Aquest programa pregunta a l'usuari quin és el seu nom i l'escriu per pantalla. Així mentre l'usuari no introdueix cap text el programa es queda a l'espera i no pot executar cap més tipus de codi. Aquest el procediment generar de qualsevol proces síncron: no realitzar res mentre s'espera alguna informació externa.
 
 En les següents línies de codi podeu observar el mateix codi implementat de forma asíncrona:
 	
@@ -69,9 +68,9 @@ fs.readFile(__dirname + '/someDir/someFile', 'utf8', function (err,data) {
 });
 \end{lstlisting}
 
-En aquest text es pot veure el codi necessari per a llegir un fitxer de disc. Així el que es fa es dir-li al sistema, llegeix el fitxer /someDir/someFile. Una vegada hagis acabat executa la funció que es passa a l'ultim paràmetre. Amb això aconseguim que mentre el proces estigui llegint el fitxer nosaltres puguem seguir fent càlculs, i que quan s'hagi acabat la lectura del fitxer puguem fer amb ell el que creguem convenient. 
+En aquest text es pot veure el codi necessari per a llegir un fitxer de disc. Així el que es fa es dir-li al sistema, llegeix el fitxer /someDir/someFile, i en el moment que tinguins alguna informació executa la funció que es passa a l'ultim paràmetre. Amb això aconseguim que mentre el proces estigui llegint el fitxer nosaltres puguem seguir fent càlculs, i que quan s'hagi acabat la lectura del fitxer puguem fer amb ell el que creguem convenient. 
 
-El processament asíncron és fa gracies als anomenats esdeveniments, que s'encarreguen d'executar codi font quan s'ha produït alguna cosa. A més a més, node ens permet crear esdeveniments personalitzats i fer que s'executi el nostre codi cada vegada que es produeix un esdeveniments. Els esdeveniments han estat utilitzats en gran part del desenvolupament del projecte. 
+El processament asíncron és fa gracies als anomenats esdeveniments, que s'encarreguen d'executar codi font quan s'ha produït alguna cosa. A més a més, Node.js ens permet crear esdeveniments personalitzats i fer que s'executi el nostre codi cada vegada que es produeix un esdeveniments. Els esdeveniments han estat utilitzats en gran part del desenvolupament del projecte. 
 
 \section{El bucle d'esdeveniments}
 
@@ -83,13 +82,13 @@ Actualment s'utilitzen les següents tècniques de programació:
     \item{Codi asíncron en un sol fil d'execució.}
 \end{enumerate}
 
-En el primer cas la CPU només es capàs d'executar el codi d'un programa a la vegada i aquesta roman inactiva mentre el programa realitza altres tasques (llegir un fitxer, esperar l'entrada d'informació per part de l'usuari,etc.). La programació d'aquest tipus de programes es molt simple ja que no et cal preocupar de si pot haver altres fils d'execució llegint les mateixes variables que el fil actual, encara que el seu rendiment es baix en entorns d'alta concurrència. 
+En el primer cas la CPU només es capaç d'executar el codi d'un programa a la vegada i aquesta roman inactiva mentre el programa realitza altres tasques (llegir un fitxer, esperar l'entrada d'informació per part de l'usuari,etc.). La programació d'aquest tipus de programes es molt simple ja que no et cal preocupar de si pot haver altres fils d'execució llegint les mateixes variables que el fil actual, encara que el seu rendiment es baix en entorns d'alta concurrència. 
 
-En el segon cas la CPU es utilitzada per diversos fils d'execució a la vegada, així mentre un fil d'execució està ocupat llegint un fitxer la CPU pot ser aprofitada per una altre fil d'execució. De totes formes aquesta forma de programació pot arribar a ser molt confusa en el cas que més d'un fil D'execució hagin de modificar la mateixa informació i que el desenvolupador hagi de tenir en compte aquestos factors a l'hora de desenvolupar el programa. 
+En el segon cas la CPU s'utilitza per diversos fils d'execució a la vegada, així mentre un fil d'execució està ocupat llegint un fitxer la CPU pot ser aprofitada per una altre fil d'execució. De totes formes aquesta forma de programació pot arribar a ser molt confusa en el cas que més d'un fil d'execució hagi de modificar la mateixa informació. Aquests factors s'han de tenir en compte per part del desenvolupador a l'hora de desenvolupar el programa. 
 
-En el tercer cas és el que s'utilitza a Node.js i el que es fa és posar diverses porcions de codi en una cua d'execució, així cada vegada que la CPU quedi lliure s'executa una nova porció de codi, evitant que més d'una porció de codi s'executi de forma simultània i evitant que la CPU quedi a l'espera de que es produeixi un esdeveniments.  Tota la gestió d'aquest esdeveniments és el que s'anomena el bucle d'esdeveniments. 
+L'ultim cas és el que s'utilitza a Node.js i el que es fa és posar referències a funcions en una cua d'execució, així cada vegada que la CPU quedi lliure s'executa una nova porció de codi, evitant que més d'una porció de codi s'executi de forma simultània i evitant que la CPU quedi a l'espera de que es produeixi un esdeveniments. Tota la gestió referent als esdeveniments és el que s'anomena el bucle d'esdeveniments. 
 
-En node hi ha dos formes d'afegir l'execució d'un tros de codi al bucle d'esdeveniments: 
+En Node.js hi ha dos formes d'afegir l'execució d'un tros de codi al bucle d'esdeveniments: 
 
 \begin{enumerate}
     \item{Sense associar-ho a cap esdeveniment, el codi es posa a la cua i s'executa la pròxima vegada que la cua estigui lliure.}
@@ -104,7 +103,7 @@ process.nextTick(function () {
 });
 \end{lstlisting}
 
-La segona és una mica més complicada, i la seva implementació és realitza a la classe EventEmmiter. Aquesta classe implementa les següents funcions: 
+La segona és una mica més complicada, i la seva implementació és realitza a través de la funció constructora EventEmmiter. En el prototip d'aquesta funció s'implementen els següents atributs: 
 
 \begin{description}
     \item[addListener(event, listener)]{ Associa la funció passada a la variable \emph{listener} per que s'executi cada vegada que es produeix un event del tipus \emph{event}}
@@ -119,7 +118,7 @@ La segona és una mica més complicada, i la seva implementació és realitza a 
 
 Aquest conjunt de mecanismes permet que nosaltres puguem crear els nostres propis esdeveniments, i que puguem associar l'execució de determinat codi cada vegada que es produeix un d'ells. Per tal de fer això simplement hem de crear una subclasse de event.EventEmmiter i que executi les funcions associades a cada event mitjançant la funció emit. 
 
-A les següents línies de codi es pot observar un petit exemple de com funcional a gestió d'esdeveniments. En aquestes línies s'ha suposat que la variable server es una subclasse de event.EventEmitter. A més a més també s'ha suposat que es produeix un event del tipus \emph{connection} cada vegada que un client es connecta al nostre servidor. 
+A les següents línies de codi es pot observar un petit exemple de com funciona a gestió d'esdeveniments. En aquestes línies s'ha suposat que la variable server està basada en la funció constructora event.EventEmitter. A més a més també s'ha suposat que es produeix un event del tipus \emph{connection} cada vegada que un client es connecta al nostre servidor. 
 
 \begin{lstlisting}
 server.on('new-stream',function(stream){
@@ -148,8 +147,8 @@ El seu funcionament és el següent:
 
 \section{Beneficis de Node.js}
 
-Node no té bloquejos, no te diferents fils d'execució competint pel mateix recurs. Node només espera a que es produeixi algun "event" i quan es produeix el processa. Això es transforma en codi molt ràpid.
-
-El disseny d'un joc en línia requereix que no hi hagi bloquejos, ni diferents fils d'execució competint pel mateix recurs, i que el codi s'executi el més ràpid possible. Tots aquest fets provoquen que node i el seu disseny basat en esdeveniments sigui la millor elecció per allotjar tota la lògica d'un lloc en línia i per poder suportar el major nombre de partides de forma simultània.
+Node no té bloquejos, no te diferents fils d'execució competint pel mateix recurs. Node.js només espera a que es produeixi algun esdeveniment i quan es produeix el processa. Això es transforma en codi molt ràpid.
+%TODO: No exactament: podries fer el mateix amb un servidor multifil però potser seria més complex de programar-ho.
+El disseny d'un joc en línia requereix que no hi hagi bloquejos, ni diferents fils d'execució competint pel mateix recurs, i que el codi s'executi el més ràpid possible. Tots aquest fets provoquen que Node.js i el seu disseny basat en esdeveniments sigui la millor elecció per allotjar tota la lògica d'un lloc en línia i per poder suportar el major nombre de partides de forma simultània.
 
 

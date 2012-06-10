@@ -7,13 +7,13 @@ El programa que es vol desenvolupar durant el projecte ha d'utilitzar les següe
 	\item{Javascript com a llenguatge de programació.}
 	\item{Node.js com a entorn d'execució del servidor.}
 	\item{Websockets per a la comunicació entre el client i el servidor.}
-	\item{HTML5,CSS i JQuery per a la capa de visualització del client.}
-	\item{git com a programa de control de versions, utilitzant github per publicar el codi}
+	\item{HTML5, CSS i JQuery per a la capa de visualització del client.}
+	\item{git com a programa de control de versions, utilitzant Github per publicar el codi}
 \end{enumerate}
 
 \section{Perquè aquestes tecnologies?}
 
-Abans de començar el projecte, quan en JM em va proposar de realitzar-lo em va dir que l'objectiu principal d'aquest projecte era provar, i a la vegada investigar el seu funcionament , noves tecnologies. Les que em va proposar són les següents: 
+Abans de començar el projecte, quan en JM em va proposar de realitzar-lo em va dir que l'objectiu principal d'aquest projecte era provar noves tecnologies, i a la vegada investigar el seu funcionament. Les que em va proposar són les següents: 
 \begin{itemize}
 	\item{Node.js}
 	\item{Websockets}
@@ -24,14 +24,14 @@ Per la meva part desconeixia totalment l'existència de node.js i dels Websocket
 
 El fet d'explorar noves tecnologies va ser molt motivador per mi, fins al punt de dir que ha estat una de les principals raons per decidir-m'hi per aquest projecte i no per un altre.  
 
-Després d'explorar node.js vaig veure que el seu codi esta allotjat a github, i que la majoria dels mòduls que corren sobre ell també. Així em va semblar convenient allotjar tot el codi del projecte al mateix lloc. Github utilitza git com software de control de versions
+Després d'explorar node.js vaig veure que el seu codi esta allotjat a Github, i que la majoria dels mòduls que corren sobre ell també. Així em va semblar convenient allotjar tot el codi del projecte al mateix lloc. Github utilitza git com software de control de versions
 
 
 \section{Javascript}
 
-Javascript és un llenguatge script basat en el concepte de prototipus (herència per delegació), implementat originàriament per Netscape Communications Corporation l'any 1995, i que va derivar en L'estàndard ECMAScript. És conegut sobretot pel seu ús en pàgines web, però també s'utilitza en altres aplicacions.
+Javascript és un llenguatge script basat en el concepte de prototipus (herència per delegació), implementat originàriament per Netscape Communications Corporation l'any 1995, i que va derivar en l'estàndard ECMAScript. És conegut sobretot pel seu ús en pàgines web, però també s'utilitza en altres aplicacions.
 
-En un principi, s'usava a pàgines web HTML, per realitzar feines i operacions al marc de l'aplicació client. Amb l'aparició de la Web 2.0, Javascript s'ha convertit en un veritable llenguatge de programació que aporta la potència de càlcul al navegador per augmentar l'usabilitat d'aplicacions web amb tècniques avançades com AJAX o JCC.
+En un principi, s'usava a pàgines web HTML, per realitzar feines i operacions al marc de l'aplicació client. Amb l'aparició de la Web 2.0, Javascript s'ha convertit en el llenguatge de la banda del navegador i ens permet per augmentar l'usabilitat d'aplicacions web amb tècniques avançades com AJAX o JCC.
 
 %TODO: (veure si cal) Explicar que es el DOM
 
@@ -39,9 +39,9 @@ En un principi, s'usava a pàgines web HTML, per realitzar feines i operacions a
 \label{sec:node.js-min}
 Node.js es un framework dissenyat per escriure aplicacions web altament escalables. Els programes s'escriuen amb Javascript. La seva estructura està basada en esdeveniments i una entrada/sortida asíncrona. Aquest framework utilitza el motor de Javascript V8\footnote{\url{http://en.wikipedia.org/wiki/V8_JavaScript_engine}}. El motor V8 és de codi obert i està desenvolupat per Google, ja que aquest l'utilitza al seu navegador Google Chrome. Aquest motor millora el rendiment compilant el codi Javascript a codi natiu abans d'executar-lo.
 
-La qualitat que fa diferent a node.js el seu funcionament està basat en esdeveniments, i el codi s'executa en un sol fil d'execució/proces. Això, provoca que els projectes que utilitzin aquest framework requereixin d'una programació diferent a la tradicional, asíncrona en comptes de seqüencial. 
+El que fa diferent Node.js és el seu funcionament està basat en esdeveniments, i el codi s'executa en un sol fil d'execució/proces. Això, provoca que els projectes que utilitzin aquest framework requereixin d'una programació diferent a la tradicional, asíncrona en comptes de seqüencial. 
 
-A la secció \ref{sec:node.js-full} podeu trobar una explicació més detallada del funcionament de Node.js.
+Al capítol \ref{sec:node.js-full} podeu trobar una explicació més detallada del funcionament de Node.js, juntament amb exemples de codi del mateix.
 
 
 \section{Websockets}
@@ -53,13 +53,13 @@ WebSocket és una tecnologia que proporciona un canal de comunicació bidireccio
 
 HTML representa les sigles de \emph{Hyper Text Markup Language}, que en català signifiquen "llenguatge de marcat d'hipertext". És un llenguatge de marcat que deriva de l'SGML dissenyat per estructurar textos i relacionar-los en forma d'hipertext. Gràcies a Internet i als navegadors web, s'ha convertit en un dels formats més populars que existeixen per a la construcció de documents per a la web. 
 
-HTML5 és la última versió de HTML. Aquesta última versió proporciona noves marques per poder estructurar els documents d'una forma més semàntica. A més a més proporciona noves etiquetes per poder etiquetar contingut multimèdia, ja sigui àudio o vídeo. També afegeix una nova etiqueta "canvas" que permet la representació dinàmica de formes 2D i imatges a través de llenguatge Javascript. 
+HTML5 és la última versió de HTML. Aquesta última versió proporciona noves marques per poder estructurar els documents d'una forma més semàntica. A més a més proporciona noves etiquetes per poder etiquetar contingut multimèdia, ja sigui àudio o vídeo. També afegeix una nova etiqueta \emph{canvas} que permet la representació dinàmica de formes 2D i imatges a través de llenguatge Javascript. 
 
 \subsection{L'objecte canvas}
 
-El fet de que l'objecte canvas utilitzi el llenguatge permet realitzar dibuixos amb interacció de l'usuari. Això ens permet deixar que l'usuari dibuixi amb el click del seu ratolí, o que es creïn un dibuix desprès de que l'usuari seleccioni alguna opció. Així, l'objecte canvas ens permet realitzar animacions de qualitat igualable a la que es poden obtenir amb el software d'animació Flash\footnote{\url{http://www.adobe.com/es/products/flash.html}}, evitant la necessitat de que l'usuari hagi d'instal·lar un connector per a reproduir-los. 
+L'objecte canvas ens permet realitzar dibuixos amb interacció de l'usuari. Així, podem deixar que l'usuari dibuixi amb el clic del seu ratolí, o que es crei un dibuix desprès de que l'usuari seleccioni alguna opció. Aquestes qualitats fan que sigui la tecnologia ideal per realitzar animacions de qualitat igualable a la que es poden obtenir amb el software d'animació Flash\footnote{\url{http://www.adobe.com/es/products/flash.html}}, evitant la necessitat de que l'usuari hagi d'instal·lar un connector per a reproduir-los. 
 
-L'objecte canvas és un estàndard per la web, se'n poden trobar les especificacions\footnote{\url{http://www.w3.org/TR/html5/the-canvas-element.html}} a la pàgina del W3C\footnote{World Wide Web Consorcium: \url{http://www.w3.org/}}
+L'objecte canvas és un estàndard per la web, se'n poden trobar les especificacions\footnote{\url{http://www.w3.org/TR/html5/the-canvas-element.html}} a la pàgina del W3C\footnote{World Wide Web Consorcium}
 
 Així dins d'un objecte canvas podem realitzar les següents animacions: 
 
@@ -126,7 +126,7 @@ A la figura \ref{fig:canvas-exemple-1} podeu veure el resultat del codi comentat
 \label{fig:canvas-exemple-1}
 \end{figure} 
 
-L'exemple a continuació s'ha extret\footnote{El codi ha estat simplificat per simplificar la seva comprensió.} de la pàgina html5canvastutorials.com\footnote{\url{http://www.html5canvastutorials.com/advanced/html5-canvas-linear-motion-animation/}}. En aquest exemple es descriurà com animar un objecte que s'ha creat dins del canvas, en concret es farà moure un rectangle des de la part esquerra del canvas fins a la seva part dreta. A la mateixa pàgina podeu trobar una demostració de com funciona el codi que es detalla a continuació.  
+L'exemple a continuació s'ha extret\footnote{El codi ha estat simplificat per simplificar la seva comprensió.} d'una pàgina de tutorials sobre canvas\footnote{\url{http://www.html5canvastutorials.com/advanced/html5-canvas-linear-motion-animation/}}. En aquest exemple es descriurà com animar un objecte que s'ha creat dins del canvas, en concret es farà moure un rectangle des de la part esquerra del canvas fins a la seva part dreta. A la mateixa pàgina podeu trobar una demostració de com funciona el codi que es detalla a continuació.  
 
 \begin{lstlisting}
 window.requestAnimFrame = (function(callback){
@@ -205,28 +205,28 @@ De la funció animate (la que s'encarrega de pintar cada un dels frames de l'ani
 
 \section{CSS}
 
-CSS representa les sigles de \emph{Cascading Style Sheets}, que en catalpa signifiquen "Fulls d'estil en cascada". és un llenguatge de fulls d'estil utilitzat per descriure la semàntica de presentació (l'aspecte i format) d'un document escrit en un llenguatge de marques. La seva aplicació més comuna és dissenyar pàgines web escrites en HTML i XHTML, però el llenguatge també pot ser aplicat a qualsevol classe de document XML, incloent-hi SVG i XUL.
+CSS es l'acrònim de \emph{Cascading Style Sheets}, que en català significa "Fulls d'estil en cascada". Els fulls d'estil en cascada s'utilitzen per descriure la semàntica de presentació (l'aspecte i format) d'un document escrit en un llenguatge de marques. La seva aplicació més comuna és dissenyar pàgines web escrites en HTML i XHTML, però el llenguatge també pot ser aplicat a qualsevol classe de document XML, incloent-hi SVG i XUL.
 
-El principal objectiu de CSS es permetre la separació del contingut d'un document escrit amb un llenguatge de marques de la seva presentació. Aquesta separació permet que múltiple pàgines comparteixin un format comú i també que un mateix document de marcatge es pugui mostrar en diferents formats. 
+El principal objectiu de CSS és permetre la separació del contingut d'un document escrit amb un llenguatge de marques de la seva presentació. Això permet que múltiples pàgines comparteixin un format comú i també que un mateix document de marcatge es pugui mostrar en diferents formats. 
 
-CSS defineix regles d'estil per a cada element, on s'especifica com es mostrarà cada element. Així també definies un esquema de prioritat per determinar quines regles d'estil s'apliquen si més d'una regla esta associada amb un element en particular. Aquestes característiques han permès que avui en dia sigui el llenguatge més utilitzat a l'hora de definir l'aspecte i el format d'una pàgina web. 
+CSS defineix regles d'estil per a cada element, on s'especifica com es mostrarà cada element. Així també defineix un esquema de prioritat per determinar quines regles d'estil s'apliquen si més d'una regla esta associada amb un element en particular. Aquestes característiques han permès que avui en dia sigui el llenguatge més utilitzat a l'hora de definir l'aspecte i el format d'una pàgina web. 
 
-\section{JQuery}
+\section{jQuery}
 
-JQuery és una llibreria de Javascript, creada inicial ment per John Resig, que permet simplificar la forma d'interactuar amb els documents HTML, manipular l'arbre DOM, interactuar amb els esdeveniments, desenvolupar animacions y afegir interacció dinàmica a pàgines web. 
+jQuery és una llibreria de Javascript, creada inicial ment per John Resig, que permet simplificar la forma d'interactuar amb els documents HTML, manipular l'arbre DOM, interactuar amb els esdeveniments, desenvolupar animacions i afegir interacció dinàmica a pàgines web. 
 
-JQuery es software de codi obert, llicenciat sota les llicències MIT y LGPLv2, permeten ser usada tan a projectes lliures com a projectes privatius. 
+jQuery es software de codi obert, llicenciat sota les llicències MIT i LGPLv2. Aquest fet permet que pugui ser usada tan a projectes lliures com a projectes privatius. 
 
 \section{Git i Github}
 
-Git es un sistema de control de versions \footnote{\url{http://es.wikipedia.org/wiki/Control_de_versiones}} dissenyat per Linus Trovalds, creador de Linux. Git té les següents característiques principals: 
+Git es un sistema de control de versions\footnote{\url{http://es.wikipedia.org/wiki/Control_de_versiones}} dissenyat per Linus Torvalds, creador de Linux. Git té les següents característiques principals: 
 
 \begin{description}
     \item[Suport per desenvolupament no lineal] Git està dissenyat per tal de proporcionar una interfície ràpida per a crear branques i mesclar-les.
     \item[Distribuït] Cada usuari té un repositori propi. Aquests respositoris poden ser fusionats amb respositoris d'altres usuaris.
-    \item[Compatibilitat amb protocols existents] Els respositoris poden ser publicats mitjançant protocols HTTP,FTP,Rsync i fins i tot un protocol propi.
+    \item[Compatibilitat amb protocols existents] Els respositoris poden ser publicats mitjançant protocols HTTP, FTP, Rsync i fins i tot un protocol propi.
     \item[Eficient per grans projectes] Git es ràpid i escalable. A més a més no es fa més lent a mesura que la història del projecte es fa gran, com passa amb altres sistemes.
-    \item[Portable] Funciona tan en sistemes Linux,Unix,MAC i Windows.
+    \item[Portable] Funciona tan en sistemes Linux, Unix, MAC i Windows.
 \end{description}
 
 Github un servei de d'allotjament de codi per a repositoris Git. A part d'allotjar el teu propi repositori ofereix altres serveis com poden ser Gist\footnote{\url{https://gist.github.com/}} (per a compartir petits trossos de codi), una pàgina Wiki per projecte, allotjament de pàgines web i un petit gestió d'incidències molt flexible. A data 16/12/2011 compta amb 1,184,001 persones i allotja 3,448,813 repositoris.
