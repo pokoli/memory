@@ -321,5 +321,47 @@ En les següents línies podeu veure una mostra de com s'estructura la informaci
  }}
 \end{lstlisting}
 
-%TODO: Afegir Jade com a palntilles:
-%\section{Jade}
+
+\section{Jade}
+
+Jade és un motor de plantilles que ens permet simplificar el codi necessàri per a realitzar un pàgina en HTML. Jade s'ha utiltizat en el projecte per tal de generar els fitxers HTML que mostrar el servidor. Gràcies a jade s'ha simplificat el desenvolupament i el mateniment dels mateixos. Un dels principals aventatges de Jade ens que ens permet olvidar-nos de que estem utitlizant un llenguatge de marcatge (HTML). A més a més, Jade ens permet l'utiltizació de variables per a què la mateixa plantilla pugui generar diferents sortides en funció de variables. Aquest fet permet la reutilització de codi.
+
+En les següents línies podeu veure un exemple d'una plantilla escrita amb Jade. 
+
+\begin{lstlisting}
+doctype 5
+html(lang="en")
+  head
+    title= pageTitle
+    script(type='text/javascript')
+      if (foo) {
+         bar()
+      }
+  body
+    h1 Jade - node template engine
+    #container
+      p You are amazing
+\end{lstlisting}
+
+Tot seguit podeu veure el HTML que ens queda desprès d'aplicar la plantilla. 
+
+\begin{lstlisting}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Jade</title>
+    <script type="text/javascript">
+      if (foo) {
+      	bar()
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Jade - node template engine</h1>
+    <div id="container">
+      <p>You are amazing</p>
+    </div>
+  </body>
+</html>	
+\end{lstlisting}
+
