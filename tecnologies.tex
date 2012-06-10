@@ -29,9 +29,22 @@ Després d'explorar node.js vaig veure que el seu codi esta allotjat a Github, i
 
 \section{Javascript}
 
-Javascript és un llenguatge script basat en el concepte de prototipus (herència per delegació), implementat originàriament per Netscape Communications Corporation l'any 1995, i que va derivar en l'estàndard ECMAScript. És conegut sobretot pel seu ús en pàgines web, però també s'utilitza en altres aplicacions.
+Javascript és un llenguatge de programació utiltizat principalment en el projecte. És un llenguatge de script basat en el concepte de prototipus (herència per delegació), implementat originàriament per Netscape Communications Corporation l'any 1995, i que va derivar en l'estàndard ECMAScript. És conegut sobretot pel seu ús en pàgines web, però també s'utilitza en altres aplicacions.
 
 En un principi, s'usava a pàgines web HTML, per realitzar feines i operacions al marc de l'aplicació client. Amb l'aparició de la Web 2.0, Javascript s'ha convertit en el llenguatge de la banda del navegador i ens permet per augmentar l'usabilitat d'aplicacions web amb tècniques avançades com AJAX o JCC.
+
+En les següents línies de codi podeu veure un exemple de codi en Javascript. En aquest exemple es declara la funció \emph{preloadImages} que s'encarrega de carregar dos imatges per a que desprès les puguem mostrar a l'usuari.
+ 
+\begin{lstlisting}
+function PreloadImages() {
+  var aImages = new Array('img12.jpg','img22.jpg');
+  for(var i=0; i < aImages.length; i++) {
+    var img = new Image();
+    img.src = aImages[i];
+  }
+}
+\end{lstlisting}
+
 
 %TODO: (veure si cal) Explicar que es el DOM
 
@@ -48,12 +61,16 @@ Al capítol \ref{sec:node.js-full} podeu trobar una explicació més detallada d
 \label{sec:websockets}
 
 WebSocket és una tecnologia que proporciona un canal de comunicació bidireccional i full-dúplex sobre un únic socket TCP. Està dissenyada per ser utilitzada en navegadors i servidors web, però pot utilitzar-se per qualsevol aplicació client/servidor. La API de WebSocket s'està normalitzant pel W3C\footnote{World Wide Web Consortium}, i el protocol WebSocket, a la vegada, s'està normalitzant per l'IETF\footnote{Internet Engineering Task Force}. Normalment, per temes de seguretat, els administradors de xarxes bloquegen les connexions als ports diferents del port 80, així els WebSockets pretenen solucionar aquest problema, aportant una tecnologia que proporcioni una funcionalitat similar a la que s'obté obrint diferents connexions en diferents ports però multiplexant els diferents serveis de a través d'un únic port TCP.
+%TODO: Completar
+
+Els WebSockets s'utilitzen per proporcionar un métode de comunicació en temps real entre el client i el servidor del projecte.
+
 
 \section{HTML5}
 
 HTML representa les sigles de \emph{Hyper Text Markup Language}, que en català signifiquen "llenguatge de marcat d'hipertext". És un llenguatge de marcat que deriva de l'SGML dissenyat per estructurar textos i relacionar-los en forma d'hipertext. Gràcies a Internet i als navegadors web, s'ha convertit en un dels formats més populars que existeixen per a la construcció de documents per a la web. 
 
-HTML5 és la última versió de HTML. Aquesta última versió proporciona noves marques per poder estructurar els documents d'una forma més semàntica. A més a més proporciona noves etiquetes per poder etiquetar contingut multimèdia, ja sigui àudio o vídeo. També afegeix una nova etiqueta \emph{canvas} que permet la representació dinàmica de formes 2D i imatges a través de llenguatge Javascript. 
+HTML5 és la última versió de HTML i la que s'utiltiza per escriure tot l'entorn web del projecte. Aquesta última versió proporciona noves marques per poder estructurar els documents d'una forma més semàntica. A més a més proporciona noves etiquetes per poder etiquetar contingut multimèdia, ja sigui àudio o vídeo. També afegeix una nova etiqueta \emph{canvas} que permet la representació dinàmica de formes 2D i imatges a través de llenguatge Javascript. 
 
 \subsection{L'objecte canvas}
 
@@ -76,7 +93,7 @@ Així dins d'un objecte canvas podem realitzar les següents animacions:
 \item{Crear degradats.}
 \end{itemize}
 
-Totes aquests mètodes ens permeten crear tot tipus de dibuixos i animacions.
+Totes aquests mètodes ens permeten crear tot tipus de dibuixos i animacions. L'objecte canvas s'utilitza per dibuixar tota l'animació del joc i mostrar en qualsevol moment l'estat actual de la partida. 
 
 \newpage
 
@@ -207,9 +224,30 @@ De la funció animate (la que s'encarrega de pintar cada un dels frames de l'ani
 
 CSS es l'acrònim de \emph{Cascading Style Sheets}, que en català significa "Fulls d'estil en cascada". Els fulls d'estil en cascada s'utilitzen per descriure la semàntica de presentació (l'aspecte i format) d'un document escrit en un llenguatge de marques. La seva aplicació més comuna és dissenyar pàgines web escrites en HTML i XHTML, però el llenguatge també pot ser aplicat a qualsevol classe de document XML, incloent-hi SVG i XUL.
 
-El principal objectiu de CSS és permetre la separació del contingut d'un document escrit amb un llenguatge de marques de la seva presentació. Això permet que múltiples pàgines comparteixin un format comú i també que un mateix document de marcatge es pugui mostrar en diferents formats. 
+El principal objectiu de CSS és permetre la separació del contingut d'un document escrit amb un llenguatge de marques de la seva presentació. Això permet que múltiples pàgines comparteixin un format comú i també que un mateix document de marcatge es pugui mostrar en diferents formats. En l'àmbit del projecte els fulls d'estil s'utilitzen per definir la presentació del client del projecte.
 
 CSS defineix regles d'estil per a cada element, on s'especifica com es mostrarà cada element. Així també defineix un esquema de prioritat per determinar quines regles d'estil s'apliquen si més d'una regla esta associada amb un element en particular. Aquestes característiques han permès que avui en dia sigui el llenguatge més utilitzat a l'hora de definir l'aspecte i el format d'una pàgina web. 
+
+Tot segut es detallen alguns exemples de codi CSS. 
+
+\begin{lstlisting}
+h1 {
+    font-family: Arial, sans-serif; 
+    font-size: 16px;
+    color: red;
+}
+\end{lstlisting}
+
+L'exemple anterior mostra com aplicar un estil a totes els elements de tipus H1. En aquest cas es defineix que tots elements de tipus H1 s'ha de mostrar amb la font Arial o Sans-serif, han de tenir una mida de lletra de 16px i s'han de mostrar de color roig.  
+
+\begin{lstlisting}
+.bordered
+{
+    border: 1px solid #000;
+}
+\end{lstlisting}
+
+En l'exemple anterior es declara una classe anomenada \emph{bordered}. La declaració d'una classe ens permet aplicar-la a qualsevol tipus d'element. Per això sol ens cal especificar l'atribut class amb el valor de les classes que volem aplicar. En aquest cas la classe s'utilitza per aplicar una bora de color negre, amb traçat sòlid i d'un píxel de grossor. 
 
 \section{jQuery}
 
@@ -217,9 +255,27 @@ jQuery és una llibreria de Javascript, creada inicial ment per John Resig, que 
 
 jQuery es software de codi obert, llicenciat sota les llicències MIT i LGPLv2. Aquest fet permet que pugui ser usada tan a projectes lliures com a projectes privatius. 
 
-\section{Git i Github}
+Una de les característiques més interessants de jQuery és que ens permet seleccionar elements de la pàgina a partir de clàusules CSS i aplicar funcions sobre els mateixos. Tot seguit en podem veure alguns exemples: 
 
-Git es un sistema de control de versions\footnote{\url{http://es.wikipedia.org/wiki/Control_de_versiones}} dissenyat per Linus Torvalds, creador de Linux. Git té les següents característiques principals: 
+\begin{lstlisting}
+ jQuery('.bordered').css({'display': 'none'});
+\end{lstlisting}
+
+Així el codi anterior el que fa és seleccionar tots els elements de la classe .bordered i modifica les seves propietats CSS per a que no es mostrin a la pàgina. 
+
+\begin{lstlisting}
+jQuery('#target').dblclick(function() {
+  alert('Handler for .dblclick() called.');
+});
+\end{lstlisting}
+
+En l'exemple anterior es mostra el codi necessari per associar l'execució d'una funció cada vegada que es produeix un esdeveniment a un object. En concret hem associat una funció que s'executarà cada vegada que es faci doble clic a l'element amb identificar \emph{target}. Aquesta funció simplement mostra un missatge a l'usuari indicant que s'ha produït l'esdeveniment. 
+
+\section{Git}
+
+Git es un sistema de control de versions dissenyat per Linus Torvalds, creador de Linux. Un sistema de control de versions s'encarrega de gestionar els diferents canvis que s'han realitzat sobre un conjunt de fitxers. Una versió o revisió és l'estat en que es troben el conjunts de fitxers en un moment donat en el temps. L'objectiu del control de versions es poder disposar del registre de canvis que s'han realitzat sobre el conjunt de fitxers, permeten saber en quina versió o revisió és trobaven aquell conjunt de fitxers en un moment del passat i quines són les modificacions que els hi hem realitzat. Els sistemes de control de versions permeten que un conjunt de persones puguin realitzar modificacions a la vegada sobre el mateix conjunt de fitxers i ens proporcionen les eines suficients per saber si s'han realitzat modificacions sobre els fitxers i qui les ha realitzat. 
+
+Tot seguit us nombrem les característiques que diferencien Git respecte a altres sistemes de control de versions.
 
 \begin{description}
     \item[Suport per desenvolupament no lineal] Git està dissenyat per tal de proporcionar una interfície ràpida per a crear branques i mesclar-les.
@@ -229,6 +285,9 @@ Git es un sistema de control de versions\footnote{\url{http://es.wikipedia.org/w
     \item[Portable] Funciona tan en sistemes Linux, Unix, MAC i Windows.
 \end{description}
 
+Git s'utilitza per controlar totes les modificacions que s'han realitzat al projecte, i perquè altres desenvolupadors interessats en el projecte puguin comunicar-nos modificacions sobre el mateix. A més a més, també ens permet publicar diferents versions del projecte i saber en qualsevol moment quin era l'estat del projecte quan es va publicar una versió. 
+
+%TODO: Eliminar això i posar-ho en l'apartat de codi lliure. 
 Github un servei de d'allotjament de codi per a repositoris Git. A part d'allotjar el teu propi repositori ofereix altres serveis com poden ser Gist\footnote{\url{https://gist.github.com/}} (per a compartir petits trossos de codi), una pàgina Wiki per projecte, allotjament de pàgines web i un petit gestió d'incidències molt flexible. A data 16/12/2011 compta amb 1,184,001 persones i allotja 3,448,813 repositoris.
 
 Github ofereix il·limitats repositoris de forma gratuïta sempre que el seu codi sigui públic. A més a més ofereix repositoris privats per un petit preu mensual. 
@@ -237,12 +296,14 @@ Github ofereix il·limitats repositoris de forma gratuïta sempre que el seu cod
 
 Mocha\footnote{\url{http://visionmedia.github.com/mocha/}} és una llibreria que s'encarrega d'executar jocs de prova i que funciona sobre el framework node. Aquesta llibreria s'encarrega de detectar quins dels nostres testos estan fallant i reportar-nos els errors a través de diferents formats. Una de les aplicacions més interessant de Mocha és la generació de informes de coverage. Un informe de coverage ens permet visualitzar quines són línies de codi de l'aplicació són executades per un joc de proves i quines no. Per a la generació d'aquest informes es requereix tenir instal·lada la llibreria jscoverage\footnote{\url{http://siliconforks.com/jscoverage/}}. 
 
+En l'àmbit del projecte Mocha s'utiltiza per avaluar els jocs de proves del projecte i validar que tots funcionen correctament. jscoverage s'utilitza per generar un informe que ens permet avaluar quines línies de codi estan sotmeses a jocs de proves i quines no.
+
 \section{JSON}
 \label{sec:json}
 
 JSON (acrònim de JavaScript Object Notation) és un estàndard obert basat en text dissenyat per a intercanvi de dades llegible per humans. Deriva del llenguatge script JavaScript, per a representar estructures de dades simples i llistes associatives, anomenades objectes. Malgrat la seva relació amb el JavaScript, té implementacions per a gran part dels llenguatges de programació, alguns exemples són: ActionScript, C, C++, C\#, ColdFusion, Common Lisp, Delphi, E, Eiffel, Java, JavaScript, ML, Objective CAML, Perl, PHP, Python, Rebol, Ruby, Lua y Visual FoxPro. 
 
-El format JSON s'utilitza habitualment per serialitzar i transmetre dades estructurades en una connexió de marxa. S'utilitza principalment per intercanviar dades entre un servidor i una aplicació web, sent una alternativa a l'XML\footnote{\url{https://ca.wikipedia.org/wiki/XML}}. 
+El format JSON s'utilitza habitualment per serialitzar i transmetre dades estructurades en una connexió de marxa. S'utilitza principalment per intercanviar dades entre un servidor i una aplicació web, sent una alternativa a l'XML\footnote{\url{https://ca.wikipedia.org/wiki/XML}}. Un dels principals aventatges de JSON respecte a XML és que el primer pot ser directament interpretat amb Javascript i el segon necessita ser parsejat. Això, provoca que el codi Javascript necessari per llegir un fitxer JSON sigui molt més reduït que un XML. A part de la reducció de codi, és molt més ràpid llegir un fitxer en JSON que en XML. 
 
 En les següents línies podeu veure una mostra de com s'estructura la informació en format JSON. 
 
@@ -260,3 +321,5 @@ En les següents línies podeu veure una mostra de com s'estructura la informaci
  }}
 \end{lstlisting}
 
+%TODO: Afegir Jade com a palntilles:
+%\section{Jade}
