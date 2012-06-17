@@ -8,7 +8,6 @@ Comentaris JM (02/06/12):
 - Revisar la compatibilitat de totes les llicències dels projectes que s'utilitzen al projecte i reflexar-ho a la memòria.
 - Capítol 4, secció 1: Comentar una mica l'estructura de la solució en forma de client/servidor on el client iutilitza tecnologies web. Usar aquesta estructura és degut a que vols que la gent pugui jugar remotament sense haver d'instal·lar nou software.Comentar una mica l'estructura de la solució en forma de client/servidor on el client iutilitza tecnologies web. Usar aquesta estructura és degut a que vols que la gent pugui jugar remotament sense haver d'instal·lar nou software.
 - Reescriure l'apartat de TDD nombrant també BDD.
-- En l'apartat de Javascript: Lo important és que és el llenguatge per escriure la capa client d'una aplicació web. En tot cas indicar que ara es fan aplicacions senceres que s'executen en el client (p.e. gmail). JScript i potència de càlcul no sé si van massa junts :-) Indicar què vol dir AJAX i JCC i explicar, en un paràgarf, cadascun d'ells.
 -Revisar l'apartat de Node del capítol de tecnologies.
 - Ampliar la explicació dels WebSockets: Hauries d'explicar pq http no és suficient (overhead, basat en text) i com es negocia una connexio websocket a través d'una petició http.
 - Abans de node ja hi havia altres entorns d'execució de js fora del navegador. -> Buscar quins són i posar-los com a antecedents.

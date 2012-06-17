@@ -31,7 +31,9 @@ Després d'explorar node.js vaig veure que el seu codi esta allotjat a Github, i
 
 Javascript és un llenguatge de programació utiltizat principalment en el projecte. És un llenguatge de script basat en el concepte de prototipus (herència per delegació), implementat originàriament per Netscape Communications Corporation l'any 1995, i que va derivar en l'estàndard ECMAScript. És conegut sobretot pel seu ús en pàgines web, però també s'utilitza en altres aplicacions.
 
-En un principi, s'usava a pàgines web HTML, per realitzar feines i operacions al marc de l'aplicació client. Amb l'aparició de la Web 2.0, Javascript s'ha convertit en el llenguatge de la banda del navegador i ens permet per augmentar l'usabilitat d'aplicacions web amb tècniques avançades com AJAX o JCC.
+En un principi, s'usava a pàgines web HTML, per realitzar feines i operacions al marc de l'aplicació client. Amb l'aparició de la Web 2.0, Javascript s'ha convertit en el llenguatge de la banda del client, permetent-nos escriure aplicacions senceres, com per exemple Gmail\footnote{Client web per accedir al correu de Google}. A més a més també ens permet per augmentar l'usabilitat d'aplicacions web amb tècniques avançades com AJAX.
+
+AJAX és l'acrònim de Asynchronous JavaScript And XML (JavaScript asíncron i XML), una tecnòlogia que ens permet sol·licitat informació addicional al servidor i carregar-la en segon plà, sense interferir amb el compartament de la pàgina actual. JavaScript és el llenguatge encarregar de realitzar la petició al servidor web i tractar les dades que s'han rebut del servidor. XML és el llenguatge de marcatge en que s'esctructura la informació. De totes formes la utiltizació de XML no és obligatòria, de fet actualmente s'utiltizen altres llenguatges com JSON. AJAX és una tècnica que es pot utiltizar en múltiples sistemes operatius i navegadors, ja que està basat en estàndars oberts.
 
 En les següents línies de codi podeu veure un exemple de codi en Javascript. En aquest exemple es declara la funció \emph{preloadImages} que s'encarrega de carregar dos imatges per a que desprès les puguem mostrar a l'usuari.
  
@@ -45,8 +47,6 @@ function PreloadImages() {
 }
 \end{lstlisting}
 
-
-%TODO: (veure si cal) Explicar que es el DOM
 
 \section{Node.js}
 \label{sec:node.js-min}
