@@ -27,6 +27,7 @@ Javascript té les següents característiques:
 Aquestes característiques el fan el candidat ideal per a proporcionar una infraestructura sense bloquejos, basada en esdeveniments. A més a més, és un llenguatge que està molt extes en el món de la informàtica, cosa que provoca que hi hagi una gran quantitat de desenvolupadors que en tinguin coneixements. El principal ús de Javascript és el processament d'esdeveniments a la web. Així la semàntica de Node.js s'ha dissenyat de forma que sigui semblant al processament d'esdeveniments a la web, per tal facilitat la corba d'aprenentatge dels programadors amb coneixements de desenvolupament web.
 
 \section{Codi Síncron vs. Codi Asíncron}
+\label{sec:sincron-ascinron}
 
 Com s'ha comentat a la secció \ref{sec:node.js-min}, Node.js permet executar codi de forma asíncrona, proporcionant en un entorn d'execució d'un sol fil d'execució al desenvolupador, encara que internament n'utilitzi més d'un. Així en aquesta secció el que farem es explicar les diferències entre el codi síncron i asíncron.
 
@@ -79,14 +80,14 @@ Actualment s'utilitzen les següents tècniques de programació:
 \begin{enumerate}
     \item{Codi síncron en un sol fil d'execució.}
     \item{Codi síncron en un més d'un fil d'execució.}
-    \item{Codi asíncron en un sol fil d'execució.}
+    \item{Codi asíncron en diferents fils d'execució.}
 \end{enumerate}
 
 En el primer cas la CPU només es capaç d'executar el codi d'un programa a la vegada i aquesta roman inactiva mentre el programa realitza altres tasques (llegir un fitxer, esperar l'entrada d'informació per part de l'usuari,etc.). La programació d'aquest tipus de programes es molt simple ja que no et cal preocupar de si pot haver altres fils d'execució llegint les mateixes variables que el fil actual, encara que el seu rendiment es baix en entorns d'alta concurrència. 
 
 En el segon cas la CPU s'utilitza per diversos fils d'execució a la vegada, així mentre un fil d'execució està ocupat llegint un fitxer la CPU pot ser aprofitada per una altre fil d'execució. De totes formes aquesta forma de programació pot arribar a ser molt confusa en el cas que més d'un fil d'execució hagi de modificar la mateixa informació. Aquests factors s'han de tenir en compte per part del desenvolupador a l'hora de desenvolupar el programa. 
 
-L'ultim cas és el que s'utilitza a Node.js i el que es fa és posar referències a funcions en una cua d'execució, així cada vegada que la CPU quedi lliure s'executa una nova porció de codi, evitant que més d'una porció de codi s'executi de forma simultània i evitant que la CPU quedi a l'espera de que es produeixi un esdeveniments. Tota la gestió referent als esdeveniments és el que s'anomena el bucle d'esdeveniments. 
+L'ultim cas és el que s'utilitza a Node.js, amb la diferència que Node.js gestiona internament els diferents fil d'execució, evitant que el desenvolupador s'haigi de preocupar dels mateixos. Per aconseguir això el que fa és posar referències a funcions en una cua d'execució, així cada vegada que la CPU quedi lliure s'executa una nova porció de codi, evitant que més d'una porció de codi s'executi de forma simultània i evitant que la CPU quedi a l'espera de que es produeixi un esdeveniments. Tota la gestió referent als esdeveniments és el que s'anomena el bucle d'esdeveniments. 
 
 En Node.js hi ha dos formes d'afegir l'execució d'un tros de codi al bucle d'esdeveniments: 
 
@@ -147,8 +148,8 @@ El seu funcionament és el següent:
 
 \section{Beneficis de Node.js}
 
-Node no té bloquejos, no te diferents fils d'execució competint pel mateix recurs. Node.js només espera a que es produeixi algun esdeveniment i quan es produeix el processa. Això es transforma en codi molt ràpid.
-%TODO: No exactament: podries fer el mateix amb un servidor multifil però potser seria més complex de programar-ho.
+Node no té bloquejos, no te diferents fils d'execució competint pel mateix recurs. Node.js només espera a que es produeixi algun esdeveniment i quan es produeix el processa. Això es transforma en codi molt ràpid. Tota aquesta lògica també es podría programar amb altres llenguatges implementant un servidor multifil, encara que sería molt més complicat de programar-ho ja que ens hauríem de preocupar dels problemes relacionats amb la concurrència. 
+
 El disseny d'un joc en línia requereix que no hi hagi bloquejos, ni diferents fils d'execució competint pel mateix recurs, i que el codi s'executi el més ràpid possible. Tots aquest fets provoquen que Node.js i el seu disseny basat en esdeveniments sigui la millor elecció per allotjar tota la lògica d'un lloc en línia i per poder suportar el major nombre de partides de forma simultània.
 
 
