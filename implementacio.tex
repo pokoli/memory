@@ -3,7 +3,7 @@
 
 La implementació del joc s'ha estructurat en dos grans blocs: el servidor i la interfície client. El servidor es l'encarregat de gestionar la informació relativa a les partides disponibles, els jugadors connectats i tota la lògica referent a les partides. La interfície client s'encarrega de interaccionar amb el servidor i mostrar la informació al usuari. 
 
-Per l'intercanvi de dades entre el servidor i el client s'utilitzen WebSockets\footnote{Veure Capítol \ref{sec:websockets}},  ja que ens proporcionen un canal de comunicació bi-direccional a través del protocol HTTP. Aquesta comunicació es totalment asíncrona i està basada en esdeveniments. Així cada vegada que el servidor envia un missatge al client (o a l'invers) es produeix un esdeveniments al destinatari i s'executa el codi associat per al processament d'aquest esdeveniments (en cas que n'hi hagi). 
+Per l'intercanvi de dades entre el servidor i el client s'utilitza el protocol WebSocket\footnote{Veure Capítol \ref{sec:websockets}},  ja que ens proporcionen un canal de comunicació bi-direccional. Aquest canal ens permet que els servidor notifiqui al client cada vegada que es produeix un esdeveniment a la partida en curs i que el client notifiqui al servidor les accions que ha dut a terme el jugador. 
 
 \section{Servidor}
 

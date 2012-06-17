@@ -61,9 +61,158 @@ Al capítol \ref{sec:node.js-full} podeu trobar una explicació més detallada d
 \label{sec:websockets}
 
 WebSocket és una tecnologia que proporciona un canal de comunicació bidireccional i full-dúplex sobre un únic socket TCP. Està dissenyada per ser utilitzada en navegadors i servidors web, però pot utilitzar-se per qualsevol aplicació client/servidor. La API de WebSocket s'està normalitzant pel W3C\footnote{World Wide Web Consortium}, i el protocol WebSocket, a la vegada, s'està normalitzant per l'IETF\footnote{Internet Engineering Task Force}. Normalment, per temes de seguretat, els administradors de xarxes bloquegen les connexions als ports diferents del port 80, així els WebSockets pretenen solucionar aquest problema, aportant una tecnologia que proporcioni una funcionalitat similar a la que s'obté obrint diferents connexions en diferents ports però multiplexant els diferents serveis de a través d'un únic port TCP.
-%TODO: Completar
 
-Els WebSockets s'utilitzen per proporcionar un métode de comunicació en temps real entre el client i el servidor del projecte.
+Els websockets també pretenen evitar la sobrecàrregar d'informació que es produeix en el protocol HTTP. El protocol HTTP envía dades addicionals com poden ser la màquina que ha generat la informació, els llenguatges acceptats pel client, els mètodes de compresió acceptats pel client i moltes més. Això es útil per al procesament d'una pàgina web, ja que el client i el servidor podem reaccionar de forma diferent en funció d'aquesta informació. En el protocol WebSocket aquesta informació és irrelevant, ja que el servidor i el client són els mateixos durant tota la comunicació, així aquesta informació es exactament la mateixa desde la primera comunicació fins a la última. Per aquest motiu, i per tal de reduir la latència entre els dos extrems de la comunicació tota aquesta informació addicional s'elimina en el protocol WebSocket.
+
+Els protocol WebSocket es basa en una petició HTTP que s'encarrega d'obrir el canal de comunicació entre el client i el servidor. A la figura \ref{fig:websocket-request} es pot observar una exemple de la petició que generar el programa client per tal d'obrir un canal de comunicació utiltizant el protocol WebSocket. A la figura \ref{fig:websocket-response} es mostra un exmple de la resposta que generar el servidor web per tal d'acceptar la comunicació del protocol WebSocket. 
+
+\begin{figure}[htbp]
+\centering
+\begin{verbatim}
+GET /mychat HTTP/1.1
+Host: server.example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==
+Sec-WebSocket-Protocol: chat
+Sec-WebSocket-Version: 13
+Origin: http://example.com
+\end{verbatim}
+\caption{Missatge de sol·licitud d'obertura d'un canal WebSocket.}
+\label{fig:websocket-request}
+\end{figure} 
+
+\begin{figure}[htbp]
+\centering
+\begin{verbatim}
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=
+Sec-WebSocket-Protocol: chat
+\end{verbatim}
+\caption{Missatge de resposta de l'obertura d'un canal WebSocket.}
+\label{fig:websocket-response}
+\end{figure} 
+
+Una vegada s'ha obert el canal de comunicació entre el client i el servidor, aquests es poden intercanviar informació entre ells. El protocol WebSocket proporciona les següents funcionalitats: 
+
+\begin{itemize}
+    \item{El missatge pot ser iniciar per qualsevol de les dos parts.}
+    \item{No es requereix l'enviament de missatges indicant que s'ha rebut la informació.}
+\end{itemize}
+
+A més a més en el protocol WebSocket no es necessàri preguntar continuament si s'ha rebut un missatge per part de l'altra banda de comunicació, sinó que es produeix un event cada vegada que el nostra canal de comunicació reb un nou event. Això és una gran diferència entre les aplicacions web basades en AJAX, ja que en AJAX el programa client ha realitzar una petició de forma períodica, per exemple cada segon, per tal de saber si el servidor disposa de nova informació. Si utiltizem el protocol WebSocket el servidor és l'encarregat d'enviar un missatge als clients cada vegada que hi ha nova informació. Amb això, s'evita un gran nombre de peticions innecesàries per part del client, evitant també la sobrecarga que això suposa pel servidor.
+
+\begin{figure}[ht!]
+\centering
+\begin{sequencediagram}
+\newthread[white]{c}{Client}
+\newinst[9]{s}{Servidor}
+ 
+\begin{call}{c}{Petició obertura canal websocket.}{s}{Acceptació canal WebSocket.}
+\end{call}
+
+\begin{messcall}{s}{Actualizació informació}{c}
+\end{messcall}
+
+\begin{messcall}{c}{Enviar informació introduida per l'usuari}{s}
+\end{messcall}
+
+\begin{messcall}{s}{Actualizació informació}{c}
+\end{messcall}
+
+\begin{messcall}{c}{Tancament del canal}{s}
+\end{messcall}
+
+\end{sequencediagram}
+\caption{Diagrama d'una comunicació mitjançant el protocol WebSocket.}
+\label{diag:websocket}
+\end{figure} 
+
+A la figura \ref{diag:websocket} es pot observar el diagrama de flux d'una comunicació a través del protocol websocket. Com es pot observar l'unic missatge que requereix l'acceptació per part del receptor del mateix és el que s'utilitza per iniciar la comunicació. A partir d'aquest moment el canal queda obert, per a que qualsevol de les dos bandes pugui enviar informació a través del WebSocket quan ho consideri necessàri. 
+
+
+Actualment es poden trobar una gran varietat de servidors que implementen el protocol WebSocket. Tot seguit se'n detalla una llista, juntament amb el llenguatge de programació utiltizat: 
+
+\begin{itemize}
+    \item{C
+    \begin{itemize}
+        \item{APE Project}
+        \item{Apache-websocket}
+        \item{libwebsockets}
+    \end{itemize}
+    }
+    \item{Java
+    \begin{itemize}
+        \item{Tomcat}
+        \item{Apache ActiveMQ}
+        \item{Caucho Resin}
+        \item{GlassFish}
+        \item{Jetty}
+        \item{jWebsocket}
+        \item{Netty}
+        \item{vert.x}
+        \item{Webbit}
+    \end{itemize}
+    }
+    \item{.NET
+    \begin{itemize}
+        \item{Alchemy-Websockets}
+        \item{Nugget}
+        \item{SuperWebSocket}
+        \item{XSockets}
+    \end{itemize}
+    }
+    \item{PHP
+    \begin{itemize}
+        \item{Extendible Web Socket Server}
+        \item{phpdaemon}
+        \item{Watersprout}
+    \end{itemize}
+    }
+    \item{Python
+    \begin{itemize}
+        \item{Gevent-websocket}
+        \item{Orbited}
+        \item{pywebsockets}
+        \item{Tornado}
+        \item{txWebSocket (Twisted)}
+        \item{websockify}
+    \end{itemize}
+    }
+    \item{Ruby
+    \begin{itemize}
+        \item{Cramp}
+        \item{EM-WebSocket}
+        \item{Goliath}
+        \item{web-socket-ruby}
+    \end{itemize}
+    }
+    \item{Erlang
+    \begin{itemize}
+        \item{Cowboy}
+        \item{Misultin}
+        \item{RabbitMQ}
+        \item{Yaws}
+    \end{itemize}
+    }
+    \item{Node.js (Javascript)
+    \begin{itemize}
+        \item{Socket.io}
+        \item{SockJS-node}
+        \item{WebSocket-Node}
+    \end{itemize}
+    }
+    \item{Go
+    \begin{itemize}
+        \item{net.websocket}
+    \end{itemize}
+    }
+\end{itemize}    
+
+En l'ambit del projecte els WebSockets s'utilitzen per proporcionar un métode de comunicació en temps real entre el client i el servidor. Com a implementació del protocol WebSocket s'ha utilitzat la Socket.io de Node.js. S'ha elegit aquesta llibrería perquè es capaç de detectar si la conexió a través de WebSockets es soportada pel programa client, i en el cas de que aquesta no sigui suportada l'emula a través d'altres tecnologies com:  Adobe® Flash® Socket,  AJAX long polling, AJAX multipart streaming, Forever Iframe i JSONP Polling.
+
 
 
 \section{HTML5}
@@ -95,7 +244,6 @@ Així dins d'un objecte canvas podem realitzar les següents animacions:
 
 Totes aquests mètodes ens permeten crear tot tipus de dibuixos i animacions. L'objecte canvas s'utilitza per dibuixar tota l'animació del joc i mostrar en qualsevol moment l'estat actual de la partida. 
 
-\newpage
 
 \subsubsection{Alguns exemples de l'objecte canvas}
 
@@ -143,7 +291,7 @@ A la figura \ref{fig:canvas-exemple-1} podeu veure el resultat del codi comentat
 \label{fig:canvas-exemple-1}
 \end{figure} 
 
-L'exemple a continuació s'ha extret\footnote{El codi ha estat simplificat per simplificar la seva comprensió.} d'una pàgina de tutorials sobre canvas\footnote{\url{http://www.html5canvastutorials.com/advanced/html5-canvas-linear-motion-animation/}}. En aquest exemple es descriurà com animar un objecte que s'ha creat dins del canvas, en concret es farà moure un rectangle des de la part esquerra del canvas fins a la seva part dreta. A la mateixa pàgina podeu trobar una demostració de com funciona el codi que es detalla a continuació.  
+L'exemple a continuació s'ha extret\footnote{El codi ha estat simplificat per simplificar la seva comprensió.} d'una pàgina de tutorials sobre canvas\footnote{\url{http://www.html5canvastutorials.com/advanced/html5-canvas-linear-motion-animation/}}. En aquest exemple es descriurà com animar un objecte que s'ha creat dins del canvas, en concret es farà moure un rectangle des de la part esquerra del canvas fins a la seva part dreta. A la mateixa pàgina podeu trobar una demostració de com funciona el codi que es detalla a continuació.
 
 \begin{lstlisting}
 window.requestAnimFrame = (function(callback){

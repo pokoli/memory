@@ -8,7 +8,6 @@ Comentaris JM (02/06/12):
 - Revisar la compatibilitat de totes les llicències dels projectes que s'utilitzen al projecte i reflexar-ho a la memòria.
 - Capítol 4, secció 1: Comentar una mica l'estructura de la solució en forma de client/servidor on el client iutilitza tecnologies web. Usar aquesta estructura és degut a que vols que la gent pugui jugar remotament sense haver d'instal·lar nou software.Comentar una mica l'estructura de la solució en forma de client/servidor on el client iutilitza tecnologies web. Usar aquesta estructura és degut a que vols que la gent pugui jugar remotament sense haver d'instal·lar nou software.
 - Reescriure l'apartat de TDD nombrant també BDD.
-- Ampliar la explicació dels WebSockets: Hauries d'explicar pq http no és suficient (overhead, basat en text) i com es negocia una connexio websocket a través d'una petició http.
 - Abans de node ja hi havia altres entorns d'execució de js fora del navegador. -> Buscar quins són i posar-los com a antecedents.
 - Afegir un flux de comunicació entre varis jugadors.
 - Revisar capítol 9.5, jocs de proves. 
