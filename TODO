@@ -6,7 +6,6 @@ Comentaris JM (20/05/12):
 Comentaris JM (02/06/12):
 
 - Revisar la compatibilitat de totes les llicències dels projectes que s'utilitzen al projecte i reflexar-ho a la memòria.
-- Explicar en el capítol de Codi Obert l'ús que s'ha fet de GitHub per a compartir el codi. Eliminar GitHub de les tecnologies utilitzades.
 - En el capítol de requeriments: En tot cas comentar que en aquesta secció parlaràs dels requeriments més tècnics del projecte. pq gran part del requeriments funcionals deriven de les regles de joc de la butifarra
 - Capítol 4, secció 1: Comentar una mica l'estructura de la solució en forma de client/servidor on el client iutilitza tecnologies web. Usar aquesta estructura és degut a que vols que la gent pugui jugar remotament sense haver d'instal·lar nou software.Comentar una mica l'estructura de la solució en forma de client/servidor on el client iutilitza tecnologies web. Usar aquesta estructura és degut a que vols que la gent pugui jugar remotament sense haver d'instal·lar nou software.
 - Reescriure l'apartat de TDD nombrant també BDD.
