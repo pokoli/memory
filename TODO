@@ -11,8 +11,7 @@ Comentaris JM (02/06/12):
 - Ampliar la explicació dels WebSockets: Hauries d'explicar pq http no és suficient (overhead, basat en text) i com es negocia una connexio websocket a través d'una petició http.
 - Abans de node ja hi havia altres entorns d'execució de js fora del navegador. -> Buscar quins són i posar-los com a antecedents.
 - Afegir un flux de comunicació entre varis jugadors.
-- Revisar capítol 9.5, jocs de proves.
-- Afegir pencil com a tecnologia usada per a la creació de les maquetes de les pantalles. 
+- Revisar capítol 9.5, jocs de proves. 
 - Exemple de codi de més d'una capa del canvas en Kinetic.js
 
 
