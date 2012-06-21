@@ -5,7 +5,9 @@
 
 En aquest capítol es descriurán els requeriments més tècnics del projecte ja que els requeriments funcionals  deriven de les regles  de la botifarra, explicades en el capítol \ref{chap:botifarra}.
 
-Es vol construir un sistema que sigui capàs de allotjar partides de la botifarra en línia a través d'un navegador. Així, aquest sistema ha de proporcionar les següents funcionalitats: 
+Es vol construir un sistema que sigui capàs de allotjar partides de la botifarra en línia a través d'un navegador. S'ha elegit l'arquitèctura en forma de servei web per tal d'evitar que l'usuari haigi de realitzar la instal·lació de cap tipus de software, fàcilitant l'accès al sistema. Aquesta decisió implica estructurar el sistema en dos grans blocs: el servidor web i els diferents clients. El primer s'encarrega de proporcionar els mecanismes suficients per comunicar les accions dels usuaris, i els segons s'encarreguen de mostrar la informació que reben del servidor d'una forma amigable. 
+
+Aquest sistema ha de proporcionar les següents funcionalitats: 
 
 \begin{itemize}
 \item{Permetre la comunicació entre els diferents jugadors connectats al servidor a través d'un xat.}
@@ -35,7 +37,7 @@ Aquest sistema ha d'utilitzar la tecnologia client-servidor, es a dir hi ha d'ha
 
 \section{Funcions del servidor}
 
-El programa servidor ha de realitzar les següents tasques:
+Com s'ha comentat en l'apartat anterior el programa servidor és el que s'encarrega de proporcionar un canal de comunicació entre els diferents clients. Així, el servidor ha de realitzar les següents tasques:
 
 \begin{enumerate}
 	\item{Acceptar connexions per part dels clients.}
@@ -48,12 +50,13 @@ El programa servidor ha de realitzar les següents tasques:
 
 \section{Funcions del client}
 
-El programa client ha de realitzar les següents tasques: 
+Els programes client han de realitzar les següents tasques: 
 
 \begin{enumerate}
 	\item{Permetre a l'usuari comunicar-se amb el servidor de jocs.}
 	\item{Rebre informació del programa servidor i mostrar-la a l'usuari d'una forma amigable.}
-	\item{Interactuar amb l'usuari per tal de proporcionar al programa servidor la informació que aquest sol·liciti.}	
+	\item{Interactuar amb els usuaris per tal de proporcionar al servidor totes dades que aquests introdueixin.}	
 \end{enumerate}
+
 
 
