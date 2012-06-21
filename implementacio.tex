@@ -238,7 +238,7 @@ A la figura \ref{diag:entrar-partida} es pot observar el diagrama de flux necess
         \begin{messcall}{s}{play-card}{c}
         \end{messcall}
         
-        \begin{messcall}{c}{play-card}{s}{missatge-error}
+        \begin{messcall}{c}{new-roll}{s}{missatge-error}
         \end{messcall}
         
         \begin{messcall}{s}{played-card}{c}
@@ -261,6 +261,49 @@ A la figura \ref{diag:entrar-partida} es pot observar el diagrama de flux necess
 
 
 A la figura \ref{diag:desenvolupament-partida} es pot observar el diagrama de flux del desenvolupament d'una partida. En aquest cas s'han omès els passos de creació d'una nova partida i que cada jugador entri dins de la partida. La partida comença quan el servidor notifica a tots els jugadors de la partida que aquesta ha començat. Durant el transcurs de la partida es van jugant diferents rondes. En cada ronda el servidor notifica al client que ha de seleccionar thriumph les opcions que té diferent i espera la resposta del client. Una vegada el client ha seleccionat triomf, notifica a tots els jugadors de la partida quin ha estat el triomf seleccionat. Després d'això, notifica als jugadors que tenen la possibilitat de contrar i espera la seva resposta. Una vegada s'ha realitzat el proces de contro, el servidor indica el començament d'una nova jugada amb el missatge new-move. Cada jugada consisteix en un moviment (nova carta jugada) de cadascun dels jugadors de la partida. Així per cada moviment del jugador el servidor notifica al client que ha de realitzar un nou moviment i espera rebre el missatge de que s'ha jugat una nova carta. Quan el client envia el missatge de que vol jugar una nova carta el servidor valida que el moviment sigui correcte. En el cas de que aquest sigui incorrecte ho notifica al client i espera la jugada d'una nova carta. En el cas contrari, notifica a la resta de jugadors la carta que s'ha jugat i repeteix de nou la jugada. Així es van produint jugades fins que s'han acabat totes les cartes de tots els jugadors, concretament es tracta de 12 jugades. Una vegada s'han jugat totes les cartes la ronda es dona per finalitzada i el servidor computa les puntuacions de la partida. En el cas que no s'hagi finalitzat la partida es comença la ronda i es torna a repetir tot el procediment realitzat anteriorment. Si hi ha un equip guanyador la partida es dona per finalitzada i es notifica a tots els clients. 
+
+
+\begin{figure}[ht!]
+\centering
+\begin{sequencediagram}
+\newthread{s}{Servidor}
+\newinst{ja}{Jugador A}
+\newinst{jb}{Jugador B}
+\newinst{jc}{Jugador C}
+\newinst{jd}{Jugador D}
+
+%%%%%%  Torn jugador 1  %%%%
+\begin{messcall}{s}{play-card}{ja}
+\end{messcall}
+
+\begin{messcall}{ja}{new-roll(card)}{s}
+\end{messcall}
+
+\begin{messcall}{s}{played-card(card,player)}{jb}
+\end{messcall}
+
+\begin{messcall}{s}{played-card(card,player)}{jc}
+\end{messcall}
+
+\begin{messcall}{s}{played-card(card,player)}{jd}
+\end{messcall}
+%%%%%%  FI Torn jugador 1  %%%%
+
+\end{sequencediagram}
+\caption{Diagrama de flux d'una jugada amb 4 jugadors.}
+\label{diag:jugada-4-jugadors}
+\end{figure} 
+
+\newpage
+
+A la figura \ref{diag:jugada-4-jugadors} es pot observar les interaccions entre el client i el servidor que es duen a terme per realitzar una jugada. Aquest detall es correspon amb el block \emph{Jugada} de la figura \ref{diag:desenvolupament-partida}. Així per cada jugada es realitzen els següents pasos: 
+
+\begin{enumerate}
+    \item{El servidor notifica al jugador en qüestió que és el seu torn.}
+    \item{El jugador elegeix la carta que vols jugar i ho notifica al servidor.}
+    \item{Si la jugada no és correcta el servidor ho notifica al jugador i espera que elegixi una nova carta.}
+    \item{Si la jugada és correcta el servidor notifica als altres jugadors la carta que s'ha tirat i qui ha estat el jugador l'ha tirat.}
+\end{enumerate}
 
 
 \section{Iteracions Realitzades}

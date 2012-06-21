@@ -3,7 +3,6 @@ Comentaris JM (02/06/12):
 
 - Revisar la compatibilitat de totes les llicències dels projectes que s'utilitzen al projecte i reflexar-ho a la memòria.
 - Abans de node ja hi havia altres entorns d'execució de js fora del navegador. -> Buscar quins són i posar-los com a antecedents.
-- Afegir un flux de comunicació entre varis jugadors.
 - Revisar capítol 9.5, jocs de proves. 
 - Exemple de codi de més d'una capa del canvas en Kinetic.js
 
