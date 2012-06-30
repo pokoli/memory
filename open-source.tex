@@ -44,7 +44,27 @@ Per sort, no es necessari que nosaltres pensem i escrivim una llicència per al 
 \item{Eclipse Public License (EPL-1.0)}
 \end{itemize}
 
-De totes aquestes, la que ens va semblar millor va ser la MIT license, per dos motius: simplicitat i llibertats. Així, el la llicència MIT és de les més reduïdes de totes i garanteix la llibertat de qualsevol usuari, ja que els permet fer amb el nostre projecte el que vulguin (fins i tot redistribuir-lo sota una altra llicència), sempre i quan es mantingui una menció als autors originals del projecte. 
+De totes aquestes, la que ens va semblar millor va ser la MIT license, per dos motius: simplicitat i llibertats. Així, el la llicència MIT és de les més reduïdes de totes i garanteix la llibertat de qualsevol usuari, ja que els permet fer amb el nostre projecte el que vulguin (fins i tot redistribuir-lo sota una altra llicència), sempre i quan es mantingui una menció als autors originals del projecte.
+
+\subsection{Llicències del programari utiltizat}
+
+Un aspecte important a l'hora d'elegir la llicència del projecte és que aquesta ha de ser compatible amb les llicències que utiltizen altres llibreries utiltizades en el projecte. 
+
+\begin{table}[htbp]\begin{center}\begin{tabular}{|l|c|}
+\hline
+\textbf{Component} & \textbf{Llicència} \\ \hline
+Node.js & MIT \\ \hline
+Jade & MIT\\ \hline
+Mocha & MIT \\ \hline
+jscoverage & GPLv2 \\ \hline
+socket.io & MIT \\ \hline
+express & MIT  \\ \hline
+should.js & MIT \\ \hline
+\end{tabular}\end{center}
+\caption{Llicències dels components del projecte}\label{t:llicencies-components}
+\end{table} 
+
+Com es pot observar a la taula \ref{t:llicencies-components} les llibreries utiltizades tenen les llicències MIT i GPLv2. La nostra llicpencia es compatible en ja que ambdos llicències ens permeten l'ús del software. En el cas de que s'hagin de realitzar modificacions sobre el programari inicial per adapatar-lo al nostre projecte, ho podrem fer sempre hi quan es mantingui una nota indicant l'autor (en el software sota la llicència MIT). En el cas d'haver de modificar els programes sota llicència GPLv2, hauriem distribuir-lo amb la mateixa llicència. 
 
 \subsection{Eines per als projectes de codi obert}
 
