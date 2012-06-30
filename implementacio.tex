@@ -382,35 +382,39 @@ Com s'ha comentat al capítol \ref{chap:metodologia} per la implementació del p
 
 \section{Jocs de proves}
 
-Com s'ha comentat a l'apartat \ref{sec:tdd} per la implementació d'aquest projecte s'han utilitzat jocs de proves. En aquest apartat es detalla els jocs de proves que s'han implementat. Els testos implementats s'estructuren en dos blocs: 
+Com s'ha comentat a l'apartat \ref{sec:tdd} per la implementació d'aquest projecte s'han la metodologia TDD, que implica l'utiltizació de jocs de proves. Per a executar els jocs de proves s'ha utilitzat la llibrería mocha de Node.js \footnote{Veure secció \ref{sec:mocha-jscoverage}}. En aquest apartat es detalla els jocs de proves que s'han implementat. Els testos implementats s'estructuren en dos blocs: 
 
 \begin{description}
     \item[Botifarra]{ Són els testos encarregats que la lògica de la botifarra es compleixi a la perfecció.}
     \item[Comunicació client-servidor] {Jocs de proves encarregats de validar que al comunicació entre el client i el servidor es realitza de forma correcta.}
 \end{description}
 
-L'objectiu d'un joc de proves es festejar el correcte funcionament d'una funcionalitat de l'aplicació. Executant els jocs de proves cada vegada que es realitzi una modificació a l'aplicació podem garantir que les millores implementades anteriorment no han deixat de funcionar. 
+Els jocs de proves serveixen per especificar les funcionalitats de l'aplicació. Així executant els jocs de proves cada vegada que es realitzi una modificació a l'aplicació podem garantir que es compleixen totes les funcionalitats escrites fins al moment.
 
-A les següents línies de codi podem observar el joc de proba que s'utilitza per assegurar-nos de que una partida de botifarra no es pot jugar amb menys de 4 jugadors. 
+Tot seguit es mostren procions del conjunt de jocs de proves utiltizant el projecte. A la secció \ref{sec:format-jocs-prova}, podeu trobar més informació de quin és el format utiltizat per especificar els jocs de proves. 
+
+A les següents línies de codi podem observar el joc de s'utilitza per assegurar-nos de que una partida de botifarra no es pot jugar amb menys de 4 jugadors, i que si s'intenta começar una partida de forma ilegal el programa ens llença una exepció. 
 
 \begin{lstlisting}
-"A butifarraGame needs 4 players to start" : function() {
-    var game = Game.create();
-    var player1 = Player.create('John');
-    var player2 = Player.create('Mark');
-    var player3 = Player.create('Steve');
-    var player4 = Player.create('Bill');
-    game.min_players.should.eql(4);
-    should.throws(function(){
-        game.start();
-    },Error,"Not enough playerss");
-    player1.join(game);
-    player2.join(game);
-    player3.join(game);
-    player4.join(game);
-    should.doesNotThrow(function(){
-        game.start();
-    },Error,"Not enough players");      
+module.exports = {
+    "A butifarraGame needs 4 players to start" : function() {
+        var game = Game.create();
+        var player1 = Player.create('John');
+        var player2 = Player.create('Mark');
+        var player3 = Player.create('Steve');
+        var player4 = Player.create('Bill');
+        game.min_players.should.eql(4);
+        should.throws(function(){
+            game.start();
+        },Error,"Not enough playerss");
+        player1.join(game);
+        player2.join(game);
+        player3.join(game);
+        player4.join(game);
+        should.doesNotThrow(function(){
+            game.start();
+        },Error,"Not enough players");      
+    }
 }
 \end{lstlisting}
 
@@ -425,16 +429,18 @@ El joc de proves s'estructura de la següent forma:
 A les següents línies de codi podem observar el codi necessari per validar que la primera carta d'una jugada pot ser qualsevol carta.
 
 \begin{lstlisting}
-"The first Roll of a move could be any card" : function(done){
-    var CavallEspases = Card.create(11,'Espases');
-    player1.cards=[CavallEspases];
-    move.addRoll(player1,CavallEspases,function(err){
-        should.ifError(err);
-        move.rolls.length.should.eql(1);
-        move.rolls[0].card.should.eql(CavallEspases);
-        move.rolls[0].player.should.eql(player1);
-        done();
-    });
+module.exports = {
+    "The first Roll of a move could be any card" : function(done){
+        var CavallEspases = Card.create(11,'Espases');
+        player1.cards=[CavallEspases];
+        move.addRoll(player1,CavallEspases,function(err){
+            should.ifError(err);
+            move.rolls.length.should.eql(1);
+            move.rolls[0].card.should.eql(CavallEspases);
+            move.rolls[0].player.should.eql(player1);
+            done();
+        });
+    }
 }
 \end{lstlisting}
 
@@ -442,8 +448,7 @@ Com podeu observar aquest test es molt més simple que l'anterior, ja que l'úni
 
 \subsection{Botifarra}
 
-Pel que fa a l'apartat de la botifarra podem trobar els següents jocs de proves:
-
+Pel que fa a l'apartat de la botifarra podem trobar les següents especificacions:
 
 \begin{itemize}
     \item{Un jugador esta composat per un nom i un correu electrònic.}
@@ -499,7 +504,7 @@ Pel que fa a l'apartat de la botifarra podem trobar els següents jocs de proves
 
 \subsection{Comunicació client-servidor.}
 
-Pel que fa a l'apartat de comunicació entre el  podem trobar els següents jocs de proves:
+Pel que fa a l'apartat de comunicació entre el  podem trobar les següents especificacions:
 
 \begin{itemize}   
     \item{Hem de ser capaços de connectar al servidor.}

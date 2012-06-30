@@ -437,10 +437,72 @@ Git s'utilitza per controlar totes les modificacions que s'han realitzat al proj
 
 
 \section{Mocha i jscoverage}
+\label{sec:mocha-jscoverage}
 
 Mocha\footnote{\url{http://visionmedia.github.com/mocha/}} és una llibreria que s'encarrega d'executar jocs de prova i que funciona sobre el framework node. Aquesta llibreria s'encarrega de detectar quins dels nostres testos estan fallant i reportar-nos els errors a través de diferents formats. Una de les aplicacions més interessant de Mocha és la generació de informes de coverage. Un informe de coverage ens permet visualitzar quines són línies de codi de l'aplicació són executades per un joc de proves i quines no. Per a la generació d'aquest informes es requereix tenir instal·lada la llibreria jscoverage\footnote{\url{http://siliconforks.com/jscoverage/}}. 
 
 En l'àmbit del projecte Mocha s'utiltiza per avaluar els jocs de proves del projecte i validar que tots funcionen correctament. jscoverage s'utilitza per generar un informe que ens permet avaluar quines línies de codi estan sotmeses a jocs de proves i quines no.
+
+\subsection{Formats dels jocs de prova}
+\label{sec:format-jocs-prova}
+Mocha enten jocs de proves que están escrits amb els següents formats: BDD, TDD, Exports. Tots seguit es mostra un exemple de cadascún d'ells. 
+
+\subsubsection{BDD}
+\begin{lstlisting}
+describe('Array', function(){
+  before(function(){
+    // ...
+  });
+
+  describe('#indexOf()', function(){
+    it('should return -1 when not present', function(){
+      [1,2,3].indexOf(4).should.equal(-1);
+    });
+  });
+});
+\end{lstlisting}
+
+En BDD s'utiltizen les función describe(), it(), before(), beforeEach(), after() i aferterEach() per descriure la funcionalitat que es vol implementar i escriure el codi que l'ha de validar.
+
+\subsubsection{TDD}
+\begin{lstlisting}
+suite('Array', function(){
+  setup(function(){
+    // ...
+  });
+
+  suite('#indexOf()', function(){
+    test('should return -1 when not present', function(){
+      assert.equal(-1, [1,2,3].indexOf(4));
+    });
+  });
+});
+
+\end{lstlisting}
+
+En TDD s'utiltizen les funcions suite(), test(), setup(), i teardown() per tal d'escriure el codi que ha de validar el correcte funcionament de les especificacions.
+
+\subsubsection{Exports}
+\begin{lstlisting}
+module.exports = {
+  before: function(){
+    // ...
+  },
+
+  'Array': {
+    '#indexOf()': {
+      'should return -1 when not present': function(){
+        [1,2,3].indexOf(4).should.equal(-1);
+      }
+    }
+  }
+};
+
+\end{lstlisting}
+
+El format exports és molt semblant al format utilitzat pel parde de Mocha, expresso. En aquest format es defineix un diccionari on cada objecte és un conjunts de proves i cada funció és un joc de proves. Les claus dels objectes s'utilitzen per especificar el nom del joc de proves. Els noms before, after, beforeEach, i afterEach tenen una connotació especial. 
+
+Durant el transcurs del projecte s'ha utilitzat el format \emph{Exports}, ja que al principi del projecte s'utiltizava expresso per executar els jocs de proves. Així, quan es va migrar a Mocha ja hi havia jocs de proves escrits amb el format \emph{Exports} i es va decidir continuar amb el mateix format per tal d'evitar migrar tots els jocs de proves existents a un nou format. 
 
 \section{JSON}
 \label{sec:json}
