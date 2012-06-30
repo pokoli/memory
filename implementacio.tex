@@ -382,7 +382,7 @@ Com s'ha comentat al capítol \ref{chap:metodologia} per la implementació del p
 
 \section{Jocs de proves}
 
-Com s'ha comentat a l'apartat \ref{sec:tdd} per la implementació d'aquest projecte s'han la metodologia TDD, que implica l'utiltizació de jocs de proves. Per a executar els jocs de proves s'ha utilitzat la llibrería mocha de Node.js \footnote{Veure secció \ref{sec:mocha-jscoverage}}. En aquest apartat es detalla els jocs de proves que s'han implementat. Els testos implementats s'estructuren en dos blocs: 
+Com s'ha comentat a l'apartat \ref{sec:tdd} per la implementació d'aquest projecte s'han la metodologia TDD, que implica la utilització de jocs de proves. Per a executar els jocs de proves s'ha utilitzat la llibreria Mocha de Node.js \footnote{Veure secció \ref{sec:mocha-jscoverage}}. En aquest apartat es detalla els jocs de proves que s'han implementat. Els testos implementats s'estructuren en dos blocs: 
 
 \begin{description}
     \item[Botifarra]{ Són els testos encarregats que la lògica de la botifarra es compleixi a la perfecció.}
@@ -391,9 +391,9 @@ Com s'ha comentat a l'apartat \ref{sec:tdd} per la implementació d'aquest proje
 
 Els jocs de proves serveixen per especificar les funcionalitats de l'aplicació. Així executant els jocs de proves cada vegada que es realitzi una modificació a l'aplicació podem garantir que es compleixen totes les funcionalitats escrites fins al moment.
 
-Tot seguit es mostren procions del conjunt de jocs de proves utiltizant el projecte. A la secció \ref{sec:format-jocs-prova}, podeu trobar més informació de quin és el format utiltizat per especificar els jocs de proves. 
+Tot seguit es mostren porcions del conjunt de jocs de proves utilitzant el projecte. A la secció \ref{sec:format-jocs-prova}, podeu trobar més informació de quin és el format utilitzat per especificar els jocs de proves. 
 
-A les següents línies de codi podem observar el joc de s'utilitza per assegurar-nos de que una partida de botifarra no es pot jugar amb menys de 4 jugadors, i que si s'intenta começar una partida de forma ilegal el programa ens llença una exepció. 
+A les següents línies de codi podem observar el joc de s'utilitza per assegurar-nos de que una partida de botifarra no es pot jugar amb menys de 4 jugadors, i que si s'intenta començar una partida de forma il·legal el programa ens llença una excepció. 
 
 \begin{lstlisting}
 module.exports = {

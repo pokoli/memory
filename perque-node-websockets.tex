@@ -24,7 +24,7 @@ Javascript té les següents característiques:
     \item{Està dissenyat per suportar esdeveniments.}
 \end{enumerate}
 
-Aquestes característiques el fan el candidat ideal per a proporcionar una infraestructura sense bloquejos, basada en esdeveniments. A més a més, és un llenguatge que està molt extes en el món de la informàtica, cosa que provoca que hi hagi una gran quantitat de desenvolupadors que en tinguin coneixements. El principal ús de Javascript és el processament d'esdeveniments a la web. Així la semàntica de Node.js s'ha dissenyat de forma que sigui semblant al processament d'esdeveniments a la web, per tal facilitat la corba d'aprenentatge dels programadors amb coneixements de desenvolupament web.
+Aquestes característiques el fan el candidat ideal per a proporcionar una infraestructura sense bloquejos, basada en esdeveniments. A més a més, és un llenguatge que està molt extens en el món de la informàtica, cosa que provoca que hi hagi una gran quantitat de desenvolupadors que en tinguin coneixements. El principal ús de Javascript és el processament d'esdeveniments a la web. Així la semàntica de Node.js s'ha dissenyat de forma que sigui semblant al processament d'esdeveniments a la web, per tal facilitat la corba d'aprenentatge dels programadors amb coneixements de desenvolupament web.
 
 \section{Codi Síncron vs. Codi Asíncron}
 \label{sec:sincron-ascinron}
@@ -69,7 +69,7 @@ fs.readFile(__dirname + '/someDir/someFile', 'utf8', function (err,data) {
 });
 \end{lstlisting}
 
-En aquest text es pot veure el codi necessari per a llegir un fitxer de disc. Així el que es fa es dir-li al sistema, llegeix el fitxer /someDir/someFile, i en el moment que tinguins alguna informació executa la funció que es passa a l'ultim paràmetre. Amb això aconseguim que mentre el proces estigui llegint el fitxer nosaltres puguem seguir fent càlculs, i que quan s'hagi acabat la lectura del fitxer puguem fer amb ell el que creguem convenient. 
+En aquest text es pot veure el codi necessari per a llegir un fitxer de disc. Així el que es fa es dir-li al sistema, llegeix el fitxer /someDir/someFile, i en el moment que es tingui alguna informació executa la funció que es passa a l'ultim paràmetre. Amb això aconseguim que mentre el proces estigui llegint el fitxer nosaltres puguem seguir fent càlculs, i que quan s'hagi acabat la lectura del fitxer puguem fer amb ell el que creguem convenient. 
 
 El processament asíncron és fa gracies als anomenats esdeveniments, que s'encarreguen d'executar codi font quan s'ha produït alguna cosa. A més a més, Node.js ens permet crear esdeveniments personalitzats i fer que s'executi el nostre codi cada vegada que es produeix un esdeveniments. Els esdeveniments han estat utilitzats en gran part del desenvolupament del projecte. 
 
@@ -87,7 +87,7 @@ En el primer cas la CPU només es capaç d'executar el codi d'un programa a la v
 
 En el segon cas la CPU s'utilitza per diversos fils d'execució a la vegada, així mentre un fil d'execució està ocupat llegint un fitxer la CPU pot ser aprofitada per una altre fil d'execució. De totes formes aquesta forma de programació pot arribar a ser molt confusa en el cas que més d'un fil d'execució hagi de modificar la mateixa informació. Aquests factors s'han de tenir en compte per part del desenvolupador a l'hora de desenvolupar el programa. 
 
-L'ultim cas és el que s'utilitza a Node.js, amb la diferència que Node.js gestiona internament els diferents fil d'execució, evitant que el desenvolupador s'haigi de preocupar dels mateixos. Per aconseguir això el que fa és posar referències a funcions en una cua d'execució, així cada vegada que la CPU quedi lliure s'executa una nova porció de codi, evitant que més d'una porció de codi s'executi de forma simultània i evitant que la CPU quedi a l'espera de que es produeixi un esdeveniments. Tota la gestió referent als esdeveniments és el que s'anomena el bucle d'esdeveniments. 
+L'ultim cas és el que s'utilitza a Node.js, amb la diferència que Node.js gestiona internament els diferents fil d'execució, evitant que el desenvolupador s'hagi de preocupar dels mateixos. Per aconseguir això el que fa és posar referències a funcions en una cua d'execució, així cada vegada que la CPU quedi lliure s'executa una nova porció de codi, evitant que més d'una porció de codi s'executi de forma simultània i evitant que la CPU quedi a l'espera de que es produeixi un esdeveniments. Tota la gestió referent als esdeveniments és el que s'anomena el bucle d'esdeveniments. 
 
 En Node.js hi ha dos formes d'afegir l'execució d'un tros de codi al bucle d'esdeveniments: 
 
@@ -148,7 +148,7 @@ El seu funcionament és el següent:
 
 \section{Beneficis de Node.js}
 
-Node no té bloquejos, no te diferents fils d'execució competint pel mateix recurs. Node.js només espera a que es produeixi algun esdeveniment i quan es produeix el processa. Això es transforma en codi molt ràpid. Tota aquesta lògica també es podría programar amb altres llenguatges implementant un servidor multifil, encara que sería molt més complicat de programar-ho ja que ens hauríem de preocupar dels problemes relacionats amb la concurrència. 
+Node no té bloquejos, no te diferents fils d'execució competint pel mateix recurs. Node.js només espera a que es produeixi algun esdeveniment i quan es produeix el processa. Això es transforma en codi molt ràpid. Tota aquesta lògica també es podria programar amb altres llenguatges implementant un servidor multifil, encara que seria molt més complicat de programar-ho ja que ens hauríem de preocupar dels problemes relacionats amb la concurrència. 
 
 El disseny d'un joc en línia requereix que no hi hagi bloquejos, ni diferents fils d'execució competint pel mateix recurs, i que el codi s'executi el més ràpid possible. Tots aquest fets provoquen que Node.js i el seu disseny basat en esdeveniments sigui la millor elecció per allotjar tota la lògica d'un lloc en línia i per poder suportar el major nombre de partides de forma simultània.
 

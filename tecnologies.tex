@@ -29,11 +29,11 @@ Després d'explorar node.js vaig veure que el seu codi esta allotjat a Github, i
 
 \section{Javascript}
 
-Javascript és un llenguatge de programació utiltizat principalment en el projecte. És un llenguatge de script basat en el concepte de prototipus (herència per delegació), implementat originàriament per Netscape Communications Corporation l'any 1995, i que va derivar en l'estàndard ECMAScript. És conegut sobretot pel seu ús en pàgines web, però també s'utilitza en altres aplicacions.
+Javascript és un llenguatge de programació utilitzat principalment en el projecte. És un llenguatge de script basat en el concepte de prototipus (herència per delegació), implementat originàriament per Netscape Communications Corporation l'any 1995, i que va derivar en l'estàndard ECMAScript. És conegut sobretot pel seu ús en pàgines web, però també s'utilitza en altres aplicacions.
 
 En un principi, s'usava a pàgines web HTML, per realitzar feines i operacions al marc de l'aplicació client. Amb l'aparició de la Web 2.0, Javascript s'ha convertit en el llenguatge de la banda del client, permetent-nos escriure aplicacions senceres, com per exemple Gmail\footnote{Client web per accedir al correu de Google}. A més a més també ens permet per augmentar l'usabilitat d'aplicacions web amb tècniques avançades com AJAX.
 
-AJAX és l'acrònim de Asynchronous JavaScript And XML (JavaScript asíncron i XML), una tecnòlogia que ens permet sol·licitat informació addicional al servidor i carregar-la en segon plà, sense interferir amb el compartament de la pàgina actual. JavaScript és el llenguatge encarregar de realitzar la petició al servidor web i tractar les dades que s'han rebut del servidor. XML és el llenguatge de marcatge en que s'esctructura la informació. De totes formes la utiltizació de XML no és obligatòria, de fet actualmente s'utiltizen altres llenguatges com JSON. AJAX és una tècnica que es pot utiltizar en múltiples sistemes operatius i navegadors, ja que està basat en estàndars oberts.
+AJAX és l'acrònim de Asynchronous JavaScript And XML (JavaScript asíncron i XML), una tecnologia que ens permet sol·licitat informació addicional al servidor i carregar-la en segon pla, sense interferir amb el comportament de la pàgina actual. JavaScript és el llenguatge encarregar de realitzar la petició al servidor web i tractar les dades que s'han rebut del servidor. XML és el llenguatge de marcatge en que s'estructura la informació. De totes formes la utilització de XML no és obligatòria, de fet actualment s'utilitza altres llenguatges com JSON. AJAX és una tècnica que es pot utilitzar en múltiples sistemes operatius i navegadors, ja que està basat en estàndards oberts.
 
 En les següents línies de codi podeu veure un exemple de codi en Javascript. En aquest exemple es declara la funció \emph{preloadImages} que s'encarrega de carregar dos imatges per a que desprès les puguem mostrar a l'usuari.
  
@@ -52,7 +52,7 @@ function PreloadImages() {
 \label{sec:node.js-min}
 Node.js es un framework dissenyat per escriure aplicacions web altament escalables. Els programes s'escriuen amb Javascript. La seva estructura està basada en esdeveniments i una entrada/sortida asíncrona. Aquest framework utilitza el motor de Javascript V8\footnote{\url{http://en.wikipedia.org/wiki/V8_JavaScript_engine}}. El motor V8 és de codi obert i està desenvolupat per Google, ja que aquest l'utilitza al seu navegador Google Chrome. Aquest motor millora el rendiment compilant el codi Javascript a codi natiu abans d'executar-lo.
 
-El que fa diferent Node.js és el seu funcionament està basat en esdeveniments, i que encara que el codi s'executi en diferents fils d'execució simplementa de forma totalment transparent per al desenvolupador, que pot desenvolupar el programa com si s'executés en un sol fil. Això, provoca que els projectes que utilitzin aquest framework requereixin d'una programació diferent a la tradicional, asíncrona en comptes de seqüencial. A la secció \ref{sec:sincron-ascinron} és descriuen les diferències entre el codi síncron i el codi asíncron i es mostren exemples.
+El que fa diferent Node.js és el seu funcionament està basat en esdeveniments, i que encara que el codi s'executi en diferents fils d'execució s'implementa de forma totalment transparent per al desenvolupador, que pot desenvolupar el programa com si s'executés en un sol fil. Això, provoca que els projectes que utilitzin aquest framework requereixin d'una programació diferent a la tradicional, asíncrona en comptes de seqüencial. A la secció \ref{sec:sincron-ascinron} és descriuen les diferències entre el codi síncron i el codi asíncron i es mostren exemples.
 
 Al capítol \ref{sec:node.js-full} podeu trobar una explicació més detallada del funcionament de Node.js, juntament amb exemples de codi del mateix.
 
@@ -62,9 +62,9 @@ Al capítol \ref{sec:node.js-full} podeu trobar una explicació més detallada d
 
 WebSocket és una tecnologia que proporciona un canal de comunicació bidireccional i full-dúplex sobre un únic socket TCP. Està dissenyada per ser utilitzada en navegadors i servidors web, però pot utilitzar-se per qualsevol aplicació client/servidor. La API de WebSocket s'està normalitzant pel W3C\footnote{World Wide Web Consortium}, i el protocol WebSocket, a la vegada, s'està normalitzant per l'IETF\footnote{Internet Engineering Task Force}. Normalment, per temes de seguretat, els administradors de xarxes bloquegen les connexions als ports diferents del port 80, així els WebSockets pretenen solucionar aquest problema, aportant una tecnologia que proporcioni una funcionalitat similar a la que s'obté obrint diferents connexions en diferents ports però multiplexant els diferents serveis de a través d'un únic port TCP.
 
-Els websockets també pretenen evitar la sobrecàrregar d'informació que es produeix en el protocol HTTP. El protocol HTTP envía dades addicionals com poden ser la màquina que ha generat la informació, els llenguatges acceptats pel client, els mètodes de compresió acceptats pel client i moltes més. Això es útil per al procesament d'una pàgina web, ja que el client i el servidor podem reaccionar de forma diferent en funció d'aquesta informació. En el protocol WebSocket aquesta informació és irrelevant, ja que el servidor i el client són els mateixos durant tota la comunicació, així aquesta informació es exactament la mateixa desde la primera comunicació fins a la última. Per aquest motiu, i per tal de reduir la latència entre els dos extrems de la comunicació tota aquesta informació addicional s'elimina en el protocol WebSocket.
+Els WebSockets també pretenen evitar la sobrecàrrega d'informació que es produeix en el protocol HTTP. El protocol HTTP envia dades addicionals com poden ser la màquina que ha generat la informació, els llenguatges acceptats pel client, els mètodes de compressió acceptats pel client i moltes més. Això es útil per al processament d'una pàgina web, ja que el client i el servidor podem reaccionar de forma diferent en funció d'aquesta informació. En el protocol WebSocket aquesta informació és irrellevant, ja que el servidor i el client són els mateixos durant tota la comunicació, així aquesta informació es exactament la mateixa des de la primera comunicació fins a la última. Per aquest motiu, i per tal de reduir la latència entre els dos extrems de la comunicació tota aquesta informació addicional s'elimina en el protocol WebSocket.
 
-Els protocol WebSocket es basa en una petició HTTP que s'encarrega d'obrir el canal de comunicació entre el client i el servidor. A la figura \ref{fig:websocket-request} es pot observar una exemple de la petició que generar el programa client per tal d'obrir un canal de comunicació utiltizant el protocol WebSocket. A la figura \ref{fig:websocket-response} es mostra un exmple de la resposta que generar el servidor web per tal d'acceptar la comunicació del protocol WebSocket. 
+Els protocol WebSocket es basa en una petició HTTP que s'encarrega d'obrir el canal de comunicació entre el client i el servidor. A la figura \ref{fig:websocket-request} es pot observar una exemple de la petició que generar el programa client per tal d'obrir un canal de comunicació utilitzant el protocol WebSocket. A la figura \ref{fig:websocket-response} es mostra un exemple de la resposta que generar el servidor web per tal d'acceptar la comunicació del protocol WebSocket. 
 
 \begin{figure}[htbp]
 \centering
@@ -102,7 +102,7 @@ Una vegada s'ha obert el canal de comunicació entre el client i el servidor, aq
     \item{No es requereix l'enviament de missatges indicant que s'ha rebut la informació.}
 \end{itemize}
 
-A més a més en el protocol WebSocket no es necessàri preguntar continuament si s'ha rebut un missatge per part de l'altra banda de comunicació, sinó que es produeix un event cada vegada que el nostra canal de comunicació reb un nou event. Això és una gran diferència entre les aplicacions web basades en AJAX, ja que en AJAX el programa client ha realitzar una petició de forma períodica, per exemple cada segon, per tal de saber si el servidor disposa de nova informació. Si utiltizem el protocol WebSocket el servidor és l'encarregat d'enviar un missatge als clients cada vegada que hi ha nova informació. Amb això, s'evita un gran nombre de peticions innecesàries per part del client, evitant també la sobrecarga que això suposa pel servidor.
+A més a més en el protocol WebSocket no es necessari preguntar contínuament si s'ha rebut un missatge per part de l'altra banda de comunicació, sinó que es produeix un esdeveniment cada vegada que el nostra canal de comunicació rep un nou esdeveniment. Això és una gran diferència entre les aplicacions web basades en AJAX, ja que en AJAX el programa client ha realitzar una petició de forma periòdica, per exemple cada segon, per tal de saber si el servidor disposa de nova informació. Si utilitzem el protocol WebSocket el servidor és l'encarregat d'enviar un missatge als clients cada vegada que hi ha nova informació. Amb això, s'evita un gran nombre de peticions innecessàries per part del client, evitant també la sobrecàrrega que això suposa pel servidor.
 
 \begin{figure}[ht!]
 \centering
@@ -113,13 +113,13 @@ A més a més en el protocol WebSocket no es necessàri preguntar continuament s
 \begin{call}{c}{Petició obertura canal websocket.}{s}{Acceptació canal WebSocket.}
 \end{call}
 
-\begin{messcall}{s}{Actualizació informació}{c}
+\begin{messcall}{s}{Actualització informació}{c}
 \end{messcall}
 
-\begin{messcall}{c}{Enviar informació introduida per l'usuari}{s}
+\begin{messcall}{c}{Enviar informació introduïda per l'usuari}{s}
 \end{messcall}
 
-\begin{messcall}{s}{Actualizació informació}{c}
+\begin{messcall}{s}{Actualització informació}{c}
 \end{messcall}
 
 \begin{messcall}{c}{Tancament del canal}{s}
@@ -130,10 +130,10 @@ A més a més en el protocol WebSocket no es necessàri preguntar continuament s
 \label{diag:websocket}
 \end{figure} 
 
-A la figura \ref{diag:websocket} es pot observar el diagrama de flux d'una comunicació a través del protocol websocket. Com es pot observar l'unic missatge que requereix l'acceptació per part del receptor del mateix és el que s'utilitza per iniciar la comunicació. A partir d'aquest moment el canal queda obert, per a que qualsevol de les dos bandes pugui enviar informació a través del WebSocket quan ho consideri necessàri. 
+A la figura \ref{diag:websocket} es pot observar el diagrama de flux d'una comunicació a través del protocol websocket. Com es pot observar l'únic missatge que requereix l'acceptació per part del receptor del mateix és el que s'utilitza per iniciar la comunicació. A partir d'aquest moment el canal queda obert, per a que qualsevol de les dos bandes pugui enviar informació a través del WebSocket quan ho consideri necessari. 
 
 
-Actualment es poden trobar una gran varietat de servidors que implementen el protocol WebSocket. Tot seguit se'n detalla una llista, juntament amb el llenguatge de programació utiltizat: 
+Actualment es poden trobar una gran varietat de servidors que implementen el protocol WebSocket. Tot seguit se'n detalla una llista, juntament amb el llenguatge de programació utilitzat: 
 
 \begin{itemize}
     \item{C
@@ -211,7 +211,7 @@ Actualment es poden trobar una gran varietat de servidors que implementen el pro
     }
 \end{itemize}    
 
-En l'ambit del projecte els WebSockets s'utilitzen per proporcionar un métode de comunicació en temps real entre el client i el servidor. Com a implementació del protocol WebSocket s'ha utilitzat la Socket.io de Node.js. S'ha elegit aquesta llibrería perquè es capaç de detectar si la conexió a través de WebSockets es soportada pel programa client, i en el cas de que aquesta no sigui suportada l'emula a través d'altres tecnologies com:  Adobe® Flash® Socket,  AJAX long polling, AJAX multipart streaming, Forever Iframe i JSONP Polling.
+En l'àmbit del projecte els WebSockets s'utilitzen per proporcionar un mètode de comunicació en temps real entre el client i el servidor. Com a implementació del protocol WebSocket s'ha utilitzat la Socket.io de Node.js. S'ha elegit aquesta llibreria perquè es capaç de detectar si la connexió a través de WebSockets es suportada pel programa client, i en el cas de que aquesta no sigui suportada l'emula a través d'altres tecnologies com:  Adobe® Flash® Socket,  AJAX long polling, AJAX multipart streaming, Forever Iframe i JSONP Polling.
 
 
 
@@ -219,7 +219,7 @@ En l'ambit del projecte els WebSockets s'utilitzen per proporcionar un métode d
 
 HTML representa les sigles de \emph{Hyper Text Markup Language}, que en català signifiquen "llenguatge de marcat d'hipertext". És un llenguatge de marcat que deriva de l'SGML dissenyat per estructurar textos i relacionar-los en forma d'hipertext. Gràcies a Internet i als navegadors web, s'ha convertit en un dels formats més populars que existeixen per a la construcció de documents per a la web. 
 
-HTML5 és la última versió de HTML i la que s'utiltiza per escriure tot l'entorn web del projecte. Aquesta última versió proporciona noves marques per poder estructurar els documents d'una forma més semàntica. A més a més proporciona noves etiquetes per poder etiquetar contingut multimèdia, ja sigui àudio o vídeo. També afegeix una nova etiqueta \emph{canvas} que permet la representació dinàmica de formes 2D i imatges a través de llenguatge Javascript. 
+HTML5 és la última versió de HTML i la que s'utilitza per escriure tot l'entorn web del projecte. Aquesta última versió proporciona noves marques per poder estructurar els documents d'una forma més semàntica. A més a més proporciona noves etiquetes per poder etiquetar contingut multimèdia, ja sigui àudio o vídeo. També afegeix una nova etiqueta \emph{canvas} que permet la representació dinàmica de formes 2D i imatges a través de llenguatge Javascript. 
 
 \subsection{L'objecte canvas}
 
@@ -445,7 +445,7 @@ En l'àmbit del projecte Mocha s'utiltiza per avaluar els jocs de proves del pro
 
 \subsection{Formats dels jocs de prova}
 \label{sec:format-jocs-prova}
-Mocha enten jocs de proves que están escrits amb els següents formats: BDD, TDD, Exports. Tots seguit es mostra un exemple de cadascún d'ells. 
+Mocha entén jocs de proves que estan escrits amb els següents formats: BDD, TDD, Exports. Tots seguit es mostra un exemple de cadascun d'ells. 
 
 \subsubsection{BDD}
 \begin{lstlisting}
@@ -500,16 +500,16 @@ module.exports = {
 
 \end{lstlisting}
 
-El format exports és molt semblant al format utilitzat pel parde de Mocha, expresso. En aquest format es defineix un diccionari on cada objecte és un conjunts de proves i cada funció és un joc de proves. Les claus dels objectes s'utilitzen per especificar el nom del joc de proves. Els noms before, after, beforeEach, i afterEach tenen una connotació especial. 
+El format exports és molt semblant al format utilitzat pel pare de Mocha, expresso. En aquest format es defineix un diccionari on cada objecte és un conjunts de proves i cada funció és un joc de proves. Les claus dels objectes s'utilitzen per especificar el nom del joc de proves. Els noms before, after, beforeEach, i afterEach tenen una connotació especial. 
 
-Durant el transcurs del projecte s'ha utilitzat el format \emph{Exports}, ja que al principi del projecte s'utiltizava expresso per executar els jocs de proves. Així, quan es va migrar a Mocha ja hi havia jocs de proves escrits amb el format \emph{Exports} i es va decidir continuar amb el mateix format per tal d'evitar migrar tots els jocs de proves existents a un nou format. 
+Durant el transcurs del projecte s'ha utilitzat el format \emph{Exports}, ja que al principi del projecte s'utilitzava expresso per executar els jocs de proves. Així, quan es va migrar a Mocha ja hi havia jocs de proves escrits amb el format \emph{Exports} i es va decidir continuar amb el mateix format per tal d'evitar migrar tots els jocs de proves existents a un nou format. 
 
 \section{JSON}
 \label{sec:json}
 
 JSON (acrònim de JavaScript Object Notation) és un estàndard obert basat en text dissenyat per a intercanvi de dades llegible per humans. Deriva del llenguatge script JavaScript, per a representar estructures de dades simples i llistes associatives, anomenades objectes. Malgrat la seva relació amb el JavaScript, té implementacions per a gran part dels llenguatges de programació, alguns exemples són: ActionScript, C, C++, C\#, ColdFusion, Common Lisp, Delphi, E, Eiffel, Java, JavaScript, ML, Objective CAML, Perl, PHP, Python, Rebol, Ruby, Lua y Visual FoxPro. 
 
-El format JSON s'utilitza habitualment per serialitzar i transmetre dades estructurades en una connexió de marxa. S'utilitza principalment per intercanviar dades entre un servidor i una aplicació web, sent una alternativa a l'XML\footnote{\url{https://ca.wikipedia.org/wiki/XML}}. Un dels principals aventatges de JSON respecte a XML és que el primer pot ser directament interpretat amb Javascript i el segon necessita ser parsejat. Això, provoca que el codi Javascript necessari per llegir un fitxer JSON sigui molt més reduït que un XML. A part de la reducció de codi, és molt més ràpid llegir un fitxer en JSON que en XML. 
+El format JSON s'utilitza habitualment per serialitzar i transmetre dades estructurades en una connexió de marxa. S'utilitza principalment per intercanviar dades entre un servidor i una aplicació web, sent una alternativa a l'XML\footnote{\url{https://ca.wikipedia.org/wiki/XML}}. Un dels principals avantatges de JSON respecte a XML és que el primer pot ser directament interpretat amb Javascript i el segon necessita ser parsejat. Això, provoca que el codi Javascript necessari per llegir un fitxer JSON sigui molt més reduït que un XML. A part de la reducció de codi, és molt més ràpid llegir un fitxer en JSON que en XML. 
 
 En les següents línies podeu veure una mostra de com s'estructura la informació en format JSON. 
 
@@ -530,7 +530,7 @@ En les següents línies podeu veure una mostra de com s'estructura la informaci
 
 \section{Jade}
 
-Jade és un motor de plantilles que ens permet simplificar el codi necessàri per a realitzar un pàgina en HTML. Jade s'ha utiltizat en el projecte per tal de generar els fitxers HTML que mostrar el servidor. Gràcies a jade s'ha simplificat el desenvolupament i el mateniment dels mateixos. Un dels principals aventatges de Jade ens que ens permet olvidar-nos de que estem utitlizant un llenguatge de marcatge (HTML). A més a més, Jade ens permet l'utiltizació de variables per a què la mateixa plantilla pugui generar diferents sortides en funció de variables. Aquest fet permet la reutilització de codi.
+Jade és un motor de plantilles que ens permet simplificar el codi necessari per a realitzar un pàgina en HTML. Jade s'ha utilitzat en el projecte per tal de generar els fitxers HTML que mostrar el servidor. Gràcies a jade s'ha simplificat el desenvolupament i el manteniment dels mateixos. Un dels principals avantatges de Jade ens que ens permet olvidar-nos de que estem utilitzant un llenguatge de marcatge (HTML). A més a més, Jade ens permet la utilització de variables per a què la mateixa plantilla pugui generar diferents sortides en funció de variables. Aquest fet permet la reutilització de codi.
 
 En les següents línies podeu veure un exemple d'una plantilla escrita amb Jade. 
 
@@ -573,7 +573,7 @@ Tot seguit podeu veure el HTML que ens queda desprès d'aplicar la plantilla.
 
 \section{Pencil Sketching}
 \label{sec:pencil sketcing}
-Pencil Sketching és una extensió del navegador web Firefox que ens permet disenyar prototips d'interfícies gràfiques. Aquesta eina s'ha utiltizat per al disenyar el prototopis de la interfície gràfica que podeu trobar en el capítol \ref{chap:interficie_usuari}. S'ha triat aquesta eina per la seva simplicitat i perquè ens permet exportar els nostres disenys a diferents formats, com per exemple: HTML, PNG, documents Openoffice.org, documents Word i PDF. Un altre factor per elegir aquesta tecnòlogia es que funciona amb tots els sistemes operatius on funciona el navegador web Firefox, ja que és una extensió del mateix. A la figura \ref{fig:pencil} es pot observar una captura de pantalla de l'aplicació. 
+Pencil Sketching és una extensió del navegador web Firefox que ens permet dissenyar prototips d'interfícies gràfiques. Aquesta eina s'ha utilitzat per al dissenyar el prototipus de la interfície gràfica que podeu trobar en el capítol \ref{chap:interficie_usuari}. S'ha triat aquesta eina per la seva simplicitat i perquè ens permet exportar els nostres dissenys a diferents formats, com per exemple: HTML, PNG, documents Openoffice.org, documents Word i PDF. Un altre factor per elegir aquesta tecnologia es que funciona amb tots els sistemes operatius on funciona el navegador web Firefox, ja que és una extensió del mateix. A la figura \ref{fig:pencil} es pot observar una captura de pantalla de l'aplicació. 
 
 \begin{figure}[htbp]
 \centering\includegraphics[width=13cm]{img/pencil.png}
