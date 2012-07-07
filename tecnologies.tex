@@ -20,16 +20,16 @@ Abans de començar el projecte, quan en JM em va proposar de realitzar-lo em va 
 	\item{HTML5, especialment l'objecte canvas}
 \end{itemize}
 
-Per la meva part desconeixia totalment l'existència de node.js i dels Websockets. Tot i tenia petits coneixements sobre HTML5, sabia que aquest no eren molt extensos i que eren necessari expandir-los.
+Per la meva part desconeixia totalment l'existència de Node.js i dels Websockets. Tot i tenia petits coneixements sobre HTML5, sabia que aquest no eren molt extensos i que eren necessari expandir-los.
 
 El fet d'explorar noves tecnologies va ser molt motivador per mi, fins al punt de dir que ha estat una de les principals raons per decidir-m'hi per aquest projecte i no per un altre.  
 
-Després d'explorar node.js vaig veure que el seu codi esta allotjat a Github, i que la majoria dels mòduls que corren sobre ell també. Així em va semblar convenient allotjar tot el codi del projecte al mateix lloc. Github utilitza git com software de control de versions
+Després d'explorar Node.js vaig veure que el seu codi esta allotjat a Github, i que la majoria dels mòduls que corren sobre ell també. Així em va semblar convenient allotjar tot el codi del projecte al mateix lloc. Github utilitza git com software de control de versions
 
 
 \section{Javascript}
 
-Javascript és un llenguatge de programació utilitzat principalment en el projecte. És un llenguatge de script basat en el concepte de prototipus (herència per delegació), implementat originàriament per Netscape Communications Corporation l'any 1995, i que va derivar en l'estàndard ECMAScript. És conegut sobretot pel seu ús en pàgines web, però també s'utilitza en altres aplicacions.
+Javascript és el llenguatge de programació utilitzat principalment en el projecte. És un llenguatge de script basat en el concepte de prototipus (herència per delegació), implementat originàriament per Netscape Communications Corporation l'any 1995, i que va derivar en l'estàndard ECMAScript. És conegut sobretot pel seu ús en pàgines web, però també s'utilitza en altres aplicacions.
 
 En un principi, s'usava a pàgines web HTML, per realitzar feines i operacions al marc de l'aplicació client. Amb l'aparició de la Web 2.0, Javascript s'ha convertit en el llenguatge de la banda del client, permetent-nos escriure aplicacions senceres, com per exemple Gmail\footnote{Client web per accedir al correu de Google}. A més a més també ens permet per augmentar l'usabilitat d'aplicacions web amb tècniques avançades com AJAX.
 
@@ -49,12 +49,12 @@ function PreloadImages() {
 
 
 \section{Node.js}
-\label{sec:node.js-min}
-Node.js es un framework dissenyat per escriure aplicacions web altament escalables. Els programes s'escriuen amb Javascript. La seva estructura està basada en esdeveniments i una entrada/sortida asíncrona. Aquest framework utilitza el motor de Javascript V8\footnote{\url{http://en.wikipedia.org/wiki/V8_JavaScript_engine}}. El motor V8 és de codi obert i està desenvolupat per Google, ja que aquest l'utilitza al seu navegador Google Chrome. Aquest motor millora el rendiment compilant el codi Javascript a codi natiu abans d'executar-lo.
+\label{sec:Node.js-min}
+Node.js es un framework creat per Ryan Dahl i dissenyat per escriure aplicacions web altament escalables. Els programes s'escriuen amb Javascript. La seva estructura està basada en esdeveniments i una entrada/sortida asíncrona. Aquest framework utilitza el motor de Javascript V8\footnote{\url{http://en.wikipedia.org/wiki/V8_JavaScript_engine}}. El motor V8 és de codi obert i està desenvolupat per Google, ja que aquest l'utilitza al seu navegador Google Chrome. Aquest motor millora el rendiment compilant el codi Javascript a codi natiu abans d'executar-lo.
 
 El que fa diferent Node.js és el seu funcionament està basat en esdeveniments, i que encara que el codi s'executi en diferents fils d'execució s'implementa de forma totalment transparent per al desenvolupador, que pot desenvolupar el programa com si s'executés en un sol fil. Això, provoca que els projectes que utilitzin aquest framework requereixin d'una programació diferent a la tradicional, asíncrona en comptes de seqüencial. A la secció \ref{sec:sincron-ascinron} és descriuen les diferències entre el codi síncron i el codi asíncron i es mostren exemples.
 
-Al capítol \ref{sec:node.js-full} podeu trobar una explicació més detallada del funcionament de Node.js, juntament amb exemples de codi del mateix.
+Al capítol \ref{sec:Node.js-full} podeu trobar una explicació més detallada del funcionament de Node.js, juntament amb exemples de codi del mateix.
 
 
 \section{Websockets}
@@ -399,7 +399,7 @@ En l'exemple anterior es declara una classe anomenada \emph{bordered}. La declar
 
 \section{jQuery}
 
-jQuery és una llibreria de Javascript, creada inicial ment per John Resig, que permet simplificar la forma d'interactuar amb els documents HTML, manipular l'arbre DOM, interactuar amb els esdeveniments, desenvolupar animacions i afegir interacció dinàmica a pàgines web. 
+jQuery és una llibreria de Javascript, creada inicialment per John Resig, que permet simplificar la forma d'interactuar amb els documents HTML, manipular l'arbre DOM, interactuar amb els esdeveniments, desenvolupar animacions i afegir interacció dinàmica a pàgines web. 
 
 jQuery es software de codi obert, llicenciat sota les llicències MIT i LGPLv2. Aquest fet permet que pugui ser usada tan a projectes lliures com a projectes privatius. 
 
@@ -439,7 +439,7 @@ Git s'utilitza per controlar totes les modificacions que s'han realitzat al proj
 \section{Mocha i jscoverage}
 \label{sec:mocha-jscoverage}
 
-Mocha\footnote{\url{http://visionmedia.github.com/mocha/}} és una llibreria que s'encarrega d'executar jocs de prova i que funciona sobre el framework node. Aquesta llibreria s'encarrega de detectar quins dels nostres testos estan fallant i reportar-nos els errors a través de diferents formats. Una de les aplicacions més interessant de Mocha és la generació de informes de coverage. Un informe de coverage ens permet visualitzar quines són línies de codi de l'aplicació són executades per un joc de proves i quines no. Per a la generació d'aquest informes es requereix tenir instal·lada la llibreria jscoverage\footnote{\url{http://siliconforks.com/jscoverage/}}. 
+Mocha\footnote{\url{http://visionmedia.github.com/mocha/}} és una llibreria que s'encarrega d'executar jocs de prova i que funciona sobre el framework Node.js. Aquesta llibreria s'encarrega de detectar quins dels nostres testos estan fallant i reportar-nos els errors a través de diferents formats. Una de les aplicacions més interessant de Mocha és la generació de informes de coverage. Un informe de coverage ens permet visualitzar quines són línies de codi de l'aplicació són executades per un joc de proves i quines no. Per a la generació d'aquest informes es requereix tenir instal·lada la llibreria jscoverage\footnote{\url{http://siliconforks.com/jscoverage/}}. 
 
 En l'àmbit del projecte Mocha s'utiltiza per avaluar els jocs de proves del projecte i validar que tots funcionen correctament. jscoverage s'utilitza per generar un informe que ens permet avaluar quines línies de codi estan sotmeses a jocs de proves i quines no.
 
@@ -544,7 +544,7 @@ html(lang="en")
          bar()
       }
   body
-    h1 Jade - node template engine
+    h1 Jade - Node.js template engine
     #container
       p You are amazing
 \end{lstlisting}
@@ -563,7 +563,7 @@ Tot seguit podeu veure el HTML que ens queda desprès d'aplicar la plantilla.
     </script>
   </head>
   <body>
-    <h1>Jade - node template engine</h1>
+    <h1>Jade - Node.js template engine</h1>
     <div id="container">
       <p>You are amazing</p>
     </div>

@@ -3,7 +3,7 @@
 
 Abans de començar a escriure cap línia de codi cal determinar quina és la metodologia que s'utilitzarà durant el projecte. 
 
-Així en aquest s'ha utilitzat el model incremental o iteratiu. A més a més s'ha complementat amb la utilització de Test Driven Development i el Behaviour Driven Development per poder controlar de forma automatitzada el correcte funcionament de l'aplicació i que aquesta es comporta de tal i com s'espera.
+Així en aquest s'ha utilitzat el model incremental o iteratiu. A més a més s'ha complementat amb la utilització de Test Driven Development o Behaviour Driven Development per poder controlar de forma automatitzada el correcte funcionament de l'aplicació i que aquesta es comporta de tal i com s'espera.
 
 En els següents apartats es descriu amb més detalles les característiques d'aquestes metodologies.  
 
@@ -35,10 +35,13 @@ Els inconvenients d’utilitzar aquest model són:
 \end{itemize}
 
 
-\section{Test Driven Development}
+\section{Test \& Behavoir Driven Development}
 \label{sec:tdd}
 
 Test Driven Development o desenvolupament de software bastat en Testos és una metodologia de desenvolupament de software centrada en els jocs de proves. Un joc de prova és un executable que s'utilitza per comprovar de forma automàtica que el que es vol implementar compleix amb les funcionalitats i els requeriments dissenyades en la fas d'anàlisi. Per tal d'aconseguir-ho cada un dels jocs de proves s'associa amb les especificacions del que es vol construir. Això ens permet validar de forma automàtica que el que s'ha construït compleix amb les especificacions o requeriments desitjats. A la figura \ref{fig:tdd} es pot veure un diagrama del cicle de desenvolupament basat en Test Driven Development.
+
+Aquesta tècnia també s'anomena Behavoir Driven Development quan s'utilitzen els jocs de proves per especificar el comportament que ha de tenir el sistema. Això permet que els desenvolupadors es concentrin en perquè el codi ha d'estar creat i no tan en els detalls tècnics. També permet minimitzar les diferències entre el llenguatge en que està escrit el codi i el llenguatge utilitzat pels usuaris del sistema.
+
 
 \begin{figure}[htbp]
 %\centering\includegraphics{img/test-driven-development.png}
@@ -59,9 +62,11 @@ Aquesta metodologia utilitza el següent cicle de desenvolupament:
     \item{Reestructurar el codi}
 \end{enumerate}
 
-Aquesta metodologia té l'objectiu d'implementar petites funcionalitats que puguin ser provades de forma independent per un joc de prova, per tal de desprès ajuntar-les amb el conjunt de l'aplicació. Gràcies a això s'aconsegueix millorar l'àmbit de proves de l'aplicació, ja que cada funcionalitat es prova dos vegades: una per separat i una altra amb el conjunt de tota l'aplicació.  
+Aquesta metodologia té l'objectiu d'implementar petites funcionalitats que puguin ser provades de forma independent per un joc de prova, per tal de desprès ajuntar-les amb el conjunt de l'aplicació. Gràcies a això s'aconsegueix millorar l'àmbit de proves de l'aplicació, ja que cada funcionalitat es prova dos vegades: una per separat i una altra amb el conjunt de tota l'aplicació. 
 
-El Test Driven Development té les següents ventatges: 
+El concepte fundamental d'aquesta metodologia és que els jocs de proves s'escriuren abans de la implementació del codi. Aquest fet el diferència dels jocs de proves clàssics, ja que els segons s'escriuen desprès de tenir d'haver realitzar la implementació.
+
+La utilització d'aquesta metodologia té les següents ventatges: 
 
 \begin{enumerate}
     \item{Major flexibilitat del codi, ja que per poder ser testejat aquest ha de funcionar de forma independent i en el conjunt de tot l'aplicació.}
@@ -76,10 +81,4 @@ i els següents inconvenients:
     \item{Difícil d'implementar en alguns casos: Interfícies de client,bases de dades, programes dependents de la xarxa.}
     \item{Dependència de que els testos estiguin ben escrits. }
 \end{enumerate}
-
-\section{Behavoir Driven Development}
-\label{sec:bdd}
-
-El Behavoir Driven Development és una extensió del Test Driven Development en la qual s'utilitzen els jocs de proves per 
-especificar el comportament que ha de tenir el sistema en determinades ocasions. Això permet que els desenvolupadors es concentrin en perquè el codi ha d'estar creat i no tan en els detalls tècnics. També permet minimitzar les diferències entre el llenguatge en que està escrit el codi i el llenguatge utilitzat pels usuaris del sistema. 
 

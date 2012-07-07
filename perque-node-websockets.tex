@@ -1,5 +1,5 @@
 \chapter{Perquè Node.js}
-\label{sec:node.js-full}
+\label{sec:Node.js-full}
 
 Node.js és una entorn d'execució per a codi Javascript, és a dir es capaç d'interpretar codi escrit amb Javascript. Tradicionalment Javascript s'ha utilitzat per executar codi dins del navegador, el que s'anomena la banda del client. Node.js ha modificat totalment aquest concepte i ens permet executar codi Javascript en un servidor. Així Node.js ens proporciona els mètodes suficients per poder interactuar amb el sistema que l'esta executant.
 
@@ -26,10 +26,10 @@ Javascript té les següents característiques:
 
 Aquestes característiques el fan el candidat ideal per a proporcionar una infraestructura sense bloquejos, basada en esdeveniments. A més a més, és un llenguatge que està molt extens en el món de la informàtica, cosa que provoca que hi hagi una gran quantitat de desenvolupadors que en tinguin coneixements. El principal ús de Javascript és el processament d'esdeveniments a la web. Així la semàntica de Node.js s'ha dissenyat de forma que sigui semblant al processament d'esdeveniments a la web, per tal facilitat la corba d'aprenentatge dels programadors amb coneixements de desenvolupament web.
 
-\section{Codi Síncron vs. Codi Asíncron}
+\section{Codi síncron vs. codi asíncron}
 \label{sec:sincron-ascinron}
 
-Com s'ha comentat a la secció \ref{sec:node.js-min}, Node.js permet executar codi de forma asíncrona, proporcionant en un entorn d'execució d'un sol fil d'execució al desenvolupador, encara que internament n'utilitzi més d'un. Així en aquesta secció el que farem es explicar les diferències entre el codi síncron i asíncron.
+Com s'ha comentat a la secció \ref{sec:Node.js-min}, Node.js permet executar codi de forma asíncrona, proporcionant en un entorn d'execució d'un sol fil d'execució al desenvolupador, encara que internament n'utilitzi més d'un. Així en aquesta secció el que farem es explicar les diferències entre el codi síncron i asíncron.
 
 Un dels primers programes que aprèn qualsevol programador és el següent:
 
@@ -148,7 +148,7 @@ El seu funcionament és el següent:
 
 \section{Beneficis de Node.js}
 
-Node no té bloquejos, no te diferents fils d'execució competint pel mateix recurs. Node.js només espera a que es produeixi algun esdeveniment i quan es produeix el processa. Això es transforma en codi molt ràpid. Tota aquesta lògica també es podria programar amb altres llenguatges implementant un servidor multifil, encara que seria molt més complicat de programar-ho ja que ens hauríem de preocupar dels problemes relacionats amb la concurrència. 
+Node no té bloquejos, no té diferents fils d'execució competint pel mateix recurs. Node.js només espera a que es produeixi algun esdeveniment i quan es produeix el processa. Això es transforma en codi molt ràpid. Tota aquesta lògica també es podria programar amb altres llenguatges implementant un servidor multifil, encara que seria molt més complicat de programar-ho ja que ens hauríem de preocupar dels problemes relacionats amb la concurrència. 
 
 El disseny d'un joc en línia requereix que no hi hagi bloquejos, ni diferents fils d'execució competint pel mateix recurs, i que el codi s'executi el més ràpid possible. Tots aquest fets provoquen que Node.js i el seu disseny basat en esdeveniments sigui la millor elecció per allotjar tota la lògica d'un lloc en línia i per poder suportar el major nombre de partides de forma simultània.
 

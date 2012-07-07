@@ -1,9 +1,9 @@
-\chapter{Implementació}
+\chapter{Disseny i implementació}
 \label{chap:implementacio}
 
 La implementació del joc s'ha estructurat en dos grans blocs: el servidor i la interfície client. El servidor es l'encarregat de gestionar la informació relativa a les partides disponibles, els jugadors connectats i tota la lògica referent a les partides. La interfície client s'encarrega de interaccionar amb el servidor i mostrar la informació al usuari. 
 
-Per l'intercanvi de dades entre el servidor i el client s'utilitza el protocol WebSocket\footnote{Veure Capítol \ref{sec:websockets}},  ja que ens proporcionen un canal de comunicació bi-direccional. Aquest canal ens permet que els servidor notifiqui al client cada vegada que es produeix un esdeveniment a la partida en curs i que el client notifiqui al servidor les accions que ha dut a terme el jugador. 
+Per l'intercanvi de dades entre el servidor i el client s'utilitza el protocol WebSocket\footnote{Veure Capítol \ref{sec:websockets}},  ja que ens permeten establir un canal de comunicació bi-direccional. Aquest canal ens permet que els servidor notifiqui al client cada vegada que es produeix un esdeveniment a la partida en curs i que el client notifiqui al servidor les accions que ha dut a terme el jugador. 
 
 \section{Servidor}
 
@@ -12,7 +12,7 @@ El servidor s'encarrega de les següents tasques:
 \begin{itemize}
 \item{Proporcionar un servidor web encarregat de servir el programa client per a cada connexió.}
 \item{Emmagatzemar les partides en curs i jugadors connectats. Proporcionar esdeveniments a través de WebSockets per a que els usuaris puguin interaccionar a través del programa client. }
-\item{Aplicar les regles de la botifarra a cada joc en curs i interactuar amb els diferents clients connectats a una partida}
+\item{Aplicar les regles de la botifarra a cada joc proporcionen catalàen curs i interactuar amb els diferents clients connectats a una partida}
 \end{itemize}
 
 En les properes seccions s'explica més profundament com s'ha realitzat la implementació de cadascuna de les tasques. 
@@ -42,7 +42,7 @@ A part de totes aquests funcionalitats, express també s'integra amb diferents l
 
 Per la implementació del projecte s'ha utilitzat el motor de plantilles Jade, ja que ens permeten una gran simplificació del codi HTML.
 
-La conjunció de tots els elements comentats anteriorment ens permeten disposar d'un servidor web sobre node.js. Això vol dir que les peticions es processen de forma asíncrona. 
+La conjunció de tots els elements comentats anteriorment ens permeten disposar d'un servidor web sobre Node.js. Això vol dir que les peticions es processen de forma asíncrona. 
 
 \subsection{Interconnexió Jugadors}
 \label{sec:interconnexio-jugadors}
@@ -108,7 +108,7 @@ Donat un conjunt de nombre de 1 a N, aquest algoritme s'aplica de la següent fo
 \item{El conjunt de nombres que s'han escrit al pas 3 es una permutació aleatòria del conjunt de nombres inicials}
 \end{enumerate}
 
-Aquest algorisme te un cost $O(n^2)$ per això s'ha utilitzat la variant de Knuth que permet optimitzar l'algorisme fins a obtenir un cost de $O(n)$. Aquesta variant el que fa es moure els elements pendents de tractar al final de lla llista. Així l'algorisme es queda expressat de la següent forma: 
+En el projecte s'ha utilitzat una variant de l'algoritme inicial, concretament la de Knuth. L'algorisme utilitzat queda expressat de la següent forma: 
 
 \begin{lstlisting}
  Per ordenar un conjunt de n elements (indexs 0..n-1):

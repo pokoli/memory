@@ -2,10 +2,10 @@
 \label{chap:dependencies}
 
 
-L'únic requeriment que es necessita per a fer poder fer funcionar el servidor de la botifarra que s'ha implementat es que es disposi del framework node.js instal·lat i instal·lar el paquets dependents del desenvolupament que s'ha realitzat. En aquest apartat s'explicarà com a s'han dut a terme aquestes tasques. 
+L'únic requeriment que es necessita per a fer poder fer funcionar el servidor de la botifarra que s'ha implementat es que es disposi del framework Node.js instal·lat i instal·lar el paquets dependents del desenvolupament que s'ha realitzat. En aquest apartat s'explicarà com a s'han dut a terme aquestes tasques. 
 
-\section{Instal·lació de node.js}
-\label{sec:instalacio-node}
+\section{Instal·lació de Node.js}
+\label{sec:instalacio-Node.js}
 Actualment per realitzar a instal·lació del Node.js existeixen diferents opcions depenent del sistema operatiu que s'utilitzi: 
 
 \begin{enumerate}
@@ -15,13 +15,13 @@ Actualment per realitzar a instal·lació del Node.js existeixen diferents opcio
     \item{Compilació del codi font}
 \end{enumerate}
 
-Quan es va començar a desenvolupar el projecte (Octubre de l'any 2011) no hi havia paquets auto-instal·lables ni per Mac ni per Windows i els repositoris de paquets de Debian i Ubuntu no estaven actualitzats amb les últimes versions estables de node. De fet Node.js solament estava suportat sobre sistemes operatius basats en Unix (Mac, Linux, etc.) i no estava suportat per a Sistemes Operatius de Microsoft. 
+Quan es va començar a desenvolupar el projecte (Octubre de l'any 2011) no hi havia paquets auto-instal·lables ni per Mac ni per Windows i els repositoris de paquets de Debian i Ubuntu no estaven actualitzats amb les últimes versions estables de Node.js. De fet Node.js solament estava suportat sobre sistemes operatius basats en Unix (Mac, Linux, etc.) i no estava suportat per a Sistemes Operatius de Microsoft. 
 
-Per tal de poder disposar de la última versió de node.js es va decidir instal·lar Node.js mitjançant la compilació del codi font. Personalment no soc molt partidari de realitzar instal·lacions a través de compilació de codi font, ja que es bastant engorrós tenir que tornar a compilar tot el codi cada vegada que es publica una nova versió. De totes formes el fet que l'ultima versió estable (en aquells moments la 0.4.x) no estava disponible a través d'un paquet em va fer decidir per la instal·lació a traves de la compilació del codi font. 
+Per tal de poder disposar de la última versió de Node.js es va decidir instal·lar Node.js mitjançant la compilació del codi font. Personalment no soc molt partidari de realitzar instal·lacions a través de compilació de codi font, ja que es bastant engorrós tenir que tornar a compilar tot el codi cada vegada que es publica una nova versió. De totes formes el fet que l'ultima versió estable (en aquells moments la 0.4.x) no estava disponible a través d'un paquet em va fer decidir per la instal·lació a traves de la compilació del codi font. 
 
 \subsection{Requeriments}
 
-La instal·lació de node.js a partir del seu codi font requereix les següent dependències:
+La instal·lació de Node.js a partir del seu codi font requereix les següent dependències:
 
 \begin{enumerate}
     \item{Python, en la seva versió 2.6 o 2.7. Cal tenir en compte que no podrem instal·lar els paquets des de el codi font si ho intentem des de la versió 3 de Python}
@@ -30,10 +30,10 @@ La instal·lació de node.js a partir del seu codi font requereix les següent d
 
 \subsection{Obtenció del codi font}
 
-L'obtenció del codi font de la Node.js es pot realitzar de dues formes diferents: 
+L'obtenció del codi font de Node.js es pot realitzar de dues formes diferents: 
 
 \begin{enumerate}
-    \item{Descarregant un paquet a través de la pàgina oficial de node.js\footnote{\url{http://www.nodejs.org}}}
+    \item{Descarregant un paquet a través de la pàgina oficial de Node.js\footnote{\url{http://www.nodejs.org}}}
     \item{Obtenint una copia complerta del respositori de codi font de GitHub\footnote{\url{https://github.com/joyent/node}}}
 \end{enumerate}
 
@@ -62,7 +62,7 @@ Així el programa ens ha de contestar amb la versió que tenim instal·lada, en 
 Una de les eines més potents que proporciona Node.js es npm\footnote{Node Package Manager: \url{http://npmjs.org/}}.
 Npm s'encarrega de la gestió de paquets\footnote{Porcions de codi amb una funcionalitat específica, dissenyats per poder ser re-utilitzats} i ens permet utilitzar paquets publicats per altres desenvolupadors en desenvolupaments propis. També ens permet publicar els nostres propis paquets. 
 
-Inicial ment npm va néixer com una eina separada de Node.js i requeria d'una instal·lació pròpia. A partir de la versió 0.6.0 de node, npm es va integrar a Node.js i s'instal·la de forma automàtica quan es realitza la instal·lació de node. De totes formes npm es pot seguir instal·lant per separat, tal i com es feia a la versions anteriors. La seva instal·lació es pot realitzar amb la següent comanda:
+Inicial ment npm va néixer com una eina separada de Node.js i requeria d'una instal·lació pròpia. A partir de la versió 0.6.0 de Node.js, npm es va integrar a Node.js i s'instal·la de forma automàtica quan es realitza la instal·lació de Node.js. De totes formes npm es pot seguir instal·lant per separat, tal i com es feia a la versions anteriors. La seva instal·lació es pot realitzar amb la següent comanda:
 
 \begin{lstlisting}[language=bash]
 curl http://npmjs.org/install.sh | sh
@@ -88,10 +88,10 @@ npm search <paraules_clau>
 \label{sec:gestio-dependencies}
 Com s'ha comentat a l'apartat \ref{sec:paquets-adicionals} npm ens permet re-utilitzar codi publicat per altres desenvolupadors. Aquesta pràctica s'ha dut a terme en mesura del possible durant el desenvolupament del projecte.  
 
-\subsection{Que és un paquet?}
+\subsection{Què és un paquet?}
 \label{sec:que-es-un-paquet}
 
-Tècnicament un paquet és una part especifica de software que es pot instal·lar i des-instal·lar a través d'un sistema de gestió de paquets. En l'àmbit del projecte l'eina de gestió de paquets és npm, ja que ens permet instal·lar i des-instal·lar paquets publicats al seu propi registre. 
+Tècnicament un paquet és un fitxer que conté porcions de codi i que es pot distribuïr per tal de comprartir el codi. Aquest codi poden representar programes sencers o extensions de programes existents. El codi també es pot distribuir en forma binària (executable) o en codi font. El principal objectiu d'un paquet es poder-lo instal·lar i desintal·ar. Per tal de simplificar aquestes tasques existeixen els sistemes de gestió de paquets. En l'àmbit del projecte l'eina de gestió de paquets és npm, ja que ens permet instal·lar i des-instal·lar paquets que s'executen sobre Node.js. A més a més npm també disposa d'un registre de paquets i ens proporciona les eines suficients perquè poguem buscar els paquets necessàris. 
 
 Així el que ens interessa és saber que entén npm per un paquet. Segons la seva documentació oficial\footnote{\url{http://npmjs.org/doc/developers.html}} un paquet és: 
 
@@ -105,7 +105,7 @@ Així el que ens interessa és saber que entén npm per un paquet. Segons la sev
 \item {Una URL de git que al clonar-se resulta amb 1}
 \end{enumerate}
 
-Així crear un paquet és tan fàcil com crear el fitxer package.json i especificar la informació que creiem convenient compartir amb la resta d'usuaris. 
+Quan es disposa d'una porció de codi, crear un paquet que la contingui és tan fàcil com crear el fitxer package.json i especificar la informació que creiem convenient compartir amb la resta d'usuaris. 
 
 Una vegada creat un paquet podem publicar-lo al registre de npm per a compartir-lo amb la resta d'usuaris. 
 
@@ -134,7 +134,7 @@ En aquest contingut es pot especificar la següent informació:
 \begin{lstlisting}
 {
   "name": "ButiJS",
-  "description": "Butifarra's game server on the top of node.js",
+  "description": "Butifarra's game server on the top of Node.js",
   "version": "0.0.7",
   "license" : "MIT",
   "repository": {
