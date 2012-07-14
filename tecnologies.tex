@@ -501,7 +501,7 @@ module.exports = {
 
 El format exports és molt semblant al format utilitzat pel pare de Mocha, expresso. En aquest format es defineix un diccionari on cada objecte és un conjunts de proves i cada funció és un joc de proves. Les claus dels objectes s'utilitzen per especificar el nom del joc de proves. Els noms before, after, beforeEach, i afterEach tenen una connotació especial. 
 
-Durant el transcurs del projecte s'ha utilitzat el format \emph{Exports}, ja que al principi del projecte s'utilitzava expresso per executar els jocs de proves. Així, quan es va migrar a Mocha ja hi havia jocs de proves escrits amb el format \emph{Exports} i es va decidir continuar amb el mateix format per tal d'evitar migrar tots els jocs de proves existents a un nou format. 
+Durant el transcurs del projecte s'ha utilitzat el format \emph{Exports}, ja que al principi del projecte s'utilitzava expresso per executar els jocs de proves. Degut a que expresso no suportava la integració amb jscoverage per realitzar els testos de cobertura es va tenir que migrar a Mocha. Quan es va realitzar aqeusata migració ja hi havia jocs de proves escrits amb el format \emph{Exports} i es va decidir continuar amb el mateix format per tal d'evitar migrar tots els jocs de proves existents a un nou format. 
 
 \section{JSON}
 \label{sec:json}
