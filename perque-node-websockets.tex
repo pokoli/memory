@@ -146,6 +146,8 @@ El seu funcionament és el següent:
   \item[línies 9-13] {S'associa una nova funció a l'esdeveniment \emph{connection} (que s'executa cada vegada que un client es connecta al servidor); aquesta funció el que fa es comprovar si els client ens ha passat dades (stream), i executa un dels dos esdeveniments comentats anteriorment.}
 \end{description}
 
+Aquesta gestió d'esdeveniments s'utilitza en el servidor per tal de procesar tots els missatges que es reben del client. Així, el servidor té associat un esdeveniment per a cada un dels missatges que pot rebre del client. Cada vegada que el servidor rep un missatge del client executa la funció associada a l'esdeveniment.
+
 \section{Beneficis de Node.js}
 
 Node no té bloquejos, no té diferents fils d'execució competint pel mateix recurs. Node.js només espera a que es produeixi algun esdeveniment i quan es produeix el processa. Això es transforma en codi molt ràpid. Tota aquesta lògica també es podria programar amb altres llenguatges implementant un servidor multifil, encara que seria molt més complicat de programar-ho ja que ens hauríem de preocupar dels problemes relacionats amb la concurrència. 

@@ -4,7 +4,6 @@ Comentaris JM (13/07/12):
 - Capítol de metodologia: Reescriure tot el tema de TDD/BDD.
 - Capítol de tecnologies: Revisar les explicacions sobre Node.js
 - Capítol Perque Node.js: Revisar introducció. 
-- Abans de l'apartat 7.4, comentar que el protocol entre client i servidor s'ha definit en base a quests esdeveniments.
 - Revisar que a tot arreu es parli de botifarra, no de butifarra (excepte al nom del projecte)
 - Afegir un exmple de codi la part de Kinetic.js
 
