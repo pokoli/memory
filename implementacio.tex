@@ -1,7 +1,7 @@
 \chapter{Disseny i implementació}
 \label{chap:implementacio}
 
-La implementació del joc s'ha estructurat en dos grans blocs: el servidor i la interfície client. El servidor es l'encarregat de gestionar la informació relativa a les partides disponibles, els jugadors connectats i tota la lògica referent a les partides. La interfície client s'encarrega de interaccionar amb el servidor i mostrar la informació al usuari. 
+La implementació del joc s'ha estructurat en dos grans blocs: el servidor i el client. El servidor es l'encarregat de gestionar la informació relativa a les partides disponibles, els jugadors connectats i tota la lògica referent a les partides. El client s'encarrega de interaccionar amb el servidor i mostrar la informació al usuari. 
 
 Per l'intercanvi de dades entre el servidor i el client s'utilitza el protocol WebSocket\footnote{Veure Capítol \ref{sec:websockets}},  ja que ens permeten establir un canal de comunicació bi-direccional. Aquest canal ens permet que els servidor notifiqui al client cada vegada que es produeix un esdeveniment a la partida en curs i que el client notifiqui al servidor les accions que ha dut a terme el jugador. 
 
@@ -46,9 +46,9 @@ La conjunció de tots els elements comentats anteriorment ens permeten disposar 
 
 \subsection{Interconnexió Jugadors}
 \label{sec:interconnexio-jugadors}
-A part de funcionar com a servidor web el servidor també ha d'intercanviar dades amb els clients connectats amb ells. Per tal de d'aconseguir això el servidor s'encarrega de crear un canal de comunicació utilitzant el protocol WebSocket i de proporcionar els mecanismes suficients per a que el client s'hi connecti. Així, quan es carrega la primera pàgina de la partida també es carrega el programa client i aquest es connecta al servidor. 
+A part de funcionar com a servidor web el servidor també ha d'intercanviar dades amb els clients. Per tal de d'aconseguir això el servidor s'encarrega de crear un canal de comunicació utilitzant el protocol WebSocket i de proporcionar els mecanismes suficients per a que el client s'hi connecti. Així, quan es carrega la primera pàgina de la partida també es carrega el programa client i aquest es connecta al servidor. 
 
-A través de la comunicació amb WebSockets el servidor es poden realitzar les següent accions: 
+A través de la comunicació amb el servidor es poden realitzar les següent accions: 
 
 \begin{description}
 \item[login] {Identificar-se amb el servidor.}
@@ -61,7 +61,7 @@ A través de la comunicació amb WebSockets el servidor es poden realitzar les s
 \item[send] {Enviar un missatge a tota la resta d'usuaris del servidor. }
 \end{description}
 
-Cada programa client que es vulgui implementar ha d'utilitzar la comunicació amb WebSockets a través d'aquests esdeveniments per interactuar amb l'usuari que vol jugar al servidor. Així la comunicació amb WebSockets permet que es pugin implementar més d'un programa client sense tenir que fer cap tipus de modificació al programa servidor. 
+Cada programa client que es vulgui implementar ha d'utilitzar la comunicació amb WebSockets a través d'aquests missatges per interactuar amb l'usuari que vol jugar al servidor. Així la comunicació amb WebSockets permet que es pugin implementar més d'un programa client sense tenir que fer cap tipus de modificació al programa servidor. 
 
 \subsection{Lògica Botifarra}
 
@@ -85,11 +85,11 @@ Com es pot observar a la figura \ref{fig:buti-workflow} el servidor s'encarrega 
 \item{Repartir les cartes de forma aleatòria entre els diferents jugadors}
 \item{Comunicar el triomf elegit a tots els jugadors.}
 \item{Comunicar als jugadors si hi ha algun jugador que contrar.}
-\item{Determinar el jugador a moure i notificar-l'hi de que és el seu torn.}
+\item{Determinar el jugador a moure i notificar-l'hi que és el seu torn.}
 \item{Validar que la carta jugada és correcta.}
 \item{Mostrar les cartes de cada jugada.}
 \item{Al final de cada ronda mostrar el resultat parcial de la ronda. }
-\item{Al final de cada ronda calcular la puntuació de cada equip. En el cas que hi hagi un equip guanyador finalitzar la partida. En el cas que no hi hagi cap jugador guanyador inicial una nova ronda.}
+\item{Al final de cada ronda calcular la puntuació de cada equip. En el cas que hi hagi un equip guanyador finalitzar la partida. En cas contrari iniciar una nova ronda.}
 \end{itemize}
 
 Tota la lògica de la botifarra s'ha realitzat en funció d'esdeveniments, és a dir, cada vegada que es produeix un acció que requereix la intervenció del servidor aquest llança un esdeveniment que té associada una funció. Aquesta funció es l'encarregada de realitzar tot el processament i llençar el pròxim esdeveniment en cas de que sigui necessari.  
@@ -117,7 +117,7 @@ En el projecte s'ha utilitzat una variant de l'algoritme inicial, concretament l
         canviar a[j] i a[i]
 \end{lstlisting}
 
-A més a més per tal de garantir la complerta aleatorietat i evitar possibles resultats iguals aquest algorisme s'aplica 12 vegades. Amb això s'intenta emular el comportament humà al barrejar la baralla de cartes, ja que quan es juga una partida les cartes es barrejen un nombre aleatori de vegades amb l'objectiu de que aquestes surtin el més barrejades possible. 
+Amb això s'intenta emular el comportament humà al barrejar la baralla de cartes, ja que quan es juga una partida les cartes es barrejen un nombre aleatori de vegades amb l'objectiu de que aquestes surtin el més barrejades possible. 
 
 \section{Client}
 
@@ -128,13 +128,13 @@ El client s'encarrega de realitzar les següents tasques:
 \item{Mostrar al usuari les dades que rep del servidor.}
 \end{itemize}
 
-Aquestes funcionalitats s'han implementat de forma separada per poder garantir que els canvis a la interfície d'usuari no afectin al la interacció amb el servidor. Aquesta separació ens permet canviar la forma en que es mostren les dades sense tenir que realitzar cap modificació a la lògica del client. Això també ens permet disposar de dos interfícies d'usuari (una per equips d'escriptori i l'altra per a mòbils, per exemple) que utilitzen els mateixos mecanismes per tal d'interactuar amb el servidor. 
+Aquestes funcionalitats s'han implementat de forma separada per poder garantir que els canvis a la interfície d'usuari no afectin al la interacció amb el servidor. Aquesta separació ens permet canviar la forma en que es mostren les dades sense tenir que realitzar cap modificació a la lògica del client. Això també ens permet disposar de dues interfícies d'usuari (una per equips d'escriptori i l'altra per a mòbils, per exemple) que utilitzen els mateixos mecanismes per tal d'interactuar amb el servidor. Una altre aventatge d'aquest disseny es que podem realtizar proves automàtiques sobre la lògica del client.
 
 En els següents apartats s'explica com s'han implementat aquestes dues funcionalitats. 
 
 \subsection{Lògica del client}
 
-Per tal d'implementar la comunicació entre el client i el servidor s'ha utilitzat la llibreria socket.io. Aquesta llibreria proporciona els mètodes necessaris per la comunicació entre client servidor. Aquest és el mètode emprat en la nostra implementació. A través d'aquest fitxer JavaScript obtenim els mètodes suficients per connectar-nos al servidor i poder enviar/rebre missatges. En el nostre cas el client proporciona els mètodes per poder interaccionar amb el servidor i obtenir tota la informació comentada en la secció \ref{sec:interconnexio-jugadors}. A més a més s'encarrega d'escoltar els següents següents missatges: 
+Per tal d'implementar la comunicació entre el client i el servidor s'ha utilitzat la llibreria socket.io. Aquesta llibreria proporciona els mètodes necessaris per la comunicació entre client servidor. Aquest és el mètode emprat en la nostra implementació. A través d'aquest fitxer JavaScript obtenim els mètodes suficients per connectar-nos al servidor i poder enviar/rebre missatges. En el nostre cas el client proporciona els mètodes per poder interaccionar amb el servidor i obtenir tota la informació comentada en la secció \ref{sec:interconnexio-jugadors}. A més a més s'encarrega de processar els següents següents missatges: 
 
 \begin{description}
 \item[welcome]{Missatge de benvinguda del servidor.}
@@ -142,7 +142,7 @@ Per tal d'implementar la comunicació entre el client i el servidor s'ha utilitz
 \item[updated-game]{Informa sobre l'actualització d'informació d'una partida. }
 \item[start]{Una partida que l'usuari es jugador comença.}
 \item[select-thriumph]{Informa al jugador que ha de seleccionar el trumfo de la partida. }
-\item[notify-thriumph]{Informa al jugador el trumfo seleccionat pels altres jugadors.}
+\item[notify-thriumph]{Informa al jugador del trumfo seleccionat pels altres jugadors.}
 \item[play-card]{El jugador ha de seleccionar una carta per jugar. }
 \item[played-card]{S'ha jugat una carta.}
 \item[new-move]{Comença una nova basada.}
@@ -160,7 +160,7 @@ Cada vegada que es rep un missatge d'aquest tipus el programa client s'encarrega
 
 \section{Exemples de comunicació}
 
-En aquest apartat es mostraran alguns exemples de la comunicació que es dur a terme entre el client i el servidor, detallant els missatges que s'intercanvien. 
+En aquest apartat es mostraran alguns exemples de la comunicació que es du a terme entre el client i el servidor, detallant els missatges que s'intercanvien. 
 
 \begin{figure}[ht!]
 \centering
@@ -260,7 +260,7 @@ A la figura \ref{diag:entrar-partida} es pot observar el diagrama de flux necess
 \end{figure} 
 
 
-A la figura \ref{diag:desenvolupament-partida} es pot observar el diagrama de flux del desenvolupament d'una partida. En aquest cas s'han omès els passos de creació d'una nova partida i que cada jugador entri dins de la partida. La partida comença quan el servidor notifica a tots els jugadors de la partida que aquesta ha començat. Durant el transcurs de la partida es van jugant diferents rondes. En cada ronda el servidor notifica al client que ha de seleccionar thriumph les opcions que té diferent i espera la resposta del client. Una vegada el client ha seleccionat triomf, notifica a tots els jugadors de la partida quin ha estat el triomf seleccionat. Després d'això, notifica als jugadors que tenen la possibilitat de contrar i espera la seva resposta. Una vegada s'ha realitzat el proces de contro, el servidor indica el començament d'una nova jugada amb el missatge new-move. Cada jugada consisteix en un moviment (nova carta jugada) de cadascun dels jugadors de la partida. Així per cada moviment del jugador el servidor notifica al client que ha de realitzar un nou moviment i espera rebre el missatge de que s'ha jugat una nova carta. Quan el client envia el missatge de que vol jugar una nova carta el servidor valida que el moviment sigui correcte. En el cas de que aquest sigui incorrecte ho notifica al client i espera la jugada d'una nova carta. En el cas contrari, notifica a la resta de jugadors la carta que s'ha jugat i repeteix de nou la jugada. Així es van produint jugades fins que s'han acabat totes les cartes de tots els jugadors, concretament es tracta de 12 jugades. Una vegada s'han jugat totes les cartes la ronda es dona per finalitzada i el servidor computa les puntuacions de la partida. En el cas que no s'hagi finalitzat la partida es comença la ronda i es torna a repetir tot el procediment realitzat anteriorment. Si hi ha un equip guanyador la partida es dona per finalitzada i es notifica a tots els clients. 
+A la figura \ref{diag:desenvolupament-partida} es pot observar el diagrama de flux del desenvolupament d'una partida. En aquest cas s'han omès els passos de creació d'una nova partida i la incorporació dels jugadors a la mateixa. La partida comença quan el servidor notifica a tots els jugadors de la partida que aquesta ha començat. Durant el transcurs de la partida es van jugant diferents rondes. En cada ronda el servidor notifica al client que ha de seleccionar thriumph les opcions que té diferent i espera la resposta del client. Una vegada el client ha seleccionat triomf, notifica a tots els jugadors de la partida quin ha estat el triomf seleccionat. Després d'això, notifica als jugadors que tenen la possibilitat de contrar i espera la seva resposta. Una vegada s'ha realitzat el proces de contro, el servidor indica el començament d'una nova jugada amb el missatge new-move. Cada jugada consisteix en un moviment (nova carta jugada) de cadascun dels jugadors de la partida. Així per cada moviment del jugador el servidor notifica al client que ha de realitzar un nou moviment i espera rebre el missatge de que s'ha jugat una nova carta. Quan el client envia el missatge de que vol jugar una nova carta el servidor valida que el moviment sigui correcte. En el cas de que aquest sigui incorrecte ho notifica al client i espera la jugada d'una nova carta. En el cas contrari, notifica a la resta de jugadors la carta que s'ha jugat i repeteix de nou la jugada. Així es van produint jugades fins que s'han acabat totes les cartes de tots els jugadors, concretament es tracta de 12 jugades. Una vegada s'han jugat totes les cartes la ronda es dona per finalitzada i el servidor computa les puntuacions de la partida. En el cas que no s'hagi finalitzat la partida es comença la ronda i es torna a repetir tot el procediment realitzat anteriorment. Si hi ha un equip guanyador la partida es dona per finalitzada i es notifica a tots els clients. 
 
 
 \begin{figure}[ht!]
@@ -338,7 +338,7 @@ Com s'ha comentat al capítol \ref{chap:metodologia} per la implementació del p
         \item{Mostrar als jugadors si el trumfo ha estat delegat o no.}
         \item{Netejar les cartes jugades de forma automàtica al cap de tres segons.}
         \item{Mostrar la puntuació total de la partida a la interfície d'usuari.}
-        \item{Traducció dels joc a diferents idiomes (Català,Castellà,Anglès).}
+        \item{Traducció dels joc a diferents idiomes (Català, Castellà, Anglès).}
         \item{Nous testos per millorar la cobertura del codi.}
     \end{itemize}
 }
@@ -382,7 +382,7 @@ Com s'ha comentat al capítol \ref{chap:metodologia} per la implementació del p
 
 \section{Jocs de proves}
 
-Com s'ha comentat a l'apartat \ref{sec:tdd} per la implementació d'aquest projecte s'han la metodologia TDD, que implica la utilització de jocs de proves. Per a executar els jocs de proves s'ha utilitzat la llibreria Mocha de Node.js \footnote{Veure secció \ref{sec:mocha-jscoverage}}. En aquest apartat es detalla els jocs de proves que s'han implementat. Els testos implementats s'estructuren en dos blocs: 
+Com s'ha comentat a l'apartat \ref{sec:tdd} per la implementació d'aquest projecte s'han la metodologia TDD, que implica la utilització de jocs de proves per tal de definir les especificacions. Per a executar els jocs de proves s'ha utilitzat la llibreria Mocha de Node.js \footnote{Veure secció \ref{sec:mocha-jscoverage}}. En aquest apartat es detalla els jocs de proves que s'han implementat. Els testos implementats s'estructuren en dos blocs: 
 
 \begin{description}
     \item[Botifarra]{ Són els testos encarregats que la lògica de la botifarra es compleixi a la perfecció.}
@@ -517,7 +517,7 @@ Pel que fa a l'apartat de comunicació entre el  podem trobar les següents espe
     \item{Hem de poder entrar a una partida existent.}
     \item{Hem de poder veure una partida existent.}
     \item{Només es pot jugar una partida una sola vegada.}
-    \item{No es pot veure una partida que s'esta jugant.}
+    \item{No es pot veure una partida que el propi jugador està jugant.}
     \item{No es pot entrar a un joc que no existeix.}
     \item{El servidor ha de respondre dels events de la ronda.}
     \item{Hem de poder afegir robots a la partida.}

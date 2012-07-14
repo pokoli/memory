@@ -1,7 +1,7 @@
 \chapter{Perquè Node.js}
 \label{sec:Node.js-full}
 
-Node.js és una entorn d'execució per a codi Javascript, és a dir es capaç d'interpretar codi escrit amb Javascript. Tradicionalment Javascript s'ha utilitzat per executar codi dins del navegador, el que s'anomena la banda del client. Node.js ha modificat totalment aquest concepte i ens permet executar codi Javascript en un servidor. Així Node.js ens proporciona els mètodes suficients per poder interactuar amb el sistema que l'esta executant.
+Node.js és una entorn d'execució per a codi Javascript, és a dir es capaç d'interpretar codi escrit amb Javascript. Tradicionalment Javascript s'ha utilitzat per executar codi dins del navegador, el que s'anomena la banda del client. Node.js ha modificat totalment aquest concepte i ens permet executar codi Javascript en un servidor. Així Node.js ens proporciona els mètodes suficients per poder interactuar amb el sistema que l'està executant.
 
 Node es va dissenyar amb els següents objectius: 
 
@@ -19,12 +19,12 @@ Javascript té les següents característiques:
 \begin{enumerate}
     \item{Dinàmic.}
     \item{De tipatje feble.}
-    \item{Orientat a Objectes.}
+    \item{Orientat a objectes.}
     \item{Suporta funcions anònimes.}
     \item{Està dissenyat per suportar esdeveniments.}
 \end{enumerate}
 
-Aquestes característiques el fan el candidat ideal per a proporcionar una infraestructura sense bloquejos, basada en esdeveniments. A més a més, és un llenguatge que està molt extens en el món de la informàtica, cosa que provoca que hi hagi una gran quantitat de desenvolupadors que en tinguin coneixements. El principal ús de Javascript és el processament d'esdeveniments a la web. Així la semàntica de Node.js s'ha dissenyat de forma que sigui semblant al processament d'esdeveniments a la web, per tal facilitat la corba d'aprenentatge dels programadors amb coneixements de desenvolupament web.
+Aquestes característiques el fan el candidat ideal per a proporcionar una infraestructura sense bloquejos, basada en esdeveniments. A més a més, és un llenguatge que està molt extens en el món de la informàtica, cosa que provoca que hi hagi una gran quantitat de desenvolupadors que en tinguin coneixements. El principal ús de Javascript és el processament d'esdeveniments a la web. Així la semàntica de Node.js s'ha dissenyat de forma que sigui semblant al processament d'esdeveniments a la web, per tal de facilitar la corba d'aprenentatge dels programadors amb coneixements de desenvolupament web.
 
 \section{Codi síncron vs. codi asíncron}
 \label{sec:sincron-ascinron}
@@ -56,7 +56,7 @@ gets( function (green_name) {
 //do not wait, do something else
 \end{lstlisting}
 
-La gran diferència entre aquest codi i l'anterior es troba en la línia 4. En aquesta cas el que fem es especificar el codi que volem que s'executi després d'obtenir la resposta de l'usuari, i continuar amb l'execució del proces, sense esperar la resposta de l'usuari per poder realitzar altres tipus d'accions. 
+La gran diferència entre aquest codi i l'anterior es troba en la línia 4. En aquesta cas el que fem és especificar el codi que volem que s'executi després d'obtenir la resposta de l'usuari, i continuar amb l'execució del proces, sense esperar la resposta de l'usuari per poder realitzar altres tipus d'accions. 
 
 El fet de que el codi s'executi de forma asíncrona, implica que el programa pot realitzar diferents tasques mentre espera que el sistema realitzi alguna altra tasca. Això vol dir que el programa pot seguir realitzant tasques mentre espera que es realitzi una consulta a la base de dades, que es llegeixi un fitxer des de disc, o que es rebin les dades d'un servidor extern. Així el programa s'estructura amb el que es coneix com a callbacks. Un callback es el codi que s'executara després d'haver realitzat alguna tasca. 
 
@@ -71,7 +71,7 @@ fs.readFile(__dirname + '/someDir/someFile', 'utf8', function (err,data) {
 
 En aquest text es pot veure el codi necessari per a llegir un fitxer de disc. Així el que es fa es dir-li al sistema, llegeix el fitxer /someDir/someFile, i en el moment que es tingui alguna informació executa la funció que es passa a l'ultim paràmetre. Amb això aconseguim que mentre el proces estigui llegint el fitxer nosaltres puguem seguir fent càlculs, i que quan s'hagi acabat la lectura del fitxer puguem fer amb ell el que creguem convenient. 
 
-El processament asíncron és fa gracies als anomenats esdeveniments, que s'encarreguen d'executar codi font quan s'ha produït alguna cosa. A més a més, Node.js ens permet crear esdeveniments personalitzats i fer que s'executi el nostre codi cada vegada que es produeix un esdeveniments. Els esdeveniments han estat utilitzats en gran part del desenvolupament del projecte. 
+El processament asíncron és fa gracies als anomenats esdeveniments, que s'encarreguen d'executar codi quan s'ha produït alguna cosa. A més a més, Node.js ens permet crear esdeveniments personalitzats i fer que s'executi el nostre codi cada vegada que es produeix un esdeveniments. Els esdeveniments han estat utilitzats en gran part del desenvolupament del projecte. 
 
 \section{El bucle d'esdeveniments}
 
@@ -83,13 +83,13 @@ Actualment s'utilitzen les següents tècniques de programació:
     \item{Codi asíncron en diferents fils d'execució.}
 \end{enumerate}
 
-En el primer cas la CPU només es capaç d'executar el codi d'un programa a la vegada i aquesta roman inactiva mentre el programa realitza altres tasques (llegir un fitxer, esperar l'entrada d'informació per part de l'usuari,etc.). La programació d'aquest tipus de programes es molt simple ja que no et cal preocupar de si pot haver altres fils d'execució llegint les mateixes variables que el fil actual, encara que el seu rendiment es baix en entorns d'alta concurrència. 
+En el primer cas la CPU només es capaç d'executar el codi d'un programa a la vegada i aquesta roman inactiva mentre el programa realitza altres tasques (llegir un fitxer, esperar l'entrada d'informació per part de l'usuari,etc.). La programació d'aquest tipus de programes és molt simple ja que no cal preocupar-se de si pot haver altres fils d'execució llegint les mateixes variables que el fil actual, encara que el seu rendiment és baix en entorns d'alta concurrència. 
 
-En el segon cas la CPU s'utilitza per diversos fils d'execució a la vegada, així mentre un fil d'execució està ocupat llegint un fitxer la CPU pot ser aprofitada per una altre fil d'execució. De totes formes aquesta forma de programació pot arribar a ser molt confusa en el cas que més d'un fil d'execució hagi de modificar la mateixa informació. Aquests factors s'han de tenir en compte per part del desenvolupador a l'hora de desenvolupar el programa. 
+En el segon cas la CPU s'utilitza per diversos fils d'execució a la vegada, així mentre un fil d'execució està ocupat llegint un fitxer, la CPU pot ser aprofitada per una altre fil d'execució. De totes formes aquesta estil de programació pot arribar a ser molt confús en el cas que més d'un fil d'execució hagi de modificar la mateixa informació. Aquests factors s'han de tenir en compte per part del desenvolupador a l'hora de desenvolupar el programa. 
 
-L'ultim cas és el que s'utilitza a Node.js, amb la diferència que Node.js gestiona internament els diferents fil d'execució, evitant que el desenvolupador s'hagi de preocupar dels mateixos. Per aconseguir això el que fa és posar referències a funcions en una cua d'execució, així cada vegada que la CPU quedi lliure s'executa una nova porció de codi, evitant que més d'una porció de codi s'executi de forma simultània i evitant que la CPU quedi a l'espera de que es produeixi un esdeveniments. Tota la gestió referent als esdeveniments és el que s'anomena el bucle d'esdeveniments. 
+L'últim cas és el que s'utilitza a Node.js, amb la diferència que Node.js gestiona internament els diferents fils d'execució, evitant que el desenvolupador s'hagi de preocupar dels mateixos. Per aconseguir això el que fa és posar referències a funcions en una cua d'execució. Així cada vegada que la CPU quedi lliure s'executa una nova porció de codi, evitant que més d'una porció de codi s'executi de forma simultània i evitant que la CPU quedi a l'espera de que es produeixi un esdeveniments. Tota la gestió referent als esdeveniments és el que s'anomena el bucle d'esdeveniments. 
 
-En Node.js hi ha dos formes d'afegir l'execució d'un tros de codi al bucle d'esdeveniments: 
+En Node.js hi ha dues formes d'afegir l'execució d'un tros de codi al bucle d'esdeveniments: 
 
 \begin{enumerate}
     \item{Sense associar-ho a cap esdeveniment, el codi es posa a la cua i s'executa la pròxima vegada que la cua estigui lliure.}
@@ -104,14 +104,14 @@ process.nextTick(function () {
 });
 \end{lstlisting}
 
-La segona és una mica més complicada, i la seva implementació és realitza a través de la funció constructora EventEmmiter. En el prototip d'aquesta funció s'implementen els següents atributs: 
+La segona és una mica més complicada, i la seva implementació es realitza a través de la funció constructora EventEmmiter. En el prototipus d'aquesta funció s'implementen els següents atributs: 
 
 \begin{description}
-    \item[addListener(event, listener)]{ Associa la funció passada a la variable \emph{listener} per que s'executi cada vegada que es produeix un event del tipus \emph{event}}
+    \item[addListener(event, listener)]{ Associa la funció passada a la variable \emph{listener} per que s'executi cada vegada que es produeix un esdeveniment del tipus \emph{event}}
     \item[on(event, listener)] { Exactament el mateix funcionament que la funció \emph{addListener}.}
     \item[once(event, listener)] {Té el mateix comportament que la funció \emph{addListener}, excepte que aquesta funció només s'executa la primera vegada que es produeix l'esdeveniment.}
     \item[removeListener(event, listener)]{ Desassocia la funció \emph{listener} dels esdeveniments del tipus \emph{event}.}
-    \item[removeAllListeners(event)] {Elimina totes les funcions associades als esdeveniments de tipus \emph{event}. Si no s'especifica cap tipus d'esdeveniment s'eliminen totes les funcions associades al objecte.}
+    \item[removeAllListeners(event)] {Elimina totes les funcions associades als esdeveniments de tipus \emph{event}. Si no s'especifica cap tipus d'esdeveniment s'eliminen totes les funcions associades a l'objecte.}
     \item[listeners(event)] { Retorna una llista de funcions associades a l'esdeveniment de tipus \emph{event}.}
     \item[setMaxListeners(n)] {Limita el nombre de funcions associades a cada tipus d'esdeveniment a \emph{n}.}
     \item[emit(event, arguments)] { Executa totes les funcions associades a l'esdeveniment de tipus \emph{event} passant \emph{arguments} com a paràmetres de totes les funcions.}

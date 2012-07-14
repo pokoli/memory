@@ -2,11 +2,11 @@
 \label{chap:dependencies}
 
 
-L'únic requeriment que es necessita per a fer poder fer funcionar el servidor de la botifarra que s'ha implementat es que es disposi del framework Node.js instal·lat i instal·lar el paquets dependents del desenvolupament que s'ha realitzat. En aquest apartat s'explicarà com a s'han dut a terme aquestes tasques. 
+L'únic requeriment que es necessita per a fer poder fer funcionar el servidor de la botifarra que s'ha implementat es que es disposi del framework Node.js instal·lat i instal·lar el paquets dependents del desenvolupament que s'ha realitzat. En aquest apartat s'explicarà com s'han dut a terme aquestes tasques. 
 
 \section{Instal·lació de Node.js}
 \label{sec:instalacio-Node.js}
-Actualment per realitzar a instal·lació del Node.js existeixen diferents opcions depenent del sistema operatiu que s'utilitzi: 
+Actualment per realitzar la instal·lació del Node.js existeixen diferents opcions depenent del sistema operatiu que s'utilitzi: 
 
 \begin{enumerate}
     \item{Autoinstalable per a Windows}
@@ -21,10 +21,10 @@ Per tal de poder disposar de la última versió de Node.js es va decidir instal�
 
 \subsection{Requeriments}
 
-La instal·lació de Node.js a partir del seu codi font requereix les següent dependències:
+La instal·lació de Node.js a partir del seu codi font requereix les següents dependències:
 
 \begin{enumerate}
-    \item{Python, en la seva versió 2.6 o 2.7. Cal tenir en compte que no podrem instal·lar els paquets des de el codi font si ho intentem des de la versió 3 de Python}
+    \item{Python, en la seva versió 2.6 o 2.7. Cal tenir en compte que no podrem instal·lar els paquets des del codi font si ho intentem des de la versió 3 de Python}
     \item{La llibreria libssl-dev, només en el cas de que es vulgui utilitzar encriptació SSL/TLS. }
 \end{enumerate}
 
@@ -41,7 +41,7 @@ Així vaig decidir que la millor opció era obtenir una copia del respositori de
 
 \subsection{Compilació}
 
-Una vegada s'ha obtingut el codi font aquest pot ser compilat amb les següents comandes:  
+Una vegada s'ha obtingut el codi font, aquest pot ser compilat amb les següents comandes:  
 \begin{lstlisting}[language=bash]
 ./configure
 make
@@ -62,7 +62,7 @@ Així el programa ens ha de contestar amb la versió que tenim instal·lada, en 
 Una de les eines més potents que proporciona Node.js es npm\footnote{Node Package Manager: \url{http://npmjs.org/}}.
 Npm s'encarrega de la gestió de paquets\footnote{Porcions de codi amb una funcionalitat específica, dissenyats per poder ser re-utilitzats} i ens permet utilitzar paquets publicats per altres desenvolupadors en desenvolupaments propis. També ens permet publicar els nostres propis paquets. 
 
-Inicial ment npm va néixer com una eina separada de Node.js i requeria d'una instal·lació pròpia. A partir de la versió 0.6.0 de Node.js, npm es va integrar a Node.js i s'instal·la de forma automàtica quan es realitza la instal·lació de Node.js. De totes formes npm es pot seguir instal·lant per separat, tal i com es feia a la versions anteriors. La seva instal·lació es pot realitzar amb la següent comanda:
+Inicialment npm va néixer com una eina separada de Node.js i requeria d'una instal·lació pròpia. A partir de la versió 0.6.0 de Node.js, npm es va integrar a Node.js i s'instal·la de forma automàtica quan es realitza la instal·lació de Node.js. De totes formes npm es pot seguir instal·lant per separat, tal i com es feia a la versions anteriors. La seva instal·lació es pot realitzar amb la següent comanda:
 
 \begin{lstlisting}[language=bash]
 curl http://npmjs.org/install.sh | sh
@@ -91,7 +91,7 @@ Com s'ha comentat a l'apartat \ref{sec:paquets-adicionals} npm ens permet re-uti
 \subsection{Què és un paquet?}
 \label{sec:que-es-un-paquet}
 
-Tècnicament un paquet és un fitxer que conté porcions de codi i que es pot distribuïr per tal de comprartir el codi. Aquest codi poden representar programes sencers o extensions de programes existents. El codi també es pot distribuir en forma binària (executable) o en codi font. El principal objectiu d'un paquet es poder-lo instal·lar i desintal·ar. Per tal de simplificar aquestes tasques existeixen els sistemes de gestió de paquets. En l'àmbit del projecte l'eina de gestió de paquets és npm, ja que ens permet instal·lar i des-instal·lar paquets que s'executen sobre Node.js. A més a més npm també disposa d'un registre de paquets i ens proporciona les eines suficients perquè poguem buscar els paquets necessàris. 
+Tècnicament un paquet és un fitxer que conté porcions de codi i que es pot distribuïr per tal de comprartir el codi. Aquest codi poden representar programes sencers o extensions de programes existents. El codi també es pot distribuir en forma binària (executable) o en codi font. El principal objectiu d'un paquet es poder-lo instal·lar i desintal·ar. Per tal de simplificar aquestes tasques existeixen els sistemes de gestió de paquets. En l'àmbit del projecte l'eina de gestió de paquets és npm, ja que ens permet instal·lar i desinstal·lar paquets que s'executen sobre Node.js. A més a més, npm també disposa d'un registre de paquets i ens proporciona les eines suficients perquè poguem buscar els paquets necessaris. 
 
 Així el que ens interessa és saber que entén npm per un paquet. Segons la seva documentació oficial\footnote{\url{http://npmjs.org/doc/developers.html}} un paquet és: 
 
@@ -119,14 +119,14 @@ En aquest contingut es pot especificar la següent informació:
 \item[nom] {Nom del paquet.}
 \item[versió] {Versió actual de paquet.}
 \item[descripció] {Una cadena que descriu el que fa el paquet. Es mostra quan es busca paquets al registre.}
-\item[paraules clau] {Una llista de paraules clau. Es mostra quan es busca paquets al registre.}
+\item[paraules clau] {Una llista de paraules clau. Es mostra quan es busquen paquets al registre.}
 \item[pàgina web del projecte] {Direcció web de la pàgina web del projecte.}
 \item[errors] { URL i/o direcció de correu electrònic on es poden reportar els errors. }
 \item[autor] {Nom, correu electrònic i pàgina web de l'autor.}
 \item[contribuïdors] { Llista de persones que han contribuït al projecte}
 \item[repositori] { Indica la ruta on es pot trobar el codi font del programa. }
-\item[dependències] { Indica de quins paquets (i quines versions especifiques) depèn el paquet.}
-\item[dependències de desenvolupament] { Indica de quins paquets (i quines versions especifiques) es requereixen o poden ser útils per al desenvolupament en aquest paquet.}
+\item[dependències] { Indica de quins paquets (i de quines versions especifiques) depèn el paquet.}
+\item[dependències de desenvolupament] { Indica de quins paquets (i de quines versions especifiques) es requereixen o poden ser útils per al desenvolupament d'aquest paquet.}
 \item[motors] {Serveix per especifica sobre quines versions de Node.js funciona el paquet.}
 \end{description}
 
@@ -175,7 +175,7 @@ En aquest contingut es pot especificar la següent informació:
 
 El únics camps obligatoris són el nom i la versió del paquet. A la figura \ref{fig:package.json} podeu observar el fitxer package.json que s'utiltiza en el projecte. En aquest fitxer s'han especificat el següent contingut: nom, descripció, versió, llicència, respositori, autor, dependències, dependències del desenvolupador, motors que requereix i el sistema de seguiments d'error utilitzat. 
 
-A la documentació de npm \footnote{\url{http://npmjs.org/doc/json.html}} es pot trobar una llista complerta de tots els camps disponibles juntament amb una explicació complerta de quina és la seva utilitat. 
+A la documentació de npm\footnote{\url{http://npmjs.org/doc/json.html}} es pot trobar una llista complerta de tots els camps disponibles juntament amb una explicació complerta de quina és la seva utilitat. 
 
 \subsection{Paquets locals i dependències}
 

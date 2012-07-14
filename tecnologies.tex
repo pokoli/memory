@@ -13,14 +13,14 @@ El programa que es vol desenvolupar durant el projecte ha d'utilitzar les següe
 
 \section{Perquè aquestes tecnologies?}
 
-Abans de començar el projecte, quan en JM em va proposar de realitzar-lo em va dir que l'objectiu principal d'aquest projecte era provar noves tecnologies, i a la vegada investigar el seu funcionament. Les que em va proposar són les següents: 
+Abans de començar el projecte, quan en JM em va proposar de realitzar-lo em va dir que l'objectiu principal d'aquest projecte era provar noves tecnologies i a la vegada, investigar el seu funcionament. Les que em va proposar van ser les següents: 
 \begin{itemize}
 	\item{Node.js}
 	\item{Websockets}
 	\item{HTML5, especialment l'objecte canvas}
 \end{itemize}
 
-Per la meva part desconeixia totalment l'existència de Node.js i dels Websockets. Tot i tenia petits coneixements sobre HTML5, sabia que aquest no eren molt extensos i que eren necessari expandir-los.
+Personalemnt, desconeixia totalment l'existència de Node.js i dels Websockets. Tot i tenia petits coneixements sobre HTML5, sabia que aquest no eren molt extensos i que eren necessari expandir-los.
 
 El fet d'explorar noves tecnologies va ser molt motivador per mi, fins al punt de dir que ha estat una de les principals raons per decidir-m'hi per aquest projecte i no per un altre.  
 
@@ -31,9 +31,8 @@ Després d'explorar Node.js vaig veure que el seu codi esta allotjat a Github, i
 
 Javascript és el llenguatge de programació utilitzat principalment en el projecte. És un llenguatge de script basat en el concepte de prototipus (herència per delegació), implementat originàriament per Netscape Communications Corporation l'any 1995, i que va derivar en l'estàndard ECMAScript. És conegut sobretot pel seu ús en pàgines web, però també s'utilitza en altres aplicacions.
 
-En un principi, s'usava a pàgines web HTML, per realitzar feines i operacions al marc de l'aplicació client. Amb l'aparició de la Web 2.0, Javascript s'ha convertit en el llenguatge de la banda del client, permetent-nos escriure aplicacions senceres, com per exemple Gmail\footnote{Client web per accedir al correu de Google}. A més a més també ens permet per augmentar l'usabilitat d'aplicacions web amb tècniques avançades com AJAX.
+Amb l'aparició de la Web 2.0, Javascript s'ha convertit en el llenguatge de la banda del client, permetent-nos escriure aplicacions senceres, com per exemple Gmail\footnote{Client web per accedir al correu de Google}. A més a més també ens permet per augmentar l'usabilitat d'aplicacions web amb tècniques avançades com AJAX.
 
-AJAX és l'acrònim de Asynchronous JavaScript And XML (JavaScript asíncron i XML), una tecnologia que ens permet sol·licitat informació addicional al servidor i carregar-la en segon pla, sense interferir amb el comportament de la pàgina actual. JavaScript és el llenguatge encarregar de realitzar la petició al servidor web i tractar les dades que s'han rebut del servidor. XML és el llenguatge de marcatge en que s'estructura la informació. De totes formes la utilització de XML no és obligatòria, de fet actualment s'utilitza altres llenguatges com JSON. AJAX és una tècnica que es pot utilitzar en múltiples sistemes operatius i navegadors, ja que està basat en estàndards oberts.
 
 En les següents línies de codi podeu veure un exemple de codi en Javascript. En aquest exemple es declara la funció \emph{preloadImages} que s'encarrega de carregar dos imatges per a que desprès les puguem mostrar a l'usuari.
  
@@ -98,7 +97,7 @@ Sec-WebSocket-Protocol: chat
 Una vegada s'ha obert el canal de comunicació entre el client i el servidor, aquests es poden intercanviar informació entre ells. El protocol WebSocket proporciona les següents funcionalitats: 
 
 \begin{itemize}
-    \item{El missatge pot ser iniciar per qualsevol de les dos parts.}
+    \item{El missatge pot ser iniciar per qualsevol de les dues parts.}
     \item{No es requereix l'enviament de missatges indicant que s'ha rebut la informació.}
 \end{itemize}
 
@@ -217,17 +216,17 @@ En l'àmbit del projecte els WebSockets s'utilitzen per proporcionar un mètode 
 
 \section{HTML5}
 
-HTML representa les sigles de \emph{Hyper Text Markup Language}, que en català signifiquen "llenguatge de marcat d'hipertext". És un llenguatge de marcat que deriva de l'SGML dissenyat per estructurar textos i relacionar-los en forma d'hipertext. Gràcies a Internet i als navegadors web, s'ha convertit en un dels formats més populars que existeixen per a la construcció de documents per a la web. 
+HTML representa les sigles de \emph{Hyper Text Markup Language}, que en català signifiquen llenguatge de marcat d'hipertext. És un llenguatge de marcat que deriva de l'SGML dissenyat per estructurar textos i relacionar-los en forma d'hipertext. Gràcies a Internet i als navegadors web, s'ha convertit en el format estándart per a la construcció de documents per a la web. 
 
 HTML5 és la última versió de HTML i la que s'utilitza per escriure tot l'entorn web del projecte. Aquesta última versió proporciona noves marques per poder estructurar els documents d'una forma més semàntica. A més a més proporciona noves etiquetes per poder etiquetar contingut multimèdia, ja sigui àudio o vídeo. També afegeix una nova etiqueta \emph{canvas} que permet la representació dinàmica de formes 2D i imatges a través de llenguatge Javascript. 
 
 \subsection{L'objecte canvas}
 
-L'objecte canvas ens permet realitzar dibuixos amb interacció de l'usuari. Així, podem deixar que l'usuari dibuixi amb el clic del seu ratolí, o que es crei un dibuix desprès de que l'usuari seleccioni alguna opció. Aquestes qualitats fan que sigui la tecnologia ideal per realitzar animacions de qualitat igualable a la que es poden obtenir amb el software d'animació Flash\footnote{\url{http://www.adobe.com/es/products/flash.html}}, evitant la necessitat de que l'usuari hagi d'instal·lar un connector per a reproduir-los. 
+L'objecte canvas ens permet realitzar dibuixos amb interacció de l'usuari. Així, podem deixar que l'usuari dibuixi amb el clic del seu ratolí, o que es crei un dibuix desprès de que es seleccioni alguna opció. Aquestes qualitats fan que sigui la tecnologia ideal per realitzar animacions de qualitat igualable a la que es poden obtenir amb el software d'animació Flash\footnote{\url{http://www.adobe.com/es/products/flash.html}}, evitant la necessitat de que l'usuari hagi d'instal·lar un connector per a reproduir-los. 
 
 L'objecte canvas és un estàndard per la web, se'n poden trobar les especificacions\footnote{\url{http://www.w3.org/TR/html5/the-canvas-element.html}} a la pàgina del W3C\footnote{World Wide Web Consorcium}
 
-Així dins d'un objecte canvas podem realitzar les següents animacions: 
+Així, dins d'un objecte canvas, podem realitzar les següents animacions: 
 
 \begin{itemize}
 \item{Escalar el dibuix.}
@@ -242,7 +241,7 @@ Així dins d'un objecte canvas podem realitzar les següents animacions:
 \item{Crear degradats.}
 \end{itemize}
 
-Totes aquests mètodes ens permeten crear tot tipus de dibuixos i animacions. L'objecte canvas s'utilitza per dibuixar tota l'animació del joc i mostrar en qualsevol moment l'estat actual de la partida. 
+Totes aquests operacions ens permeten crear tot tipus de dibuixos i animacions. L'objecte canvas s'utilitza per dibuixar tota l'animació del joc i mostrar en qualsevol moment l'estat actual de la partida. 
 
 
 \subsubsection{Alguns exemples de l'objecte canvas}
@@ -294,9 +293,9 @@ A la figura \ref{fig:canvas-exemple-1} podeu veure el resultat del codi comentat
 L'exemple a continuació s'ha extret\footnote{El codi ha estat simplificat per simplificar la seva comprensió.} d'una pàgina de tutorials sobre canvas\footnote{\url{http://www.html5canvastutorials.com/advanced/html5-canvas-linear-motion-animation/}}. En aquest exemple es descriurà com animar un objecte que s'ha creat dins del canvas, en concret es farà moure un rectangle des de la part esquerra del canvas fins a la seva part dreta. A la mateixa pàgina podeu trobar una demostració de com funciona el codi que es detalla a continuació.
 
 \begin{lstlisting}
-window.requestAnimFrame = (function(callback){
+window.requestAnimFrame = function(callback){
     window.setTimeout(callback, 1000 / 60);
-})();
+}();
  
 function animate(lastTime, myRectangle){
     var canvas = document.getElementById("myCanvas");
@@ -370,11 +369,11 @@ De la funció animate (la que s'encarrega de pintar cada un dels frames de l'ani
 
 \section{CSS}
 
-CSS es l'acrònim de \emph{Cascading Style Sheets}, que en català significa "Fulls d'estil en cascada". Els fulls d'estil en cascada s'utilitzen per descriure la semàntica de presentació (l'aspecte i format) d'un document escrit en un llenguatge de marques. La seva aplicació més comuna és dissenyar pàgines web escrites en HTML i XHTML, però el llenguatge també pot ser aplicat a qualsevol classe de document XML, incloent-hi SVG i XUL.
+CSS es l'acrònim de \emph{Cascading Style Sheets}, que en català significa "Fulls d'estil en cascada". Els fulls d'estil en cascada s'utilitzen per descriure la semàntica de presentació (l'aspecte i format) d'un document escrit en un llenguatge de marques. La seva aplicació més comuna és dissenyar pàgines web escrites en HTML i XHTML, però el llenguatge també pot ser aplicat a qualsevol classe de document XML, incloent-hi SVG.
 
 El principal objectiu de CSS és permetre la separació del contingut d'un document escrit amb un llenguatge de marques de la seva presentació. Això permet que múltiples pàgines comparteixin un format comú i també que un mateix document de marcatge es pugui mostrar en diferents formats. En l'àmbit del projecte els fulls d'estil s'utilitzen per definir la presentació del client del projecte.
 
-CSS defineix regles d'estil per a cada element, on s'especifica com es mostrarà cada element. Així també defineix un esquema de prioritat per determinar quines regles d'estil s'apliquen si més d'una regla esta associada amb un element en particular. Aquestes característiques han permès que avui en dia sigui el llenguatge més utilitzat a l'hora de definir l'aspecte i el format d'una pàgina web. 
+CSS defineix regles d'estil per a cada element on s'especifica com es mostrarà cada element. Així també defineix un esquema de prioritat per determinar quines regles d'estil s'apliquen si més d'una regla és aplicable a un mateix element. Aquestes característiques han permès que avui en dia sigui el llenguatge més utilitzat a l'hora de definir l'aspecte i el format d'una pàgina web. 
 
 Tot segut es detallen alguns exemples de codi CSS. 
 
@@ -421,7 +420,7 @@ En l'exemple anterior es mostra el codi necessari per associar l'execució d'una
 
 \section{Git}
 
-Git es un sistema de control de versions dissenyat per Linus Torvalds, creador de Linux. Un sistema de control de versions s'encarrega de gestionar els diferents canvis que s'han realitzat sobre un conjunt de fitxers. Una versió o revisió és l'estat en que es troben el conjunts de fitxers en un moment donat en el temps. L'objectiu del control de versions es poder disposar del registre de canvis que s'han realitzat sobre el conjunt de fitxers, permeten saber en quina versió o revisió és trobaven aquell conjunt de fitxers en un moment del passat i quines són les modificacions que els hi hem realitzat. Els sistemes de control de versions permeten que un conjunt de persones puguin realitzar modificacions a la vegada sobre el mateix conjunt de fitxers i ens proporcionen les eines suficients per saber si s'han realitzat modificacions sobre els fitxers i qui les ha realitzat. 
+Git es un sistema de control de versions dissenyat per Linus Torvalds, creador de Linux. Un sistema de control de versions s'encarrega de gestionar els diferents canvis que s'han realitzat sobre un conjunt de fitxers. Una versió o revisió és l'estat en que es troben el conjunts de fitxers en un moment donat en el temps. L'objectiu del control de versions es poder disposar del registre de canvis que s'han realitzat sobre el conjunt de fitxers, permetent saber en quina versió o revisió és trobaven aquell conjunt de fitxers en un moment del passat i quines són les modificacions que els hi hem realitzat. Els sistemes de control de versions permeten que un conjunt de persones puguin realitzar modificacions a la vegada sobre el mateix conjunt de fitxers, i ens proporcionen les eines suficients per saber si s'han realitzat modificacions sobre els fitxers i qui les ha realitzat. 
 
 Tot seguit us nombrem les característiques que diferencien Git respecte a altres sistemes de control de versions.
 
@@ -430,7 +429,7 @@ Tot seguit us nombrem les característiques que diferencien Git respecte a altre
     \item[Distribuït] Cada usuari té un repositori propi. Aquests respositoris poden ser fusionats amb respositoris d'altres usuaris.
     \item[Compatibilitat amb protocols existents] Els respositoris poden ser publicats mitjançant protocols HTTP, FTP, Rsync i fins i tot un protocol propi.
     \item[Eficient per grans projectes] Git es ràpid i escalable. A més a més no es fa més lent a mesura que la història del projecte es fa gran, com passa amb altres sistemes.
-    \item[Portable] Funciona tan en sistemes Linux, Unix, MAC i Windows.
+    \item[Portable] Funciona tan en sistemes Linux, Unix, MACOS X i Windows.
 \end{description}
 
 Git s'utilitza per controlar totes les modificacions que s'han realitzat al projecte, i perquè altres desenvolupadors interessats en el projecte puguin comunicar-nos modificacions sobre el mateix. A més a més, també ens permet publicar diferents versions del projecte i saber en qualsevol moment quin era l'estat del projecte quan es va publicar una versió. 
@@ -439,7 +438,7 @@ Git s'utilitza per controlar totes les modificacions que s'han realitzat al proj
 \section{Mocha i jscoverage}
 \label{sec:mocha-jscoverage}
 
-Mocha\footnote{\url{http://visionmedia.github.com/mocha/}} és una llibreria que s'encarrega d'executar jocs de prova i que funciona sobre el framework Node.js. Aquesta llibreria s'encarrega de detectar quins dels nostres testos estan fallant i reportar-nos els errors a través de diferents formats. Una de les aplicacions més interessant de Mocha és la generació de informes de coverage. Un informe de coverage ens permet visualitzar quines són línies de codi de l'aplicació són executades per un joc de proves i quines no. Per a la generació d'aquest informes es requereix tenir instal·lada la llibreria jscoverage\footnote{\url{http://siliconforks.com/jscoverage/}}. 
+Mocha\footnote{\url{http://visionmedia.github.com/mocha/}} és una llibreria que s'encarrega de definir i executar jocs de prova i que funciona sobre el framework Node.js. Aquesta llibreria s'encarrega de detectar quins dels nostres testos estan fallant i reportar-nos els errors a través de diferents formats. Una de les aplicacions més interessant de Mocha és la generació de informes de cobertura. Un informe de cobertura ens permet visualitzar quines són línies de codi de l'aplicació són executades per un joc de proves i quines no. Per a la generació d'aquest informes es requereix tenir instal·lada la llibreria jscoverage\footnote{\url{http://siliconforks.com/jscoverage/}}. 
 
 En l'àmbit del projecte Mocha s'utiltiza per avaluar els jocs de proves del projecte i validar que tots funcionen correctament. jscoverage s'utilitza per generar un informe que ens permet avaluar quines línies de codi estan sotmeses a jocs de proves i quines no.
 
@@ -558,7 +557,7 @@ Tot seguit podeu veure el HTML que ens queda desprès d'aplicar la plantilla.
     <title>Jade</title>
     <script type="text/javascript">
       if (foo) {
-      	bar()
+        bar()
       }
     </script>
   </head>
