@@ -1,6 +1,5 @@
 Comentaris JM (13/07/12):
 
-- Pasar capitol 5 al 4, el 6 al 5, el 7 al 6 i el 4 al 7. 
 - Capítol de requeriments: La llista d'esdeveniment s'hauria d'elaborar més explicant com connectar la part del client i el servidor pq l'estructura és una mica diferenc d'una aplicació web clàssica.
 - Capítol de metodologia: Reescriure tot el tema de TDD/BDD.
 - Capítol de tecnologies: Revisar les explicacions sobre Node.js
