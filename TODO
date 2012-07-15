@@ -1,11 +1,3 @@
-Comentaris JM (13/07/12):
-
-- Capítol de requeriments: La llista d'esdeveniment s'hauria d'elaborar més explicant com connectar la part del client i el servidor pq l'estructura és una mica diferenc d'una aplicació web clàssica.
-- Capítol de metodologia: Reescriure tot el tema de TDD/BDD.
-- Capítol de tecnologies: Revisar les explicacions sobre Node.js
-- Capítol Perque Node.js: Revisar introducció. 
-- Revisar que a tot arreu es parli de botifarra, no de butifarra (excepte al nom del projecte)
-- Afegir un exmple de codi la part de Kinetic.js
 
 
 Comentaris JM (02/06/12):
