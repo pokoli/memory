@@ -3,6 +3,12 @@
 \usepackage[catalan]{babel}
 \usepackage{url}
 
+%%%%%% Per realitzar diagrames de fluxe %%%%%%
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,shadows}
+\usepackage{pgf-umlsd} 
+
 %\setbeameroption{show notes on second screen=right}
 \setbeamertemplate{navigation symbols}{} 
 
@@ -41,7 +47,7 @@
 \textsl{Autor: Sergi Almacellas Abellana}\\
 \textsl{Director: Juan Manuel Gimeno Illa}\\ 
 
-\vfill\today
+\vfill{26 de juliol de 2012}
 \end{center}
 \end{frame}
 
@@ -124,7 +130,7 @@ El joc de la botifarra a través de navegador web.
 \begin{block}{TDD/BDD}
     \begin{enumerate}
     \item{Definir la característica a implementar.}
-    \item{Escriure un joc de prova.}
+    \item{Escriure la seva especificació.}
     \item{Escriure la implementació.}
     \item{Comprovar la validesa de la implementació.}
     \item{Reestructurar/millorar la implementació.}
@@ -144,11 +150,10 @@ El joc de la botifarra a través de navegador web.
 \end{block}
 \begin{block}{Altres}
     \begin{enumerate}
-    \item{JQuery i CSS}
-    \item{Git}
-    \item{Mocha i JsCoverage}
-    \item{Jade}
+    \item{JQuery, CSS i Jade}
     \item{JSON}
+    \item{Mocha i JsCoverage}
+    \item{Git}
     \end{enumerate}
 \end{block}
 \end{frame}
@@ -162,16 +167,35 @@ Framework multiplataforma execució codi Javascript per la banda del servidor.
 
 \begin{block}{Característiques}
 \begin{itemize}
-    \item{Entén Javascript.}
     \item{Entrada/Sortida Asíncrona.}
     \item{Múltiples fils d'execució de forma transparent per al programador.}
     \item{Basat en esdeveniments.}
-    \item{Gran quantitat de llibreries disponibles.}
+    \item{Gran quantitat de llibreries disponibles i gestor de les mateixes.}
     \item{Suport integrat pels protocols TCP,DNS,HTTP.}
 \end{itemize}
 \end{block}
 
 \end{frame}
+
+\begin{frame}
+\frametitle{Codi síncron vs. codi asíncron}
+\begin{block}{Códi síncron:}
+Espera a obtenir els recursos externs (Fitxers,BD). Necessitat d'us dels threads per paralelitzar.
+\end{block}
+
+\begin{block}{Codi asíncron:}
+NO s'espera, es programa l'execució de codi quan el recurs estigui disponible.
+\end{block}
+
+\begin{block}{Com s'implementa en node?}
+\begin{itemize}
+    \item{Bucle d'esdeveniments.}
+    \item{Emisió d'events.}
+\end{itemize}
+\end{block}
+
+\end{frame}
+
 \begin{frame}
 \frametitle{Node.js}
 \begin{block}{Beneficis de Node.js}
@@ -194,7 +218,7 @@ Framework multiplataforma execució codi Javascript per la banda del servidor.
 \subsection{WebSockets}
 \begin{frame}
 \frametitle{WebSockets}
-\begin{block}{Problemes del web tradicional}
+\begin{block}{Problemes del protocol HTTP}
 \begin{itemize}
     \item{Comunicació unidireccional.}
     \item{Gran quantitat d'informació addicional (capçaleres).}
@@ -221,12 +245,12 @@ Framework multiplataforma execució codi Javascript per la banda del servidor.
 \begin{block}{Novetats}
 \begin{enumerate}
     \item{Millor estructuració del documents.}
-    \item{Contingut multimèdia: àudio,vídeo,animacions}
+    \item{Contingut multimèdia: àudio, vídeo, animacions (canvas).}
 \end{enumerate}
 \end{block}
 
 \begin{block}{Beneficis}
-Al estar estandarditzats són suportats de forma nativa per tots els navegadors web moderns.
+A l'estar estandarditzats són suportats de forma nativa per tots els navegadors web moderns.
 \end{block}
 \end{frame}
 
@@ -252,13 +276,25 @@ S'utilitza l'etiqueta canvas per tal de dibuixar la interfície del joc i realit
 \begin{block}{Altres}
 \begin{itemize}
     \item{jQuery, CSS, Jade $\Rightarrow$  Capa de presentació del sistema.}
+    \item{JSON $\Rightarrow$  Estructuració de la informació que s'envia a través dels WebSockets.}
     \item{Mocha i JSCoverage $\Rightarrow$ Jocs de Proves}
     \item{Git $\Rightarrow$  Allotjament del codi font}
-    \item{JSON $\Rightarrow$  Estructuració de la informació que s'envia a traves dels WebSockets.}
+
 \end{itemize}
 \end{block}
 \end{frame}
 
+\section{Desenvolupament}
+\subsection{Lògica Botifarra}
+\begin{frame}
+\frametitle{Lògica Botifarra}
+\centering\includegraphics[width=10cm]{img/butifarra_workflow.png}
+\end{frame}
+
+\subsection{Comunicació client-servidor}
+\begin{frame}
+\centering\includegraphics[width=10cm]{img/diagrama-websocket.png}
+\end{frame}
 
 \section{Demostració}
 \begin{frame}
@@ -274,6 +310,7 @@ S'utilitza l'etiqueta canvas per tal de dibuixar la interfície del joc i realit
 \begin{block}{TDD/BDD}
 \begin{itemize}
 \item{Augmenten l'estabilitat del codi $\Rightarrow$ millora de la productivitat.}
+\item{Permet mesurar l'estat del desenvolupament.}
 \end{itemize}
 \end{block}
 
@@ -314,4 +351,31 @@ Gran futur en el desenvolupament d'aplicacions.
 \end{block}
 \end{frame}
 
+\begin{frame}
+\frametitle{Treball futur}
+\begin{itemize}
+\item{Adaptació interfície telèfons mòbils.}
+\item{Histrrial de partides.}
+\item{Classificació de jugadors.}
+\item{Millora de la inteligència aritifical.}
+\item{Implementació variants de la botifarra.}
+\item{Implementació de campionats.}
+\item{Integració amb xarxes socials.}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\begin{block}{Voleu col·laborar amb el projecte?}
+\url{https://github.com/pokoli/ButiJS}
+\end{block}
+
+\begin{block}{Dubtes/Preguntes?}
+\begin{description}
+\item[Correu electrònic:]{pokoli@gmail.com}
+\item[Twitter:]{@pokoli\_srk}
+\end{description}
+\end{block}
+
+\end{frame}
 \end{document}
